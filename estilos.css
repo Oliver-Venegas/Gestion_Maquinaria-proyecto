@@ -1,0 +1,12 @@
+.backg_image{
+    background-image: url(img/electr_log.jpg);
+    background-position: center center;
+}
+.backg_body{
+    background: rgba(54, 195, 238, 0.911);
+    background: linear-gradient(to right, rgba(54, 195, 238, 0.911), rgba(229, 249, 255, 0.911));
+}
+.btn_backlog{
+    color: black;
+    text-decoration: none;
+}
