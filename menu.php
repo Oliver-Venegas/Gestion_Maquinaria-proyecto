@@ -7,13 +7,29 @@
     <title>Bodega Minera</title>
     <!-- CONEXION CSS -->
     <link rel="stylesheet" href="estilos.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    
-        <header>
+
+        <header class="nav_superior">
+            <a href="#" class="user_home">Mantenedor</a>
+
+            <input type="checkbox" id="check_general">
+            <label for="check_general" class='menugen_icons'>
+            <i class='bx bx-menu' id="general_icon"></i>
+            <i class='bx bx-x' id="general_close"></i>
+            </label>
+
+            <nav class="navbar_general">
+            <a href="">Home</a>
+            <a href="">Maquinas</a>
+            <a href="creat_Client.php">Clientes</a>
+            <a href="index.html">Cerrar Sesion</a>
+
+            </nav>
 
         </header>
-           
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>

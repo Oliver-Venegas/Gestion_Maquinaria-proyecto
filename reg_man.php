@@ -15,27 +15,50 @@
 
             <div class="col bg-white p-5 rounded-end">
 
-                <h2 class="fw-bold text-center py-4">Cambiar la Contraseña</h2>
+                <h2 class="fw-bold text-center py-4">Registrate</h2>
 
                 <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">RUT</label>
-                        <input type="text" class="form-control" name="rut_renew">
+                        <input type="text" class="form-control" name="rut_reg">
+                        <span></span> 
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombr_renew">
+                        <input type="text" class="form-control" name="nombr_reg">
+                        <span></span> 
+                    </div>
+
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Tipo de Mantenedor</label>
+                        <input type="text" class="form-control" name="tipe_reg">
+                        <span></span> 
                     </div>
 
                     <div class="mb-4">
                         <label for="email" class="form-label">Correo Electronico</label>
-                        <input type="email" class="form-control" name="email_renew">
+                        <input type="email" class="form-control" name="email_reg">
+                        <span></span> 
                     </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="password_reg">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Vuelva a Escribir la Contraseña</label>
+                        <input type="password" class="form-control" name="passagain_reg">
+                        <span></span> 
+                    </div>
+
 <br>
                     <div class="row align-items-stretch">
                     <div class="col p-2">
-                   <button class="btn btn-light btn-lg"><a class="btn_backlog" href="index.html">Regresar</a></button>
+                   <button class="btn btn-light btn-lg"><a class="btn_backlog" href="index.html"> Regresar</a></button>
                    </div>
 
                    <div class="col-3 p-2">
@@ -49,6 +72,8 @@
             </div>
         </div>
     </div>
+
+    <script src="js/valid_newUser.js"></script>
  
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
