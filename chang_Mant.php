@@ -34,59 +34,40 @@
 
 </header>
 
-        <div class="container  mt-5 mb-5 conent_Clicre ">
+        <div class="container mt-5 mb-5 conent_Mantchang">
         <div class="row align-items-stretch">
 
             <div class="col p-5 bg-white mt-5 rounded shadow">
 
-                <h2 class="fw-bold text-lg-center py-1">Ingrese los Datos del Cliente</h2>
+                <h2 class="fw-bold text-lg-center py-1">Cambie el Tipo de Mantenedor</h2>
                 <br>
 
                 <form action="#">
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Rut de Empresa</label>
-                        <input type="text" class="form-control" name="rutempr_Clien">
-                        <span></span> 
-                    </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre de la Empresa</label>
-                        <input type="text" class="form-control" name="nombrempr_Clien">
-                        <span></span> 
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Nombre de Contacto</label>
-                        <input type="text" class="form-control" name="nombrcont_Clien">
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
-                        <input type="text" class="form-control" name="hrsempr_Clien">
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Fecha del Trabajo</label>
-                        <input type="text" class="form-control" name="dateempr_Clien">
-                        <span></span> 
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label p-1">¿Tiene los datos de la Boleta?</label>
-                        <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(2)" value="show_cli" > Si</div>
-                        <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(1)" value="hide_cli" checked> No</div>
+                        <label for="text" class="form-label p-1">¿Dessea Cambiar a un Tipo de Mantenedor ya Existente o Crear un Nuevo Tipo de Mantenedor?</label>
+                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowTip_mant(2)" value="hide_tipe" checked> Crear Nuevo Tipo de Mantenedor</div>
+                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowTip_mant(1)" value="show_tipe" > Cambiar a Tipo de Mantenedor ya Existente</div>
+                        
                         
                         <br>
+
+                        <div id="tip_exmant"  >
+                            <select class="form-select mb-4 align-items-stretch" aria-label="Default select example">
+                             
+                             <option value="1">Mantenedor Electrico</option>
+                             <option value="2">Mantenedor Mecanico</option>
+                        </select>
+
+                        </div>
+                        
                        
-                            <div class="row" id="bolet_cli" style="display: none;">
+                            <div class="row" id="tipe_creamant" >
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Codigo de la Boleta</label>
                                 <input type="text" class="form-control" name="id_bol">
                             </div>
-                            <div class="mb-4 align-items-stretch">
-                            <label for="text" class="form-label">Ingrese los datos de la Boleta</label>
-                                <input type="text" class="form-control" name="data_bol">
-                            </div> 
+   
                             </div>
                             
                         
@@ -94,7 +75,7 @@
                     </div>
 
 
-                    <div class="row ">
+                    <div class="row align-items-stretch">
                     <div class="col p-2">
                    <button class="btn btn-light btn-lg"><a class="btn_backlog" href="menu.php">Cancelar</a></button>
                    </div>
@@ -110,9 +91,7 @@
         </div>
     </div>
 
-
-    <script src="js/CliBol_val.js"></script>
-    <script src="js/valid_AdClien.js"></script>
+    <script src="js/Tip_ChMant.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

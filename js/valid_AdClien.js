@@ -21,3 +21,4 @@ const valid_ClieEmptyness = (mensage, e) =>{
 rut_emprfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un Rut", e));
 nomb_emprfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un Nombre de Empresa", e));
 datefield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar una fecha", e));
+

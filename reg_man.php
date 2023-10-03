@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <title>Bodega Minera</title>
+    <title>Gestion de Maquinaria</title>
     <!-- CONEXION CSS -->
     <link rel="stylesheet" href="estilos.css">
 </head>
@@ -15,7 +15,7 @@
 
             <div class="col bg-white p-5 rounded-end">
 
-                <h2 class="fw-bold text-center py-4">Registrate</h2>
+                <h2 class="fw-bold text-center py-4">Registrate como Mantenedor</h2>
 
                 <form action="#">
                     <div class="mb-4">
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre</label>
+                        <label for="text" class="form-label">Nombre y Apellido</label>
                         <input type="text" class="form-control" name="nombr_reg">
                         <span></span> 
                     </div>
@@ -33,8 +33,12 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Tipo de Mantenedor</label>
-                        <input type="text" class="form-control" name="tipe_reg">
-                        <span></span> 
+                        <select class="form-select" aria-label="Default select example">
+                             
+                             <option value="1">Mantenedor Electrico</option>
+                             <option value="2">Mantenedor Mecanico</option>
+                        </select>
+
                     </div>
 
                     <div class="mb-4">
@@ -58,10 +62,10 @@
 <br>
                     <div class="row align-items-stretch">
                     <div class="col p-2">
-                   <button class="btn btn-light btn-lg"><a class="btn_backlog" href="index.html"> Regresar</a></button>
+                        <a class="btn_backlog btn btn-light btn-lg" href="index.html"> Regresar</a>
                    </div>
 
-                   <div class="col-3 p-2">
+                   <div class="col p-2">
                     <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
                    </div>
                     </div>

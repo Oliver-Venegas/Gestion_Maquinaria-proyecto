@@ -34,59 +34,58 @@
 
 </header>
 
-        <div class="container  mt-5 mb-5 conent_Clicre ">
+        <div class="container  mt-5 mb-5 conent_Maquicre ">
         <div class="row align-items-stretch">
 
             <div class="col p-5 bg-white mt-5 rounded shadow">
 
-                <h2 class="fw-bold text-lg-center py-1">Ingrese los Datos del Cliente</h2>
+                <h2 class="fw-bold text-lg-center py-1">Ingrese los Datos de la Maquina</h2>
                 <br>
 
                 <form action="#">
                     <div class="mb-4">
-                        <label for="text" class="form-label">Rut de Empresa</label>
-                        <input type="text" class="form-control" name="rutempr_Clien">
+                        <label for="text" class="form-label">Numero de Serie</label>
+                        <input type="text" class="form-control" name="numser_Maqui">
                         <span></span> 
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre de la Empresa</label>
-                        <input type="text" class="form-control" name="nombrempr_Clien">
+                        <label for="text" class="form-label">Nombre de la Maquina</label>
+                        <input type="text" class="form-control" name="nombr_Maqui">
                         <span></span> 
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre de Contacto</label>
-                        <input type="text" class="form-control" name="nombrcont_Clien">
+                        <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
+                        <input type="text" class="form-control" name="rutEmpr_Maqui">
+                        <span></span>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
-                        <input type="text" class="form-control" name="hrsempr_Clien">
-                    </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Fecha del Trabajo</label>
-                        <input type="text" class="form-control" name="dateempr_Clien">
-                        <span></span> 
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label p-1">¿Tiene los datos de la Boleta?</label>
-                        <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(2)" value="show_cli" > Si</div>
-                        <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(1)" value="hide_cli" checked> No</div>
+                        <label for="text" class="form-label p-1">¿Tiene Repuestos la Maquina?</label>
+                        <div class="p-2"><input type="radio" name="rad_maqu" onclick="hideshowRep_Maqu(2)" value="show_maqu" > Si</div>
+                        <div class="p-2"><input type="radio" name="rad_maqu" onclick="hideshowRep_Maqu(1)" value="hide_maqu" checked> No</div>
                         
                         <br>
                        
-                            <div class="row" id="bolet_cli" style="display: none;">
+                            <div class="row" id="repue_maqui" style="display: none;">
+
                                <div class="mb-4 align-items-stretch">
-                                <label for="text" class="form-label">Codigo de la Boleta</label>
-                                <input type="text" class="form-control" name="id_bol">
+                                <label for="text" class="form-label">Numero de Serie del Repuesto</label>
+                                <input type="text" class="form-control" name="seri_repu">
                             </div>
+
                             <div class="mb-4 align-items-stretch">
-                            <label for="text" class="form-label">Ingrese los datos de la Boleta</label>
-                                <input type="text" class="form-control" name="data_bol">
+                            <label for="text" class="form-label">Nombre del Repuesto</label>
+                                <input type="text" class="form-control" name="nombr_repu">
                             </div> 
+
+                            <div class="mb-4 align-items-stretch">
+                                <label for="text" class="form-label">Cantidad de Repuestos</label>
+                                <input type="text" class="form-control" name="cant_repu">
+                            </div>
+
                             </div>
                             
                         
@@ -96,7 +95,7 @@
 
                     <div class="row ">
                     <div class="col p-2">
-                   <button class="btn btn-light btn-lg"><a class="btn_backlog" href="menu.php">Cancelar</a></button>
+                   <button class="btn btn-light btn-lg"><a class="btn_backlog" href="selct_Maqui.php">Cancelar</a></button>
                    </div>
 
                    <div class="col p-2">
@@ -111,8 +110,8 @@
     </div>
 
 
-    <script src="js/CliBol_val.js"></script>
-    <script src="js/valid_AdClien.js"></script>
+    <script src="js/MaquRep_val.js"></script>
+    <script src="js/MaquRep_val.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
