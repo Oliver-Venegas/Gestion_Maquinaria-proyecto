@@ -24,8 +24,8 @@
             <nav class="navbar_general">
             <a href="menu.php" style="--i:0;">Home</a>
             <a href="chang_Mant.php" style="--i:1;">Tipo de Mantenedor</a>
-            <a href="selct_Maqui.php" style="--i:2;">Maquinas</a>    
-            <a href="selct_Cli.php" style="--i:3;">Clientes</a>
+            <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
+            <a href="view_Client.php" style="--i:3;">Clientes</a>
             <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
             
 

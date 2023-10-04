@@ -34,8 +34,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 50;
 }
+
+
 
 .nav_superior::before {
     content: '';
@@ -98,7 +100,7 @@
 }
 
 .conent_Clicre{
-    width: 50%;
+    width: 35%;
 }
 .conent_Maquicre{
     width: 50%;
@@ -108,10 +110,21 @@
 }
 
 
-
+.cretcli_cont{
+    position: fixed;
+     bottom: 0;
+     width: 50%;
+     
+   
+ }
 /* BreakPoints Menu Superior*/
 
 @media (max-width: 995px) {
+    .cretcli_cont{
+        width: 70%;       
+        
+    }
+
     .nav_superior{
         padding: 1.3rem 5%;
 
@@ -135,7 +148,14 @@
     margin-right: 2rem;
     }
 }
+
+
 @media (max-width: 880px) {
+    .cretcli_cont{
+        width: 80%;       
+        
+    }
+
     .conent_Clicre{
         width: 90%;
     }

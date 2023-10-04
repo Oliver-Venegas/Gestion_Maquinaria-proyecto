@@ -23,10 +23,10 @@
    
 
     <nav class="navbar_general">
-    <a href="" style="--i:0;">Home</a>
+    <a href="menu.php" style="--i:0;">Home</a>
     <a href="chang_Mant.php" style="--i:1;">Tipo de Mantenedor</a>
-    <a href="selct_Maqui.php" style="--i:2;">Maquinas</a>    
-    <a href="selct_Cli.php" style="--i:3;">Clientes</a>
+    <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
+    <a href="view_Client.php" style="--i:3;">Clientes</a>
     <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
     
 
@@ -107,10 +107,102 @@
         </table>
 
         </div>
+
+        <div class="d-flex justify-content-center rounded shadow">
+            <div class="row cretcli_cont mb-4">
+          
+                <div class="row p-3 bg-white rounded shadow align-items-stretch justify-content-evenly">
+                    <div class="col-auto p-1">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_maqui">Crear Nueva Maquina</button>
+                    </div>
+                   
+                    <div class="col-auto p-1">
+                        <input type="text"  class="form-control" name="" placeholder="Buscar Maquina">
+                    </div>
+                                         
+                </div>
+                       
+        </div>
+        </div>
+        
+<div class="modal fade" id="Modal_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese los Datos de la Maquina</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="#">
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Numero de Serie</label>
+                        <input type="text" class="form-control" name="numser_Maqui">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Nombre de la Maquina</label>
+                        <input type="text" class="form-control" name="nombr_Maqui">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
+                        <input type="text" class="form-control" name="rutEmpr_Maqui">
+                        <span></span>
+                    </div>
+
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label p-1">¿Tiene Repuestos la Maquina?</label>
+                        <div class="p-2"><input type="radio" name="rad_maqu" onclick="hideshowRep_Maqu(2)" value="show_maqu" > Si</div>
+                        <div class="p-2"><input type="radio" name="rad_maqu" onclick="hideshowRep_Maqu(1)" value="hide_maqu" checked> No</div>
+                        
+                        <br>
+                       
+                            <div class="row" id="repue_maqui" style="display: none;">
+
+                               <div class="mb-4 align-items-stretch">
+                                <label for="text" class="form-label">Numero de Serie del Repuesto</label>
+                                <input type="text" class="form-control" name="seri_repu">
+                            </div>
+
+                            <div class="mb-4 align-items-stretch">
+                            <label for="text" class="form-label">Nombre del Repuesto</label>
+                                <input type="text" class="form-control" name="nombr_repu">
+                            </div> 
+
+                            <div class="mb-4 align-items-stretch">
+                                <label for="text" class="form-label">Cantidad de Repuestos</label>
+                                <input type="text" class="form-control" name="cant_repu">
+                            </div>
+
+                            </div>
+                            
+                        
+                     
+                    </div>
+
+
+                </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
         
 
     </div>
         
+
+    <script src="js/MaquRep_val.js"></script>
+    <script src="js/MaquRep_val.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
