@@ -17,6 +17,10 @@
     text-decoration: none;
 }
 
+.mant_cont{
+    width: 40%;
+}
+
 /* Menu General */
 .menu_bacgr{
     min-height: 100vh;
@@ -72,9 +76,6 @@
     display: none;
 }
 
-.bolet_cli{
-    display: none;
-}
 
 .menugen_icons{
     position: absolute;
@@ -119,6 +120,7 @@
  }
 /* BreakPoints Menu Superior*/
 
+
 @media (max-width: 995px) {
     .cretcli_cont{
         width: 70%;       
@@ -150,7 +152,14 @@
 }
 
 
+
+
 @media (max-width: 880px) {
+
+    .mant_cont{
+        width: 70%;
+    }
+
     .cretcli_cont{
         width: 80%;       
         

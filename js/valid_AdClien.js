@@ -2,6 +2,10 @@ const rut_emprfield = document.querySelector("[name=rutempr_Clien]");
 const nomb_emprfield = document.querySelector("[name=nombrempr_Clien]");
 const datefield = document.querySelector("[name=dateempr_Clien]");
 
+const rut_empredifield = document.querySelector("[name=rutempr_Clienedi]");
+const nomb_empredifield = document.querySelector("[name=nombrempr_Clienedi]");
+const dateedifield = document.querySelector("[name=dateempr_Clienedi]");
+
 
 const valid_ClieEmptyness = (mensage, e) =>{
     const field = e.target;
@@ -21,4 +25,8 @@ const valid_ClieEmptyness = (mensage, e) =>{
 rut_emprfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un Rut", e));
 nomb_emprfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un Nombre de Empresa", e));
 datefield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar una fecha", e));
+
+rut_empredifield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un Rut", e));
+nomb_empredifield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un Nombre de Empresa", e));
+dateedifield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar una fecha", e));
 

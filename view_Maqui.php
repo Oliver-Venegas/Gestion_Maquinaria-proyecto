@@ -12,7 +12,7 @@
 <body class="menu_bacgr">
 
 <header class="nav_superior">
-    <a href="#" class="user_home">Mantenedor</a>
+    <a href="view_Manten.php" class="user_home">Mantenedor</a>
 
     <input type="checkbox" id="check_general">
     <label for="check_general" class='menugen_icons'>
@@ -53,8 +53,8 @@
                 <td class="tabmaqui_body" data-cell="Numero Serie">53233321</td>
                 <td class="tabmaqui_body" data-cell="Nombre Maquina">Pantalla LED</td>
                 <td class="tabmaqui_body" data-cell="Rut de la Empresa">1143228-4</td>
-                <td class="tabmaqui_body"><a class="btn btn-primary btn-sm" href="selct_Maqui.php">Editar</a></td>
-                <td class="tabmaqui_body" ><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
 
             </tr>
 
@@ -62,8 +62,8 @@
                 <td class="tabmaqui_body" data-cell="Numero Serie">12221241</td>
                 <td class="tabmaqui_body" data-cell="Nombre Maquina">Sensor de Metales</td>
                 <td class="tabmaqui_body" data-cell="Rut de la Empresa">2197828-1</td>
-                <td class="tabmaqui_body"><a class="btn btn-primary btn-sm" href="selct_Maqui.php">Editar</a></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
                 
             </tr>
 
@@ -71,8 +71,8 @@
                 <td class="tabmaqui_body" data-cell="Numero Serie">32123212</td>
                 <td class="tabmaqui_body" data-cell="Nombre Maquina">Bomba Cav/Prog</td>
                 <td class="tabmaqui_body" data-cell="Rut de la Empresa">1223234-8</td>
-                <td class="tabmaqui_body"><a class="btn btn-primary btn-sm" href="selct_Maqui.php">Editar</a></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
                 
             </tr>
 
@@ -80,8 +80,8 @@
                 <td class="tabmaqui_body" data-cell="Numero Serie">1234123</td>
                 <td class="tabmaqui_body" data-cell="Nombre Maquina">Supresor de Gas</td>
                 <td class="tabmaqui_body" data-cell="Rut de la Empresa">1720075-2</td>
-                <td class="tabmaqui_body"> <a class="btn btn-primary btn-sm" href="selct_Maqui.php">Editar</a></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
                 
             </tr>
 
@@ -89,8 +89,8 @@
                 <td class="tabmaqui_body" data-cell="Numero Serie">577771993</td>
                 <td class="tabmaqui_body" data-cell="Nombre Maquina">Compreso Hidraulico</td>
                 <td class="tabmaqui_body" data-cell="Rut de la Empresa">2813922-k</td>
-                <td class="tabmaqui_body"><a class="btn btn-primary btn-sm" href="selct_Maqui.php">Editar</a></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
                 
             </tr>
 
@@ -98,8 +98,8 @@
                 <td class="tabmaqui_body" data-cell="Numero Serie">231123334</td>
                 <td class="tabmaqui_body" data-cell="Nombre Maquina">Microondas Industrial</td>
                 <td class="tabmaqui_body" data-cell="Rut de la Empresa">2190820-3</td>
-                <td class="tabmaqui_body"><a class="btn btn-primary btn-sm" href="selct_Maqui.php">Editar</a></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
+                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
                 
             </tr>
 
@@ -188,7 +188,7 @@
                 </form>
 
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary">Guardar</button>
       </div>
@@ -196,7 +196,99 @@
   </div>
 </div>
 
+
+
+
+<div class="modal fade" id="Edit_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar la Maquina</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
         
+      <form action="#">
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Numero de Serie</label>
+                        <input type="text" class="form-control" name="numser_Maquiedi">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Nombre de la Maquina</label>
+                        <input type="text" class="form-control" name="nombr_Maquiedi">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
+                        <input type="text" class="form-control" name="rutEmpr_Maquiedi">
+                        <span></span>
+                    </div>
+
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label p-1">¿Tiene Repuestos la Maquina?</label>
+                        <div class="p-2"><input type="radio" name="rad_maquedi" onclick="hideshowRep_Maquedi(2)" value="show_maquedi" > Si</div>
+                        <div class="p-2"><input type="radio" name="rad_maquedi" onclick="hideshowRep_Maquedi(1)" value="hide_maquedi" checked> No</div>
+                        
+                        <br>
+                       
+                            <div class="row" id="repue_maquiedi" style="display: none;">
+
+                               <div class="mb-4 align-items-stretch">
+                                <label for="text" class="form-label">Numero de Serie del Repuesto</label>
+                                <input type="text" class="form-control" name="seri_repuedi">
+                            </div>
+
+                            <div class="mb-4 align-items-stretch">
+                            <label for="text" class="form-label">Nombre del Repuesto</label>
+                                <input type="text" class="form-control" name="nombr_repuedi">
+                            </div> 
+
+                            <div class="mb-4 align-items-stretch">
+                                <label for="text" class="form-label">Cantidad de Repuestos</label>
+                                <input type="text" class="form-control" name="cant_repuedi">
+                            </div>
+
+                            </div>
+                            
+                        
+                     
+                    </div>
+
+
+                </form>
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+<div class="modal fade" id="Elim_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Maquina</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>¿Esta Seguro que desea eliminar la Maquina?</h3>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     </div>
         

@@ -12,7 +12,7 @@
 <body class="menu_bacgr">
 
 <header class="nav_superior">
-    <a href="#" class="user_home">Mantenedor</a>
+    <a href="view_Manten.php" class="user_home">Mantenedor</a>
 
     <input type="checkbox" id="check_general">
     <label for="check_general" class='menugen_icons'>
@@ -64,7 +64,7 @@
                        
                             <div class="row" id="tipe_creamant" >
                                <div class="mb-4 align-items-stretch">
-                                <label for="text" class="form-label">Codigo de la Boleta</label>
+                                <label for="text" class="form-label">Nuevo Tipo de Mantenedor</label>
                                 <input type="text" class="form-control" name="id_bol">
                             </div>
    

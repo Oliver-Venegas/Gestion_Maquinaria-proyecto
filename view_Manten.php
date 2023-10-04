@@ -33,6 +33,48 @@
 
         </header>
 
+        <div class="container mant_cont mt-5 mb-5">
+            
+        <div class="row align-items-stretch">
+
+            <div class="col bg-white mt-5 p-5 rounded shadow">
+
+                <h2 class="fw-bold text-center py-4">Mantenedor</h2>
+
+                <br>
+                <div class="col-auto p-1">
+                    <label  for="text" class="form-label"><p><strong>RUT:  </strong></p></label>
+                    <label for="text" class="form-label">1937244-2</label>
+                   
+                </div>
+
+                <div class="col-auto p-1">
+                    <label  for="text" class="form-label"><p><strong>Nombre y Apellido:  </strong></p></label>
+                    <label for="text" class="form-label">Rodrigo Espejo</label>
+                   
+                </div>
+
+                <div class="col-auto p-1">
+                    <label  for="text" class="form-label"><p><strong>Tipo de Mantenedor:  </strong></p></label>
+                    <label for="text" class="form-label">Mantenedor Electrico</label>
+                   
+                </div>
+
+                <div class="col-auto p-1">
+                    <label  for="text" class="form-label"><p><strong>Correo Electronico:  </strong></p></label>
+                    <label for="text" class="form-label">rodrigoespejo@gmail.com</label>
+                   
+                </div>
+
+                   </div>
+
+
+        </div>
+
+        </div>
+
+            
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>

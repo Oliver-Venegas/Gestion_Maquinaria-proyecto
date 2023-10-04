@@ -12,7 +12,7 @@
 <body class="menu_bacgr">
 
 <header class="nav_superior">
-    <a href="#" class="user_home">Mantenedor</a>
+    <a href="view_Manten.php" class="user_home">Mantenedor</a>
 
     <input type="checkbox" id="check_general">
     <label for="check_general" class='menugen_icons'>
@@ -34,6 +34,7 @@
 
 </header>
 
+
     <div class="container  mt-5 mb-5 ">
         <div class="row align-items-stretch p-4">
 <table class="client_table ">
@@ -53,8 +54,8 @@
                 <td class="tabcli_body" data-cell="Rut Empresa">2197828-1</td>
                 <td class="tabcli_body" data-cell="Nombre Empresa">Sanander</td>
                 <td class="tabcli_body" data-cell="Fecha del Trabajo">23/02/2022</td>
-                <td class="tabcli_body"><a class="btn btn-primary btn-sm" href="creat_Client.php">Editar</a></td>
-                <td class="tabcli_body" ><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
 
             </tr>
 
@@ -62,8 +63,8 @@
                 <td class="tabcli_body" data-cell="Rut Empresa">1143228-4</td>
                 <td class="tabcli_body" data-cell="Nombre Empresa">Deca</td>
                 <td class="tabcli_body" data-cell="Fecha del Trabajo">21/05/2021</td>
-                <td class="tabcli_body"><a class="btn btn-primary btn-sm" href="creat_Client.php">Editar</a></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
                 
             </tr>
 
@@ -71,8 +72,8 @@
                 <td class="tabcli_body" data-cell="Rut de Empresa">1223234-8</td>
                 <td class="tabcli_body" data-cell="Nombre de la Empresa">Santa Isabel</td>
                 <td class="tabcli_body" data-cell="Fecha del Trabajo">07/10/2022</td>
-                <td class="tabcli_body"><a class="btn btn-primary btn-sm" href="creat_Client.php">Editar</a></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
                 
             </tr>
 
@@ -80,8 +81,8 @@
                 <td class="tabcli_body" data-cell="Rut Empresa">2190820-3</td>
                 <td class="tabcli_body" data-cell="Nombre Empresa">Torrico</td>
                 <td class="tabcli_body" data-cell="Fecha del Trabajo">11/02/2023</td>
-                <td class="tabcli_body"> <a class="btn btn-primary btn-sm" href="creat_Client.php">Editar</a></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
                 
             </tr>
 
@@ -89,8 +90,8 @@
                 <td class="tabcli_body" data-cell="Rut Empresa">1720075-2</td>
                 <td class="tabcli_body" data-cell="Nombre Empresa">Corona</td>
                 <td class="tabcli_body" data-cell="Fecha del Trabajo">03/12/2020</td>
-                <td class="tabcli_body"><a class="btn btn-primary btn-sm" href="creat_Client.php">Editar</a></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
                 
             </tr>
 
@@ -98,8 +99,8 @@
                 <td class="tabcli_body" data-cell="Rut Empresa">2813922-k</td>
                 <td class="tabcli_body" data-cell="Nombre Empresa">Totus</td>
                 <td class="tabcli_body" data-cell="Fecha del Trabajo">18/09/2022</td>
-                <td class="tabcli_body"><a class="btn btn-primary btn-sm" href="creat_Client.php">Editar</a></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm">Eliminar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
                 
             </tr>
 
@@ -186,7 +187,7 @@
                 </form>
 
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary">Guardar</button>
       </div>
@@ -194,7 +195,101 @@
   </div>
 </div>
 
-               
+
+
+
+<div class="modal fade" id="Modal_cliedi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar los Datos del Cliente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="#">
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Rut de Empresa</label>
+                        <input type="text" class="form-control" name="rutempr_Clienedi">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Nombre de la Empresa</label>
+                        <input type="text" class="form-control" name="nombrempr_Clienedi">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Nombre de Contacto</label>
+                        <input type="text" class="form-control" name="nombrcont_Clienedi">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
+                        <input type="text" class="form-control" name="hrsempr_Clienedi">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Fecha del Trabajo</label>
+                        <input type="text" class="form-control" name="dateempr_Clienedi">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label p-1">¿Tiene los datos de la Boleta?</label>
+                        <div class="p-2"><input type="radio" name="rad_cliedi" onclick="hideshowBol_Cliedi(2)" value="show_cliedi" > Si</div>
+                        <div class="p-2"><input type="radio" name="rad_cliedi" onclick="hideshowBol_Cliedi(1)" value="hide_cliedi" checked> No</div>
+                        
+                        <br>
+                       
+                            <div class="row" id="edibolet_cli" style="display: none;">
+                               <div class="mb-4 align-items-stretch">
+                                <label for="text" class="form-label">Codigo de la Boleta</label>
+                                <input type="text" class="form-control" name="id_boledi">
+                            </div>
+                            <div class="mb-4 align-items-stretch">
+                            <label for="text" class="form-label">Ingrese los datos de la Boleta</label>
+                                <input type="text" class="form-control" name="data_boledi">
+                            </div> 
+                            </div>
+                            
+                    </div>
+
+                </form>
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="Elim_cli" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Cliente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>¿Esta Seguro que desea eliminar al Cliente?</h3>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+
+
     </div>
         
     <script src="js/CliBol_val.js"></script>
