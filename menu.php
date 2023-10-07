@@ -33,6 +33,80 @@
 
         </header>
 
+
+        <div class="container  mt-5 mb-5 ">
+        <div class="row align-items-stretch p-2 ">
+<table class="Manten_table rounded">
+
+
+
+            <tr data-bs-toggle="collapse" data-bs-target=".colap_test">
+                <th class="tabmante_main">Sanander</th>
+                <th class="tabmante_main" style="display: none;">Sensor de Metales</th>
+                <th class="tabmante_main" style="display: none;">23/02/2022</th>
+                <th class="tabmante_main"> </th>
+                <th class="tabmante_main"> </th>
+
+            </tr>
+
+        <tbody class="collapse colap_test">
+
+            <tr>
+                <th class="tabmante_head">Hora</th>
+                <th class="tabmante_head">Observacion</th>
+                <th class="tabmante_head">Estado</th>
+                <th class="tabmante_head"> </th>
+                <th class="tabmante_head"> </th>
+
+            </tr>
+
+            <tr class="tabmante_fila">
+                <td class="tabmante_body" data-cell="Hora">01:00</td>
+                <td class="tabmante_body" data-cell="Observacion">Compresor D DE BIOGAS</td>
+                <td class="tabmante_body" data-cell="Estado">Realizado</td>
+                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+
+            </tr>
+
+            <tr class="tabmante_fila">
+                <td class="tabmante_body" data-cell="Hora">03:00</td>
+                <td class="tabmante_body" data-cell="Observacion">Revision de Supresor</td>
+                <td class="tabmante_body" data-cell="Estado">Normalizado</td>
+                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+                
+            </tr>
+
+            <tr class="tabmante_fila">
+                <td class="tabmante_body" data-cell="Hora">01:00</td>
+                <td class="tabmante_body" data-cell="Observacion">Lectura erronea</td>
+                <td class="tabmante_body" data-cell="Estado">Realizado</td>
+                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+                
+            </tr>
+
+            <tr class="tabmante_fila">
+                <td class="tabmante_body" data-cell="Hora">01:00</td>
+                <td class="tabmante_body" data-cell="Observacion">Revision Sentido de Giro</td>
+                <td class="tabmante_body" data-cell="Estado">Realizado</td>
+                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+                
+            </tr>
+
+            
+            </tbody>
+
+
+            
+        </table>
+
+        </div>
+
+</div>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>

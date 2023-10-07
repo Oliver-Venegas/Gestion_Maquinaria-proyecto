@@ -244,6 +244,29 @@
     display: block;
 }
 
+/* Tabla Mantencion*/
+.Manten_table{
+    width: 100%;
+    margin-top: 4%;
+    border-collapse: collapse;
+    background: #fafafa;
+}
+.tabmante_main{
+    background: rgba(93, 93, 93, 0.578);
+    color: #fafafa;
+}
+.tabmante_main, .tabmante_head, 
+.tabmante_body{
+    padding: 1rem;
+}
+.tabmante_head{
+    background: #2a2a2a;
+    color: #fafafa;
+}
+.tabmante_fila:nth-of-type(2n){
+    background: #f2f2f2;
+}
+
 /* Listados Cliente*/
 .client_table{
     width: 100%;
@@ -301,6 +324,40 @@
 
 
 @media (max-width: 880px) {
+    /* Tabla Mantencion*/
+    .Manten_table{
+        width: 100%;
+        margin-top: 10%;
+        border-collapse: collapse;
+        background: #fafafa;
+    }
+
+    .tabmante_head{
+        display: none;
+    }
+    .tabmante_body{
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: 17ch auto;
+        padding: 0.5rem 1rem;
+
+    }
+    .tabmante_body:first-child{
+        padding-top: 1.5em;
+
+    }
+    .tabmante_body:last-child{
+        padding-bottom: 1.5rem;
+
+    }
+
+    .tabmante_body::before{
+        content: attr(data-cell) ": ";
+        font-weight: 700;
+        text-transform: capitalize;
+
+    }
+
     /* Listados Cliente*/
     .client_table{
         width: 100%;
