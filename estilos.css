@@ -54,6 +54,52 @@
     backdrop-filter: blur(50px);
     z-index: -1;
 }
+
+/* Tabla Mantencion*/
+.Manten_table{
+    width: 100%;
+    
+    border-collapse: collapse;
+    background: #fafafa;
+}
+.tabmante_main_phone{
+    display: none;
+}
+.tabmante_main{
+    background: rgba(93, 93, 93, 0.578);
+    color: #fafafa;
+    
+    align-items: center;
+}
+.tabmante_main, .tabmante_head, 
+.tabmante_body{
+    padding: 1rem;
+}
+.tabmante_head{
+    background: #2a2a2a;
+    color: #fafafa;
+}
+.tabmante_fila:nth-of-type(2n){
+    background: #f2f2f2;
+}
+.plus_manten{
+    
+    padding-left: 2rem;
+    font-size: 2.0rem;
+    color: #0059ff;
+    cursor: pointer;
+   
+}
+.close_manten{
+    padding-left: 2rem;
+    font-size: 2.0rem;
+    color: #ff0000;
+    cursor: pointer;
+}
+.plusex_mant{
+    justify-content: space-between;
+    
+}
 .user_home{
     font-size: 2rem;
     color: #fff;
@@ -132,6 +178,8 @@
 
     }
 
+    
+
     #general_session {
         position: absolute;
         right: 1.5%;
@@ -155,6 +203,10 @@
 
 
 @media (max-width: 880px) {
+    .nav_superior{
+        padding: .7rem 5%;
+
+    }
 
     .mant_cont{
         width: 70%;
@@ -163,6 +215,21 @@
     .cretcli_cont{
         width: 80%;       
         
+    }
+    .tabmante_main_phone{
+        display: table-cell;
+        font-size: 2.0rem;
+        
+        cursor: pointer;
+        padding: 1rem;
+        background: rgba(93, 93, 93, 0.578);
+        color: #fafafa;
+    
+    align-items: center;
+       
+    }
+    .tabmante_main{
+        display: none;
     }
 
     .conent_Clicre{
@@ -244,28 +311,6 @@
     display: block;
 }
 
-/* Tabla Mantencion*/
-.Manten_table{
-    width: 100%;
-    margin-top: 4%;
-    border-collapse: collapse;
-    background: #fafafa;
-}
-.tabmante_main{
-    background: rgba(93, 93, 93, 0.578);
-    color: #fafafa;
-}
-.tabmante_main, .tabmante_head, 
-.tabmante_body{
-    padding: 1rem;
-}
-.tabmante_head{
-    background: #2a2a2a;
-    color: #fafafa;
-}
-.tabmante_fila:nth-of-type(2n){
-    background: #f2f2f2;
-}
 
 /* Listados Cliente*/
 .client_table{

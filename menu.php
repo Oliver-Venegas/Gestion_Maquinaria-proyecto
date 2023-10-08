@@ -40,13 +40,27 @@
 
 
 
-            <tr data-bs-toggle="collapse" data-bs-target=".colap_test">
-                <th class="tabmante_main">Sanander</th>
-                <th class="tabmante_main" style="display: none;">Sensor de Metales</th>
-                <th class="tabmante_main" style="display: none;">23/02/2022</th>
-                <th class="tabmante_main"> </th>
-                <th class="tabmante_main"> </th>
+            <tr>
+                
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</th>
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sensor de Metales</th>
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test"">23/02/2022</th>
+                <th class="tabmante_main "><i class='bx bx-plus plus_manten'></i></th>
+                <th class="tabmante_main"><i class='bx bx-x close_manten' data-bs-toggle="modal" data-bs-target="#Elim_manten"></i></th>
 
+                <th class="tabmante_main_phone">
+                <div class="row plusex_mant">
+                    <div class="col-auto" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</div>
+                    <div class="col-auto">
+                        <i class='bx bx-plus plus_manten'></i>
+                        <i class='bx bx-x close_manten' data-bs-toggle="modal" data-bs-target="#Elim_manten"></i> 
+                    </div>
+                </div>
+                    
+                </th>
+                
+                
+                
             </tr>
 
         <tbody class="collapse colap_test">
@@ -104,6 +118,27 @@
         </table>
 
         </div>
+
+
+        <div class="modal fade" id="Elim_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Cliente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>¿Esta Seguro que desea eliminar este Informe de Fallas?</h3>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 </div>
 
