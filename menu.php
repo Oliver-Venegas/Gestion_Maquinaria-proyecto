@@ -45,15 +45,15 @@
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sensor de Metales</th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test"">23/02/2022</th>
-                <th class="tabmante_main "><i class='bx bx-plus plus_manten'></i></th>
-                <th class="tabmante_main"><i class='bx bx-x close_manten' data-bs-toggle="modal" data-bs-target="#Elim_manten"></i></th>
+                <th class="tabmante_main "><i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i></th>
+                <th class="tabmante_main"><i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i></th>
 
                 <th class="tabmante_main_phone">
                 <div class="row plusex_mant">
                     <div class="col-auto" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</div>
                     <div class="col-auto">
-                        <i class='bx bx-plus plus_manten'></i>
-                        <i class='bx bx-x close_manten' data-bs-toggle="modal" data-bs-target="#Elim_manten"></i> 
+                        <i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i>
+                        <i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i>
                     </div>
                 </div>
                     
@@ -77,36 +77,68 @@
             <tr class="tabmante_fila">
                 <td class="tabmante_body" data-cell="Hora">01:00</td>
                 <td class="tabmante_body" data-cell="Observacion">Compresor D DE BIOGAS</td>
-                <td class="tabmante_body" data-cell="Estado">Realizado</td>
-                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+                <td class="tabmante_body" data-cell="Estado">
+                <select class="form-select" aria-label="Default select example">
+                             
+                             <option value="1">Realizado</option>
+                             <option value="2">Normalizado</option>
+                             <option value="3">Pendiente</option>
+                             <option value="4">En curso</option>
+                        </select>
+                </td>
+                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
+                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
 
             </tr>
 
             <tr class="tabmante_fila">
                 <td class="tabmante_body" data-cell="Hora">03:00</td>
                 <td class="tabmante_body" data-cell="Observacion">Revision de Supresor</td>
-                <td class="tabmante_body" data-cell="Estado">Normalizado</td>
-                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+                <td class="tabmante_body" data-cell="Estado">
+                    <select class="form-select" aria-label="Default select example">
+                             
+                             <option value="1">Realizado</option>
+                             <option value="2">Normalizado</option>
+                             <option value="3">Pendiente</option>
+                             <option value="4">En curso</option>
+                        </select>
+                </td>
+                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
+                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
                 
             </tr>
 
             <tr class="tabmante_fila">
                 <td class="tabmante_body" data-cell="Hora">01:00</td>
                 <td class="tabmante_body" data-cell="Observacion">Lectura erronea</td>
-                <td class="tabmante_body" data-cell="Estado">Realizado</td>
-                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+                <td class="tabmante_body" data-cell="Estado">
+                <select class="form-select" aria-label="Default select example">
+                             
+                             <option value="1">Realizado</option>
+                             <option value="2">Normalizado</option>
+                             <option value="3">Pendiente</option>
+                             <option value="4">En curso</option>
+                        </select>
+                </td>
+                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
+                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
                 
             </tr>
 
             <tr class="tabmante_fila">
                 <td class="tabmante_body" data-cell="Hora">01:00</td>
                 <td class="tabmante_body" data-cell="Observacion">Revision Sentido de Giro</td>
-                <td class="tabmante_body" data-cell="Estado">Realizado</td>
-                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+                <td class="tabmante_body" data-cell="Estado">
+                <select class="form-select" aria-label="Default select example">
+                             
+                             <option value="1">Realizado</option>
+                             <option value="2">Normalizado</option>
+                             <option value="3">Pendiente</option>
+                             <option value="4">En curso</option>
+                        </select>
+                </td>
+                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
+                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
                 
             </tr>
 
@@ -124,11 +156,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Cliente</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Informe de Fallas</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h5>¿Esta Seguro que desea eliminar este Informe de Fallas?</h3>
+        <h5>¿Esta Seguro que desea eliminar esta seccion del Informe de Fallas?</h3>
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -137,6 +169,139 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="Elimall_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Informe de Fallas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>¿Esta Seguro que desea eliminar el Informe de Fallas?</h3>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="Crea_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Informe de Fallas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="#">
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Orden</label>
+                        <input type="text" class="form-control" name="order_Manten">
+
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        <input type="text" class="form-control" name="hors_Manten">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Aviso</label>
+                        <input type="text" class="form-control" name="avis_Manten">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <input type="text" class="form-control" name="obtitul_Manten">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Observacion</label>
+                        <input type="text" class="form-control" name="obser_Manten">
+                        <span></span> 
+                    </div>
+
+
+
+                    
+
+                </form>
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="Edit_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Informe de Fallas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="#">
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Orden</label>
+                        <input type="text" class="form-control" name="order_Mantenedi">
+
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        <input type="text" class="form-control" name="hors_Mantenedi">
+                        
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Aviso</label>
+                        <input type="text" class="form-control" name="avis_Mantenedi">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <input type="text" class="form-control" name="obtitul_Mantenedi">
+                        <span></span> 
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Observacion</label>
+                        <input type="text" class="form-control" name="obser_Mantenedi">
+                        <span></span> 
+                    </div>
+
+
+
+                    
+
+                </form>
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
