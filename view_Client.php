@@ -24,7 +24,7 @@
 
     <nav class="navbar_general">
     <a href="menu.php" style="--i:0;">Home</a>
-    <a href="chang_Mant.php" style="--i:1;">Tipo de Mantenedor</a>
+    <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
     <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
     <a href="view_Client.php" style="--i:3;">Clientes</a>
     <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
@@ -51,9 +51,9 @@
             </tr>
 
             <tr class="tabcli_fila">
-                <td class="tabcli_body" data-cell="Rut Empresa">2197828-1</td>
-                <td class="tabcli_body" data-cell="Nombre Empresa">Sanander</td>
-                <td class="tabcli_body" data-cell="Fecha del Trabajo">23/02/2022</td>
+                <td class="tabcli_body" data-bs-toggle="modal" data-bs-target="#Viewdata_clien" data-cell="Rut Empresa">2197828-1</td>
+                <td class="tabcli_body" data-bs-toggle="modal" data-bs-target="#Viewdata_clien" data-cell="Nombre Empresa">Sanander</td>
+                <td class="tabcli_body" data-bs-toggle="modal" data-bs-target="#Viewdata_clien" data-cell="Fecha del Trabajo">23/02/2022</td>
                 <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
                 <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
 
@@ -155,12 +155,12 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
-                        <input type="text" class="form-control" name="hrsempr_Clien">
+                        <input type="time" class="form-control" name="hrsempr_Clien">
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Fecha del Trabajo</label>
-                        <input type="text" class="form-control" name="dateempr_Clien">
+                        <input type="date" class="form-control" name="dateempr_Clien">
                         <span></span> 
                     </div>
 
@@ -227,12 +227,12 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
-                        <input type="text" class="form-control" name="hrsempr_Clienedi">
+                        <input type="time" class="form-control" name="hrsempr_Clienedi">
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Fecha del Trabajo</label>
-                        <input type="text" class="form-control" name="dateempr_Clienedi">
+                        <input type="date" class="form-control" name="dateempr_Clienedi">
                         <span></span> 
                     </div>
 
@@ -286,6 +286,70 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="Viewdata_clien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Datos del Cliente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="#">
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Rut de Empresa: </strong></label>
+                        <label for="text" class="form-label">Orden</label>
+
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Nombre de la Empresa: </strong></label>
+                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Nombre de Contacto: </strong></label>
+                        <label for="text" class="form-label">Aviso</label>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Horas de Trabajo en la Empresa: </strong></label>
+                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                      
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Fecha del Trabajo: </strong></label>
+                        <label for="text" class="form-label">Observacion</label>
+                      
+                    </div>          
+                    
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Codigo de la Boleta: </strong></label>
+                        <label for="text" class="form-label">Observacion</label>
+                      
+                    </div>     
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Datos de la Boleta: </strong></label>
+                        <label for="text" class="form-label">Observacion</label>
+                      
+                    </div>     
+
+                </form>
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
       
 
 

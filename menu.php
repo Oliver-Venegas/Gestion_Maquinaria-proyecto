@@ -23,7 +23,7 @@
 
             <nav class="navbar_general">
             <a href="menu.php" style="--i:0;">Home</a>
-            <a href="chang_Mant.php" style="--i:1;">Tipo de Mantenedor</a>
+            <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
             <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
             <a href="view_Client.php" style="--i:3;">Clientes</a>
             <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
@@ -75,8 +75,8 @@
             </tr>
 
             <tr class="tabmante_fila">
-                <td class="tabmante_body" data-cell="Hora">01:00</td>
-                <td class="tabmante_body" data-cell="Observacion">Compresor D DE BIOGAS</td>
+                <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
+                <td class="tabmante_body" data-cell="Observacion" data-bs-toggle="modal" data-bs-target="#Viewdata_manten">Compresor D DE BIOGAS</td>
                 <td class="tabmante_body" data-cell="Estado">
                 <select class="form-select" aria-label="Default select example">
                              
@@ -92,7 +92,7 @@
             </tr>
 
             <tr class="tabmante_fila">
-                <td class="tabmante_body" data-cell="Hora">03:00</td>
+                <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
                 <td class="tabmante_body" data-cell="Observacion">Revision de Supresor</td>
                 <td class="tabmante_body" data-cell="Estado">
                     <select class="form-select" aria-label="Default select example">
@@ -109,7 +109,7 @@
             </tr>
 
             <tr class="tabmante_fila">
-                <td class="tabmante_body" data-cell="Hora">01:00</td>
+                <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
                 <td class="tabmante_body" data-cell="Observacion">Lectura erronea</td>
                 <td class="tabmante_body" data-cell="Estado">
                 <select class="form-select" aria-label="Default select example">
@@ -126,15 +126,15 @@
             </tr>
 
             <tr class="tabmante_fila">
-                <td class="tabmante_body" data-cell="Hora">01:00</td>
+                <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
                 <td class="tabmante_body" data-cell="Observacion">Revision Sentido de Giro</td>
                 <td class="tabmante_body" data-cell="Estado">
-                <select class="form-select" aria-label="Default select example">
-                             
+                        <select class="form-select" aria-label="Default select example">
                              <option value="1">Realizado</option>
                              <option value="2">Normalizado</option>
                              <option value="3">Pendiente</option>
                              <option value="4">En curso</option>
+
                         </select>
                 </td>
                 <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
@@ -209,12 +209,6 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Horas del Trabajo</label>
-                        <input type="text" class="form-control" name="hors_Manten">
-                        <span></span> 
-                    </div>
-
-                    <div class="mb-4">
                         <label for="text" class="form-label">Aviso</label>
                         <input type="text" class="form-control" name="avis_Manten">
                     </div>
@@ -227,7 +221,7 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Observacion</label>
-                        <input type="text" class="form-control" name="obser_Manten">
+                        <textarea class="form-control "  name="obser_Manten"></textarea>
                         <span></span> 
                     </div>
 
@@ -261,13 +255,11 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Orden</label>
                         <input type="text" class="form-control" name="order_Mantenedi">
-
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Horas del Trabajo</label>
-                        <input type="text" class="form-control" name="hors_Mantenedi">
-                        
+                        <input type="time" class="form-control" name="hors_Mantenedi">     
                     </div>
 
                     <div class="mb-4">
@@ -283,7 +275,7 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Observacion</label>
-                        <input type="text" class="form-control" name="obser_Mantenedi">
+                       <textarea class="form-control "  name="obser_Mantenedi"></textarea>
                         <span></span> 
                     </div>
 
@@ -305,7 +297,63 @@
 
 
 
+
+<div class="modal fade" id="Viewdata_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Informe de Fallas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="#">
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Orden: </strong></label>
+                        <label for="text" class="form-label">Orden</label>
+
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Horas del Trabajo: </strong></label>
+                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Aviso: </strong></label>
+                        <label for="text" class="form-label">Aviso</label>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Titulo de la Observacion: </strong></label>
+                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                      
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Observacion: </strong></label>
+                        <label for="text" class="form-label">Observacion</label>
+                      
+                    </div>                
+
+                </form>
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+        
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
+</div>
+
+<script src="js/valid_AdManten.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

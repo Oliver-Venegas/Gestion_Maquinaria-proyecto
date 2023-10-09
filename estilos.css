@@ -67,6 +67,8 @@
 }
 .tabmante_main{
     background: rgba(105, 203, 255, 0.686);
+    background: linear-gradient(to bottom, rgba(105, 203, 255, 0.686), rgba(229, 249, 255, 0.911));
+
     color: #ffffff;
     
     align-items: center;
@@ -124,6 +126,10 @@
 }
 
 #tip_exmant{
+    display: none;
+}
+
+#estd_exmant{
     display: none;
 }
 
@@ -228,6 +234,7 @@
         cursor: pointer;
         padding: 1rem;
         background: rgba(105, 203, 255, 0.686);
+        background: linear-gradient(to right, rgba(105, 203, 255, 0.686), rgba(229, 249, 255, 0.911));
     color: #ffffff;
     
     align-items: center;

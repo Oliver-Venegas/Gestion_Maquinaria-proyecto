@@ -24,7 +24,7 @@
 
     <nav class="navbar_general">
     <a href="menu.php" style="--i:0;">Home</a>
-    <a href="chang_Mant.php" style="--i:1;">Tipo de Mantenedor</a>
+    <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
     <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
     <a href="view_Client.php" style="--i:3;">Clientes</a>
     <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
@@ -50,9 +50,9 @@
             </tr>
 
             <tr class="tabmaqui_fila">
-                <td class="tabmaqui_body" data-cell="Numero Serie">53233321</td>
-                <td class="tabmaqui_body" data-cell="Nombre Maquina">Pantalla LED</td>
-                <td class="tabmaqui_body" data-cell="Rut de la Empresa">1143228-4</td>
+                <td class="tabmaqui_body" data-bs-toggle="modal" data-bs-target="#Viewdata_maqui" data-cell="Numero Serie">53233321</td>
+                <td class="tabmaqui_body" data-bs-toggle="modal" data-bs-target="#Viewdata_maqui" data-cell="Nombre Maquina">Pantalla LED</td>
+                <td class="tabmaqui_body" data-bs-toggle="modal" data-bs-target="#Viewdata_maqui" data-cell="Rut de la Empresa">1143228-4</td>
                 <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
                 <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
 
@@ -289,6 +289,73 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="Viewdata_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de la Maquina</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <form action="#">
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Numero de Serie: </strong></label>
+                        <label for="text" class="form-label">Orden</label>
+
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Nombre de la Maquina: </strong></label>
+                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Rut de la Empresa que pertenece la Maquina: </strong></label>
+                        <label for="text" class="form-label">Aviso</label>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Horas de Trabajo en la Empresa: </strong></label>
+                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                      
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Numero de Serie del Repuesto: </strong></label>
+                        <label for="text" class="form-label">Observacion</label>
+                      
+                    </div>          
+                    
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Nombre del Repuesto: </strong></label>
+                        <label for="text" class="form-label">Observacion</label>
+                      
+                    </div>     
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label"><strong>Cantidad de Repuestos: </strong></label>
+                        <label for="text" class="form-label">Observacion</label>
+                      
+                    </div>     
+
+                </form>
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
     </div>
         

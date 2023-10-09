@@ -24,7 +24,7 @@
 
     <nav class="navbar_general">
     <a href="menu.php" style="--i:0;">Home</a>
-    <a href="chang_Mant.php" style="--i:1;">Tipo de Mantenedor</a>
+    <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
     <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
     <a href="view_Client.php" style="--i:3;">Clientes</a>
     <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
@@ -39,32 +39,34 @@
 
             <div class="col p-5 bg-white mt-5 rounded shadow">
 
-                <h2 class="fw-bold text-lg-center py-1">Cambie el Tipo de Mantenedor</h2>
+                <h2 class="fw-bold text-lg-center py-1">Crear Estado de Mantencion</h2>
                 <br>
 
                 <form action="#">
 
                     <div class="mb-4">
-                        <label for="text" class="form-label p-1">¿Dessea Cambiar a un Tipo de Mantenedor ya Existente o Crear un Nuevo Tipo de Mantenedor?</label>
-                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowTip_mant(2)" value="hide_tipe" checked> Crear Nuevo Tipo de Mantenedor</div>
-                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowTip_mant(1)" value="show_tipe" > Cambiar a Tipo de Mantenedor ya Existente</div>
+                        <label for="text" class="form-label p-1">¿Dessea Eliminar un Estado de Mantencion o Crear un Nuevo Estado de Mantencion?</label>
+                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowEst_mant(2)" value="hide_Estd" checked> Crear Nuevo Estado de Mantencion</div>
+                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowEst_mant(1)" value="show_Estd" > Eliminar Estado de Mantencion </div>
                         
                         
                         <br>
 
-                        <div id="tip_exmant"  >
+                        <div id="estd_exmant"  >
                             <select class="form-select mb-4 align-items-stretch" aria-label="Default select example">
                              
-                             <option value="1">Mantenedor Electrico</option>
-                             <option value="2">Mantenedor Mecanico</option>
+                             <option value="1">Realizado</option>
+                             <option value="2">Normalizado</option>
+                             <option value="3">Pendiente</option>
+                             <option value="4">En curso</option>
                         </select>
 
                         </div>
                         
                        
-                            <div class="row" id="tipe_creamant" >
+                            <div class="row" id="estd_creamant" >
                                <div class="mb-4 align-items-stretch">
-                                <label for="text" class="form-label">Nuevo Tipo de Mantenedor</label>
+                                <label for="text" class="form-label">Nuevo Estado de Mantencion</label>
                                 <input type="text" class="form-control" name="id_bol">
                             </div>
    
@@ -91,8 +93,7 @@
         </div>
     </div>
 
-    <script src="js/Tip_ChMant.js"></script>
-
+    <script src="js/estd_Mantenc.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
