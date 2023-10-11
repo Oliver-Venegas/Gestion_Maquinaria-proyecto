@@ -340,42 +340,42 @@
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Numero de Serie: </strong></label>
-                        <label for="text" class="form-label">Orden</label>
+                        <label for="text" class="form-label">53233321</label>
 
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Nombre de la Maquina: </strong></label>
-                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        <label for="text" class="form-label">Pantalla LED</label>
                         
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Rut de la Empresa que pertenece la Maquina: </strong></label>
-                        <label for="text" class="form-label">Aviso</label>
+                        <label for="text" class="form-label">1143228-4</label>
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Horas de Trabajo en la Empresa: </strong></label>
-                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <label for="text" class="form-label"></label>
                       
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Numero de Serie del Repuesto: </strong></label>
-                        <label for="text" class="form-label">Observacion</label>
+                        <label for="text" class="form-label">1828221</label>
                       
                     </div>          
                     
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Nombre del Repuesto: </strong></label>
-                        <label for="text" class="form-label">Observacion</label>
+                        <label for="text" class="form-label">Resistencia</label>
                       
                     </div>     
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Cantidad de Repuestos: </strong></label>
-                        <label for="text" class="form-label">Observacion</label>
+                        <label for="text" class="form-label">10</label>
                       
                     </div>     
 
@@ -397,7 +397,7 @@
         
 
     <script src="js/MaquRep_val.js"></script>
-    <script src="js/MaquRep_val.js"></script>
+    <script src="js/valid_AdMaqui.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

@@ -336,42 +336,42 @@
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Rut de Empresa: </strong></label>
-                        <label for="text" class="form-label">Orden</label>
+                        <label for="text" class="form-label">2197828-1</label>
 
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Nombre de la Empresa: </strong></label>
-                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        <label for="text" class="form-label">Sanander</label>
                         
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Nombre de Contacto: </strong></label>
-                        <label for="text" class="form-label">Aviso</label>
+                        <label for="text" class="form-label">Patrcicio Vega</label>
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Horas de Trabajo en la Empresa: </strong></label>
-                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <label for="text" class="form-label"></label>
                       
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Fecha del Trabajo: </strong></label>
-                        <label for="text" class="form-label">Observacion</label>
+                        <label for="text" class="form-label">23/02/2022</label>
                       
                     </div>          
                     
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Codigo de la Boleta: </strong></label>
-                        <label for="text" class="form-label">Observacion</label>
+                        <label for="text" class="form-label"></label>
                       
                     </div>     
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Datos de la Boleta: </strong></label>
-                        <label for="text" class="form-label">Observacion</label>
+                        <label for="text" class="form-label"></label>
                       
                     </div>     
 

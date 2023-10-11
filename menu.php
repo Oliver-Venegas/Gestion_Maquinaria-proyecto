@@ -331,30 +331,32 @@
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Orden: </strong></label>
-                        <label for="text" class="form-label">Orden</label>
+                        <label for="text" class="form-label">1932783</label>
 
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Horas del Trabajo: </strong></label>
-                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        <label for="text" class="form-label">02:00</label>
                         
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Aviso: </strong></label>
-                        <label for="text" class="form-label">Aviso</label>
+                        <label for="text" class="form-label">1727362</label>
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Titulo de la Observacion: </strong></label>
-                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <label for="text" class="form-label">Compresor D DE BIOGAS</label>
                       
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Observacion: </strong></label>
-                        <label for="text" class="form-label">Observacion</label>
+                        <label for="text" class="form-label">Falla Rastra del clarificador primario D, Motor A en local se revisa equipo en terreno y no se detexta problemas de ningun tipo,
+                          se revisan paradas de emergencias con revision de continuidad de pulsadores y todo se encuentra en buenas condiciones.
+                        </label>
                       
                     </div>                
 
