@@ -12,7 +12,7 @@
 <body class="menu_bacgr">
 
 <header class="nav_superior">
-    <a href="view_Manten.php" class="user_home">Mantenedor</a>
+    <a href="view_Maqui.php" class="user_home">Maquinas</a>
 
     <input type="checkbox" id="check_general">
     <label for="check_general" class='menugen_icons'>
@@ -23,9 +23,9 @@
    
 
     <nav class="navbar_general">
-    <a href="menu.php" style="--i:0;">Home</a>
-    <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
-    <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
+    <a href="view_Manten.php" style="--i:0;">Mantenedor</a>
+    <a href="menu.php" style="--i:1;">Mantencion</a>
+    <a href="chang_Mant.php" style="--i:2;">Estado de Mantencion</a>    
     <a href="view_Client.php" style="--i:3;">Clientes</a>
     <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
     
@@ -127,7 +127,7 @@
         
 <div class="modal fade" id="Modal_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
+    <div class="modal-content mod_maquicre">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese los Datos de la Maquina</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -137,20 +137,29 @@
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">Numero de Serie</label>
+                        <div class="col-6">
                         <input type="text" class="form-control" name="numser_Maqui">
                         <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de la Maquina</label>
-                        <input type="text" class="form-control" name="nombr_Maqui">
-                        <span></span> 
+                        <div class="col-7">
+                          <input type="text" class="form-control" name="nombr_Maqui">
+                          <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
+                        <div class="col-5">
                         <input type="text" class="form-control" name="rutEmpr_Maqui">
                         <span></span>
+                        </div>
+                        
                     </div>
 
 
@@ -165,17 +174,26 @@
 
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Numero de Serie del Repuesto</label>
-                                <input type="text" class="form-control" name="seri_repu">
+                                <div class="col-6">
+                                  <input type="text" class="form-control" name="seri_repu">
+                                </div>
+                                
                             </div>
 
                             <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Nombre del Repuesto</label>
-                                <input type="text" class="form-control" name="nombr_repu">
+                              <div class="col-7">
+                              <input type="text" class="form-control" name="nombr_repu">
+                              </div>
+                                
                             </div> 
 
                             <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Cantidad de Repuestos</label>
+                                <div class="col-3">
                                 <input type="text" class="form-control" name="cant_repu">
+                                </div>
+                                
                             </div>
 
                             </div>
@@ -201,7 +219,7 @@
 
 <div class="modal fade" id="Edit_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content mod_maquiedi">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Editar la Maquina</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -211,20 +229,29 @@
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">Numero de Serie</label>
+                        <div class="col-6">
                         <input type="text" class="form-control" name="numser_Maquiedi">
                         <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de la Maquina</label>
+                        <div class="col-7">
                         <input type="text" class="form-control" name="nombr_Maquiedi">
                         <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
+                        <div class="col-5">
                         <input type="text" class="form-control" name="rutEmpr_Maquiedi">
                         <span></span>
+                        </div>
+                        
                     </div>
 
 
@@ -239,17 +266,26 @@
 
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Numero de Serie del Repuesto</label>
-                                <input type="text" class="form-control" name="seri_repuedi">
+                                <div class="col-6">
+                                  <input type="text" class="form-control" name="seri_repuedi">
+                                </div>
+                                
                             </div>
 
                             <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Nombre del Repuesto</label>
+                                <div class="col-7">
                                 <input type="text" class="form-control" name="nombr_repuedi">
+                                </div>
+                                
                             </div> 
 
                             <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Cantidad de Repuestos</label>
+                                <div class="col-3">
                                 <input type="text" class="form-control" name="cant_repuedi">
+                                </div>
+                                
                             </div>
 
                             </div>

@@ -19,27 +19,21 @@
 
                 <form action="#">
                     <div class="mb-4">
-                        <label for="text" class="form-label">RUT</label>
-                        <input type="text" class="form-control" name="rut_renew">
+                        <label for="text" class="form-label">RUT del Mantenedor</label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" name="rut_renew">
+                        </div>
+                        
                     </div>
 
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombr_renew">
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="email" class="form-label">Correo Electronico</label>
-                        <input type="email" class="form-control" name="email_renew">
-                    </div>
 <br>
-                    <div class="row align-items-stretch">
-                    <div class="col p-2">
-                   <button class="btn btn-light btn-lg"><a class="btn_backlog" href="index.html">Regresar</a></button>
+                    <div class="row align-items-stretch" style="justify-content: space-between;">
+                    <div class="col-auto p-2">
+                   <a class="btn_backlog btn btn-light btn-lg" href="index.html">Cancelar</a>
                    </div>
 
-                   <div class="col-3 p-2">
-                    <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                   <div class="col-auto p-2">
+                    <a  class="btn btn-primary btn-lg" href="new_contr.php">Confirmar</a>
                    </div>
                     </div>
                 

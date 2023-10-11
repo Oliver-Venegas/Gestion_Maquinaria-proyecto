@@ -12,7 +12,7 @@
 <body class="menu_bacgr">
 
         <header class="nav_superior">
-            <a href="view_Manten.php" class="user_home">Mantenedor</a>
+            <a href="menu.php" class="user_home">Mantencion</a>
 
             <input type="checkbox" id="check_general">
             <label for="check_general" class='menugen_icons'>
@@ -22,7 +22,7 @@
             <a href="index.html" class='bx bx-exit' id="general_session"></a>
 
             <nav class="navbar_general">
-            <a href="menu.php" style="--i:0;">Home</a>
+            <a href="view_Manten.php" style="--i:0;">Mantenedor</a>
             <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
             <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
             <a href="view_Client.php" style="--i:3;">Clientes</a>
@@ -194,7 +194,7 @@
 
 <div class="modal fade" id="Crea_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content mod_mantencre">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Informe de Fallas</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -204,19 +204,28 @@
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">Orden</label>
-                        <input type="text" class="form-control" name="order_Manten">
+                        <div class="col-4">
+                          <input type="text" class="form-control" name="order_Manten">
+                        </div>
+                        
 
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Aviso</label>
-                        <input type="text" class="form-control" name="avis_Manten">
+                        <div class="col-4">
+                          <input type="text" class="form-control" name="avis_Manten">
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <div class="col-8">
                         <input type="text" class="form-control" name="obtitul_Manten">
                         <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
@@ -244,7 +253,7 @@
 
 <div class="modal fade" id="Edit_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content mod_mantenedi">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Informe de Fallas</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -254,28 +263,40 @@
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">Orden</label>
-                        <input type="text" class="form-control" name="order_Mantenedi">
+                        <div class="col-4">
+                          <input type="text" class="form-control" name="order_Mantenedi">
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Horas del Trabajo</label>
-                        <input type="time" class="form-control" name="hors_Mantenedi">     
+                        <div class="col-4">
+                          <input type="time" class="form-control" name="hors_Mantenedi">  
+                        </div>
+                           
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Aviso</label>
-                        <input type="text" class="form-control" name="avis_Mantenedi">
+                        <div class="col-4">
+                          <input type="text" class="form-control" name="avis_Mantenedi">
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Titulo de la Observacion</label>
-                        <input type="text" class="form-control" name="obtitul_Mantenedi">
+                        <div class="col-8">
+                          <input type="text" class="form-control" name="obtitul_Mantenedi">
                         <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Observacion</label>
-                       <textarea class="form-control "  name="obser_Mantenedi"></textarea>
+                       <textarea class="form-control " name="obser_Mantenedi"></textarea>
                         <span></span> 
                     </div>
 

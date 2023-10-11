@@ -20,52 +20,70 @@
                 <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">RUT</label>
-                        <input type="text" class="form-control" name="rut_reg">
-                        <span></span> 
+                        <div class="usr_rutdiv">
+                         <input type="text" class="form-control" name="rut_reg">
+                        <span></span>    
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre y Apellido</label>
+                        <div class="usr_div">
                         <input type="text" class="form-control" name="nombr_reg">
-                        <span></span> 
+                        <span></span>
+                        </div>
+                         
                     </div>
 
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Tipo de Mantenedor</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <div class="usr_div">
+                            <select class="form-select" aria-label="Default select example">
                              
                              <option value="1">Mantenedor Electrico</option>
                              <option value="2">Mantenedor Mecanico</option>
                         </select>
+                        </div>
+                        
 
                     </div>
 
                     <div class="mb-4">
                         <label for="email" class="form-label">Correo Electronico</label>
-                        <input type="email" class="form-control" name="email_reg">
-                        <span></span> 
+                        <div class="usr_empassdiv">
+                          <input type="email" class="form-control" name="email_reg">
+                        <span></span>   
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" name="password_reg">
-                        <span></span> 
+                        <div class="usr_empassdiv">
+                          <input type="password" class="form-control" name="password_reg">
+                        <span></span>   
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="password" class="form-label">Vuelva a Escribir la Contraseña</label>
-                        <input type="password" class="form-control" name="passagain_reg">
-                        <span></span> 
+                        <div class="usr_empassdiv">
+                           <input type="password" class="form-control" name="passagain_reg">
+                        <span></span>  
+                        </div>
+                        
                     </div>
 
 <br>
-                    <div class="row align-items-stretch">
-                    <div class="col p-2">
+                    <div class="row align-items-stretch" style="justify-content: space-between;">
+                    <div class="col-auto p-2">
                         <a class="btn_backlog btn btn-light btn-lg" href="index.html"> Regresar</a>
                    </div>
 
-                   <div class="col p-2">
+                   <div class="col-auto p-2">
                     <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
                    </div>
                     </div>

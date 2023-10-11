@@ -22,7 +22,7 @@
             <a href="index.html" class='bx bx-exit' id="general_session"></a>
 
             <nav class="navbar_general">
-            <a href="menu.php" style="--i:0;">Home</a>
+            <a href="menu.php" style="--i:0;">Mantencion</a>
             <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
             <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
             <a href="view_Client.php" style="--i:3;">Clientes</a>
@@ -92,19 +92,25 @@
                         <br>
 
                         <div id="tip_exmant"  >
-                            <select class="form-select mb-4 align-items-stretch" aria-label="Default select example">
+                            <div class="col-6">
+                               <select class="form-select mb-4 align-items-stretch" aria-label="Default select example">
                              
                              <option value="1">Mantenedor Electrico</option>
                              <option value="2">Mantenedor Mecanico</option>
                         </select>
-
+ 
+                            </div>
+                            
                         </div>
                         
                        
                             <div class="row" id="tipe_creamant" >
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Nuevo Tipo de Mantenedor</label>
-                                <input type="text" class="form-control" name="id_bol">
+                                <div class="col-5">
+                                  <input type="text" class="form-control" name="id_bol">  
+                                </div>
+                                
                             </div>
    
                             </div>

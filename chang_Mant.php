@@ -12,7 +12,7 @@
 <body class="menu_bacgr">
 
 <header class="nav_superior">
-    <a href="view_Manten.php" class="user_home">Mantenedor</a>
+    <a href="chang_Mant.php" class="user_home">Estado de Mantencion</a>
 
     <input type="checkbox" id="check_general">
     <label for="check_general" class='menugen_icons'>
@@ -23,8 +23,8 @@
    
 
     <nav class="navbar_general">
-    <a href="menu.php" style="--i:0;">Home</a>
-    <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
+    <a href="view_Manten.php" style="--i:0;">Mantenedor</a>
+    <a href="menu.php" style="--i:1;">Mantencion</a>
     <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
     <a href="view_Client.php" style="--i:3;">Clientes</a>
     <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
@@ -52,7 +52,7 @@
                         
                         <br>
 
-                        <div id="estd_exmant"  >
+                        <div class="col-5" id="estd_exmant"  >
                             <select class="form-select mb-4 align-items-stretch" aria-label="Default select example">
                              
                              <option value="1">Realizado</option>
@@ -65,7 +65,7 @@
                         
                        
                             <div class="row" id="estd_creamant" >
-                               <div class="mb-4 align-items-stretch">
+                               <div class="col-5 mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Nuevo Estado de Mantencion</label>
                                 <input type="text" class="form-control" name="id_bol">
                             </div>
@@ -77,12 +77,12 @@
                     </div>
 
 
-                    <div class="row align-items-stretch">
-                    <div class="col p-2">
+                    <div class="row align-items-stretch" style="justify-content: space-between;">
+                    <div class="col-auto p-2">
                    <button class="btn btn-light btn-lg"><a class="btn_backlog" href="menu.php">Cancelar</a></button>
                    </div>
 
-                   <div class="col p-2">
+                   <div class="col-auto p-2">
                     <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
                    </div>
                     </div>

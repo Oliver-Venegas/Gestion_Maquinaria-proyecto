@@ -12,7 +12,7 @@
 <body class="menu_bacgr">
 
 <header class="nav_superior">
-    <a href="view_Manten.php" class="user_home">Mantenedor</a>
+    <a href="view_Client.php" class="user_home">Clientes</a>
 
     <input type="checkbox" id="check_general">
     <label for="check_general" class='menugen_icons'>
@@ -23,10 +23,10 @@
    
 
     <nav class="navbar_general">
-    <a href="menu.php" style="--i:0;">Home</a>
-    <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
-    <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
-    <a href="view_Client.php" style="--i:3;">Clientes</a>
+    <a href="view_Manten.php" style="--i:0;">Mantenedor</a>
+    <a href="menu.php" style="--i:1;">Mantencion</a>
+    <a href="chang_Mant.php" style="--i:2;">Estado de Mantencion</a>    
+    <a href="view_Maqui.php" style="--i:3;">Maquinas</a>
     <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
     
 
@@ -127,45 +127,60 @@
         </div>
         
 <div class="modal fade" id="Modal_cli" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+    <div class="modal-content mod_clicre">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese los Datos del Cliente</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body ">
         
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de Empresa</label>
-                        <input type="text" class="form-control" name="rutempr_Clien">
-                        <span></span> 
+                        <div class="col-5">
+                          <input type="text" class="form-control" name="rutempr_Clien">
+                          <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de la Empresa</label>
-                        <input type="text" class="form-control" name="nombrempr_Clien">
-                        <span></span> 
+                        <div class="col-7">
+                          <input type="text" class="form-control" name="nombrempr_Clien">
+                          <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de Contacto</label>
-                        <input type="text" class="form-control" name="nombrcont_Clien">
+                        <div class="col-7">
+                         <input type="text" class="form-control" name="nombrcont_Clien"> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
-                        <input type="time" class="form-control" name="hrsempr_Clien">
+                          <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
+                        <div class="col-4">
+                          <input type="time" class="form-control" name="hrsempr_Clien">
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Fecha del Trabajo</label>
-                        <input type="date" class="form-control" name="dateempr_Clien">
-                        <span></span> 
+                        <div class="col-5">
+                         <input type="date" class="form-control" name="dateempr_Clien">
+                        <span></span>  
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label p-1">¿Tiene los datos de la Boleta?</label>
+                        <label for="text" class="form-label p-1">¿Desea ingresar la Boleta?</label>
                         <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(2)" value="show_cli" > Si</div>
                         <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(1)" value="hide_cli" checked> No</div>
                         
@@ -174,11 +189,14 @@
                             <div class="row" id="bolet_cli" style="display: none;">
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Codigo de la Boleta</label>
-                                <input type="text" class="form-control" name="id_bol">
+                                <div class="col-6">
+                                  <input type="text" class="form-control" name="id_bol">
+                                </div>
+                                
                             </div>
                             <div class="mb-4 align-items-stretch">
-                            <label for="text" class="form-label">Ingrese los datos de la Boleta</label>
-                                <input type="text" class="form-control" name="data_bol">
+                            <label for="text" class="form-label">Ingrese la Boleta</label>
+                                <input type="file" class="form-control" name="data_bol">
                             </div> 
                             </div>
                             
@@ -200,7 +218,7 @@
 
 <div class="modal fade" id="Modal_cliedi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
+    <div class="modal-content mod_cliedi">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Editar los Datos del Cliente</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -210,34 +228,49 @@
       <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de Empresa</label>
+                        <div class="col-5">
                         <input type="text" class="form-control" name="rutempr_Clienedi">
                         <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de la Empresa</label>
+                        <div class="col-7">
                         <input type="text" class="form-control" name="nombrempr_Clienedi">
-                        <span></span> 
+                        <span></span>  
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de Contacto</label>
-                        <input type="text" class="form-control" name="nombrcont_Clienedi">
+                        <div class="col-7">
+                         <input type="text" class="form-control" name="nombrcont_Clienedi"> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
-                        <input type="time" class="form-control" name="hrsempr_Clienedi">
+                        <div class="col-4">
+                          <input type="time" class="form-control" name="hrsempr_Clienedi">
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Fecha del Trabajo</label>
+                        <div class="col-5">
                         <input type="date" class="form-control" name="dateempr_Clienedi">
                         <span></span> 
+                        </div>
+                        
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label p-1">¿Tiene los datos de la Boleta?</label>
+                        <label for="text" class="form-label p-1">¿Desea ingresar la Boleta?</label>
                         <div class="p-2"><input type="radio" name="rad_cliedi" onclick="hideshowBol_Cliedi(2)" value="show_cliedi" > Si</div>
                         <div class="p-2"><input type="radio" name="rad_cliedi" onclick="hideshowBol_Cliedi(1)" value="hide_cliedi" checked> No</div>
                         
@@ -246,11 +279,14 @@
                             <div class="row" id="edibolet_cli" style="display: none;">
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Codigo de la Boleta</label>
-                                <input type="text" class="form-control" name="id_boledi">
+                                <div class="col-6">
+                                  <input type="text" class="form-control" name="id_boledi">
+                                </div>
+                                
                             </div>
                             <div class="mb-4 align-items-stretch">
-                            <label for="text" class="form-label">Ingrese los datos de la Boleta</label>
-                                <input type="text" class="form-control" name="data_boledi">
+                            <label for="text" class="form-label">Ingrese la Boleta</label>
+                            <input type="file" class="form-control" name="data_boledi">
                             </div> 
                             </div>
                             

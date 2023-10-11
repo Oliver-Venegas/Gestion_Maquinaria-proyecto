@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,46 +11,45 @@
 <body class="backg_body">
     <div class="container w-75 bg-primary mt-5 mb-5 rounded shadow">
         <div class="row align-items-stretch">
-            <div class="col backg_image d-none d-lg-block col-md-5 col-lg-5 col-xl-6  rounded"></div>
+            <div class="col backg_image d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded"></div>
 
             <div class="col bg-white p-5 rounded-end">
 
-                <h2 class="fw-bold text-center py-4">Bienvenido</h2>
+                <h2 class="fw-bold text-center py-4">Cambiar la Contraseña</h2>
 
                 <form action="#">
                     <div class="mb-4">
-                        <label for="email" class="form-label">Correo Electronico</label>
-                        <div class="col-9">
-                           <input type="email" class="form-control" name="email_user"> 
+                        <label for="text" class="form-label">Contraseña Nueva</label>
+                        <div class="col-7">
+                            <input type="password" class="form-control" name="pass_renew">
                         </div>
                         
                     </div>
 
                     <div class="mb-4">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <div class="col-9">
-                           <input type="password" class="form-control" name="password_user"> 
+                        <label for="text" class="form-label">Vuelva a Escribir la Contraseña</label>
+                        <div class="col-7">
+                            <input type="password" class="form-control" name="again_renew">
                         </div>
                         
                     </div>
-<br>
-                   <div class="d-grid ">
-                    <a class="btn_ingreso btn btn-primary" href="menu.php">Ingresar</a>
-                   </div>
 
-                   <br>
-                   <div class="my-3">
-                    <span>¿No tienes Cuenta? <a href="reg_man.php">Registrate</a></span>
-                    <br>
-                    <span><a href="passw_rec.php">Recuperar Contraseña</a></span>
+<br>
+<br>
+                    <div class="row align-items-stretch" >
+                    
+                   <div class="d-grid">
+                    <a  class="btn btn-primary " href="index.html">Confirmar</a>
                    </div>
+                    </div>
+                
 
                 </form>
                 
             </div>
         </div>
     </div>
-
+ 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
