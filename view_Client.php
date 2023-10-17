@@ -139,7 +139,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de Empresa</label>
                         <div class="col-5">
-                          <input type="text" class="form-control" name="rutempr_Clien">
+                          <input type="text" class="form-control" name="rutempr_Clien" placeholder="00000000-0">
                           <span></span> 
                         </div>
                         
@@ -148,7 +148,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de la Empresa</label>
                         <div class="col-7">
-                          <input type="text" class="form-control" name="nombrempr_Clien">
+                          <input type="text" class="form-control" name="nombrempr_Clien" placeholder="La Polar">
                           <span></span> 
                         </div>
                         
@@ -157,7 +157,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de Contacto</label>
                         <div class="col-7">
-                         <input type="text" class="form-control" name="nombrcont_Clien"> 
+                         <input type="text" class="form-control" name="nombrcont_Clien" placeholder="Juan Ejemplo"> 
                         </div>
                         
                     </div>
@@ -190,7 +190,7 @@
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Codigo de la Boleta</label>
                                 <div class="col-6">
-                                  <input type="text" class="form-control" name="id_bol">
+                                  <input type="text" class="form-control" name="id_bol" placeholder="00000000">
                                 </div>
                                 
                             </div>

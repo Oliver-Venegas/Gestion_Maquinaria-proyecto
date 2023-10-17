@@ -20,7 +20,7 @@
                 <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">Contraseña Nueva</label>
-                        <div class="col-7">
+                        <div class="usr_empassdiv">
                             <input type="password" class="form-control" name="pass_renew">
                         </div>
                         
@@ -28,7 +28,7 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Vuelva a Escribir la Contraseña</label>
-                        <div class="col-7">
+                        <div class="usr_empassdiv">
                             <input type="password" class="form-control" name="again_renew">
                         </div>
                         

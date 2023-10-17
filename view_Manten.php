@@ -108,7 +108,7 @@
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Nuevo Tipo de Mantenedor</label>
                                 <div class="col-5">
-                                  <input type="text" class="form-control" name="id_bol">  
+                                  <input type="text" class="form-control" name="id_bol" placeholder="Mantenedor Hidraulico">  
                                 </div>
                                 
                             </div>

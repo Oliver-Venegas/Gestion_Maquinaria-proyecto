@@ -19,18 +19,18 @@
 
                 <form action="#">
                     <div class="mb-4">
-                        <label for="text" class="form-label">RUT</label>
+                        <label for="text" class="form-label">Ingrese su RUT</label>
                         <div class="usr_rutdiv">
-                         <input type="text" class="form-control" name="rut_reg">
+                         <input type="text" class="form-control" name="rut_reg" placeholder="00000000-0">
                         <span></span>    
                         </div>
                         
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre y Apellido</label>
-                        <div class="usr_div">
-                        <input type="text" class="form-control" name="nombr_reg">
+                        <label for="text" class="form-label">Ingrese su Nombre y Apellido</label>
+                        <div class="usr_empassdiv">
+                        <input type="text" class="form-control" name="nombr_reg" placeholder="Fernando Ejemplos">
                         <span></span>
                         </div>
                          
@@ -38,7 +38,7 @@
 
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Tipo de Mantenedor</label>
+                        <label for="text" class="form-label">Elija el Tipo de Mantenedor</label>
                         <div class="usr_div">
                             <select class="form-select" aria-label="Default select example">
                              
@@ -51,18 +51,18 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="email" class="form-label">Correo Electronico</label>
-                        <div class="usr_empassdiv">
-                          <input type="email" class="form-control" name="email_reg">
+                        <label for="email" class="form-label">Ingrese su Correo Electronico</label>
+                        <div class="usr_maillen">
+                          <input type="email" class="form-control" name="email_reg" placeholder="gestiondemaquinas@ejemplos.com">
                         <span></span>   
                         </div>
                         
                     </div>
 
                     <div class="mb-4">
-                        <label for="password" class="form-label">Contraseña</label>
+                        <label for="password" class="form-label"> Ingrese una Contraseña</label>
                         <div class="usr_empassdiv">
-                          <input type="password" class="form-control" name="password_reg">
+                          <input type="password" class="form-control" name="password_reg" placeholder="Contraseña Desconocida">
                         <span></span>   
                         </div>
                         
@@ -71,7 +71,7 @@
                     <div class="mb-4">
                         <label for="password" class="form-label">Vuelva a Escribir la Contraseña</label>
                         <div class="usr_empassdiv">
-                           <input type="password" class="form-control" name="passagain_reg">
+                           <input type="password" class="form-control" name="passagain_reg" placeholder="Contraseña Anterior">
                         <span></span>  
                         </div>
                         

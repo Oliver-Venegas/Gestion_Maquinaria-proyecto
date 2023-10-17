@@ -20,7 +20,7 @@
                 <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label">RUT del Mantenedor</label>
-                        <div class="col-5">
+                        <div class="usr_rutdiv">
                             <input type="text" class="form-control" name="rut_renew">
                         </div>
                         

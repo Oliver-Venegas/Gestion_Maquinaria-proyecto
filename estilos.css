@@ -1,15 +1,19 @@
 /* Log In */
 
 .usr_rutdiv{
-    width: 40%;
+    width: 150px;
 }
 
 .usr_div{
-    width: 60%;
+    width: 250px;
 }
 
 .usr_empassdiv{
-    width: 70%;
+    width: 200px;
+}
+
+.usr_maillen{
+    width: 300px;
 }
 
 @media (max-width: 600px) {
@@ -22,6 +26,10 @@
     }
 
     .usr_empassdiv{
+        width: 100%;
+    }
+
+    .usr_maillen{
         width: 100%;
     }
 }

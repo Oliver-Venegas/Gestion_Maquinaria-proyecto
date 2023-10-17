@@ -205,7 +205,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Orden</label>
                         <div class="col-4">
-                          <input type="text" class="form-control" name="order_Manten">
+                          <input type="text" class="form-control" name="order_Manten" placeholder="0000000">
                         </div>
                         
 
@@ -214,7 +214,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Aviso</label>
                         <div class="col-4">
-                          <input type="text" class="form-control" name="avis_Manten">
+                          <input type="text" class="form-control" name="avis_Manten" placeholder="0000000">
                         </div>
                         
                     </div>
@@ -222,7 +222,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Titulo de la Observacion</label>
                         <div class="col-8">
-                        <input type="text" class="form-control" name="obtitul_Manten">
+                        <input type="text" class="form-control" name="obtitul_Manten" placeholder="Falla del Lente">
                         <span></span> 
                         </div>
                         
@@ -230,7 +230,7 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Observacion</label>
-                        <textarea class="form-control "  name="obser_Manten"></textarea>
+                        <textarea class="form-control "  name="obser_Manten" placeholder="Ingrese el la Descripcion del roblema encontrado"></textarea>
                         <span></span> 
                     </div>
 

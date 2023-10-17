@@ -138,7 +138,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Numero de Serie</label>
                         <div class="col-6">
-                        <input type="text" class="form-control" name="numser_Maqui">
+                        <input type="text" class="form-control" name="numser_Maqui" placeholder="000000000">
                         <span></span> 
                         </div>
                         
@@ -147,7 +147,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de la Maquina</label>
                         <div class="col-7">
-                          <input type="text" class="form-control" name="nombr_Maqui">
+                          <input type="text" class="form-control" name="nombr_Maqui" placeholder="Aplanadora Industrial">
                           <span></span> 
                         </div>
                         
@@ -156,7 +156,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
                         <div class="col-5">
-                        <input type="text" class="form-control" name="rutEmpr_Maqui">
+                        <input type="text" class="form-control" name="rutEmpr_Maqui" placeholder="00000000-0">
                         <span></span>
                         </div>
                         
@@ -175,7 +175,7 @@
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Numero de Serie del Repuesto</label>
                                 <div class="col-6">
-                                  <input type="text" class="form-control" name="seri_repu">
+                                  <input type="text" class="form-control" name="seri_repu" placeholder="000000000">
                                 </div>
                                 
                             </div>
@@ -183,7 +183,7 @@
                             <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Nombre del Repuesto</label>
                               <div class="col-7">
-                              <input type="text" class="form-control" name="nombr_repu">
+                              <input type="text" class="form-control" name="nombr_repu" placeholder="Fuente de Poder">
                               </div>
                                 
                             </div> 
@@ -191,7 +191,7 @@
                             <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Cantidad de Repuestos</label>
                                 <div class="col-3">
-                                <input type="text" class="form-control" name="cant_repu">
+                                <input type="text" class="form-control" name="cant_repu" placeholder="00">
                                 </div>
                                 
                             </div>
