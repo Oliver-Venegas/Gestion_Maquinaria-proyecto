@@ -29,7 +29,7 @@
 <br>
                     <div class="row align-items-stretch" style="justify-content: space-between;">
                     <div class="col-auto p-2">
-                   <a class="btn_backlog btn btn-light btn-lg" href="index.html">Cancelar</a>
+                   <a class="btn_backlog btn btn-light btn-lg" href="index.php">Cancelar</a>
                    </div>
 
                    <div class="col-auto p-2">

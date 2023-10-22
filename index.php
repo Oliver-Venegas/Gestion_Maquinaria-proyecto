@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +20,49 @@
 
             <div class="col bg-white p-5 rounded-end">
 
+                <?php
+                include ('php/conect_BD.php');
+
+                if (isset($_POST["submit"])) {
+
+                    $email_user = mysqli_real_escape_string($conexion, $_POST["email_user"]);
+                    $password_user = mysqli_real_escape_string($conexion, $_POST["password_user"]);
+
+                    $result = mysqli_query($conexion,"SELECT * FROM usuario_mantenedor WHERE Email_mantenedor='$email_user' AND Pass_mantenedor='$password_user'") or die("Error de Conexion");
+                    $row_reslt = mysqli_fetch_assoc($result);
+
+                    if (is_array( $row_reslt ) && !empty( $row_reslt )) {
+                        $_SESSION['eml_log'] = $row_reslt['Email_mantenedor'];
+                        $_SESSION['rut_log'] = $row_reslt['Rut'];
+                        $_SESSION['nombr_log'] = $row_reslt['Nombre_mantenedor'];
+                        $_SESSION['manten_log'] = $row_reslt['mant_type'];
+
+                }else{
+                    echo "
+                        <h2 class='fw-bold text-center py-4'>Error</h2>
+                        <div class='message_creamant'><strong>El Correo Electronico o la Contraseña es Equivocada</strong></div>
+                        <br>";
+
+       echo "<a class='btn_backlog btn btn-light btn-lg' href='index.php'>Regresar</a>";
+                }
+                if (isset($_SESSION['eml_log']))    {
+                    header("Location: menu.php");
+
+                }
+
+            }
+            
+            else{
+                
+                ?>
+
                 <h2 class="fw-bold text-center py-4">Iniciar Sesion</h2>
 
-                <form action="#">
+                <form action="" method="post">
                     <div class="mb-4">
                         <label for="email" class="form-label">Correo Electronico</label>
                         <div class="usr_maillen">
-                           <input type="email" class="form-control" name="email_user" placeholder="Ingrese su Correo Electronico"> 
+                           <input type="email" class="form-control" name="email_user" id="email_user" placeholder="Ingrese su Correo Electronico"> 
                         </div>
                         
                     </div>
@@ -30,13 +70,13 @@
                     <div class="mb-4">
                         <label for="password" class="form-label">Contraseña</label>
                         <div class="usr_empassdiv">
-                           <input type="password" class="form-control" name="password_user" placeholder="Ingrese su Contraseña"> 
+                           <input type="password" class="form-control" name="password_user" id="password_user" placeholder="Ingrese su Contraseña"> 
                         </div>
                         
                     </div>
 <br>
                    <div class="d-grid ">
-                    <a class="btn_ingreso btn btn-primary" href="menu.php">Ingresar</a>
+                   <input type="submit" name="submit" class="btn_ingreso btn btn-primary" value="Ingresar"></input>
                    </div>
 
                    <br>
@@ -48,6 +88,10 @@
 
                 </form>
                 
+
+                <?php 
+            }
+                ?>
             </div>
         </div>
     </div>

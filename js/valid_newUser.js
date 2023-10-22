@@ -40,3 +40,4 @@ rut_userfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar
 nomb_userfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un Nombre", e));
 email_userfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un E-mail", e));
 pass_userfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar una Contraseña", e));
+

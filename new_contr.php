@@ -39,7 +39,7 @@
                     <div class="row align-items-stretch" >
                     
                    <div class="d-grid">
-                    <a  class="btn btn-primary " href="index.html">Confirmar</a>
+                    <a  class="btn btn-primary " href="index.php">Confirmar</a>
                    </div>
                     </div>
                 
