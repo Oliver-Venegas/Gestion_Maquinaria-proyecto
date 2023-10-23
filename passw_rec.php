@@ -17,11 +17,11 @@
 
                 <h2 class="fw-bold text-center py-4">Cambiar la Contraseña</h2>
 
-                <form action="#">
+                <form action="recover_contr.php" method="POST">
                     <div class="mb-4">
-                        <label for="text" class="form-label">RUT del Mantenedor</label>
-                        <div class="usr_rutdiv">
-                            <input type="text" class="form-control" name="rut_renew">
+                        <label for="text" class="form-label">Corrreo Electronico del Mantenedor</label>
+                        <div class="usr_maillen">
+                            <input type="text" class="form-control" name="email_renew" placeholder="Ingrese su Correo Electronico">
                         </div>
                         
                     </div>

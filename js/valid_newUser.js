@@ -19,7 +19,7 @@ const valid_ClieEmptyness = (mensage, e) =>{
         field.nextElementSibling.innerText = "";
     }
 }
-
+/*
 user_againfield.addEventListener("blur", function (e) {
     const field = e.target;
     const fieldVal = e.target.value;
@@ -34,6 +34,7 @@ user_againfield.addEventListener("blur", function (e) {
         field.nextElementSibling.innerText = "";
     }
 })
+*/
 
 
 rut_userfield.addEventListener("blur", (e) => valid_ClieEmptyness("Debe ingresar un Rut", e));

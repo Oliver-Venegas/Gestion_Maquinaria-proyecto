@@ -19,7 +19,7 @@
     <i class='bx bx-menu' id="general_icon"></i>
     <i class='bx bx-x' id="general_close"></i>
     </label>
-    <a href="index.html" class='bx bx-exit' id="general_session"></a>
+    <a href="php/log_out.php" class='bx bx-exit' id="general_session"></a>
    
 
     <nav class="navbar_general">
@@ -27,7 +27,7 @@
     <a href="menu.php" style="--i:1;">Mantencion</a>
     <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
     <a href="view_Client.php" style="--i:3;">Clientes</a>
-    <a class="cerr_sess" href="index.html" style="--i:4;">Cerrar Sesion</a>
+    <a class="cerr_sess" href="php/log_out.php" style="--i:4;">Cerrar Sesion</a>
     
 
     </nav>

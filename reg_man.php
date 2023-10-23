@@ -17,57 +17,41 @@
 
             <div class="col bg-white p-5 rounded-end">
 
-            <?php 
-    include ('php/conect_BD.php');
-
-    if (isset($_POST["submit"])) {
-
-        $rut_reg = $_POST['rut_reg'];
-        $nombr_reg = $_POST['nombr_reg'];
-        $password_reg = $_POST['password_reg'];
-        $email_reg = $_POST['email_reg'];
-        $type_mantensel = $_POST['type_mantensel'];
-
-
-        /*Validacion Email*/
-    
-    $verifymail_query = mysqli_query($conexion, "SELECT Email_mantenedor FROM usuario_mantenedor WHERE Email_mantenedor = '$email_reg'");
-    
-    if (mysqli_num_rows($verifymail_query) !=0){
-        echo "
-        <h2 class='fw-bold text-center py-4'>Error</h2>
-        <div class='message_creamant'><strong>El Correo Electronico ingresado ya se encuentra registrado</strong></div>
-        <br>";
-
-       echo "<a class='btn_backlog btn btn-light btn-lg' href='javascript:self.history.back()'>Regresar</a>";
-    }
-    
-    else{
-        mysqli_query($conexion, "INSERT INTO usuario_mantenedor(Rut, Nombre_mantenedor, Pass_mantenedor , Email_mantenedor ,mant_type ) VALUES ('$rut_reg', '$nombr_reg', '$password_reg', '$email_reg','$type_mantensel')") or die ("Error de Conexion");
-        echo "
-        <h2 class='fw-bold text-center py-4'>Registro Completado</h2>
-        <div class='message'><strong>Se Registro el Mantenedor</strong></div>
-        <br>";
-
-       echo "<a class='btn_backlog btn btn-light btn-lg' href='index.html'>Regresar</a>";
-
-    }
-
-
-
-
-    }else{
-
-    
-    ?>
 
                 <h2 class="fw-bold text-center py-4">Registrate como Mantenedor</h2>
 
-                <form action="" method="post">
+                <form action="php/registr_manten.php" method="POST">
+
+                    <?php 
+                        if(isset($_GET['error_reg'])) {
+
+                            ?>
+                        <div class="message_creamant">
+                            <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
+                      <?php 
+                        if(isset($_GET['suscces_reg'])) {
+
+                            ?>
+                        <div class="usses_creamant">
+                            <strong class="suscces_reg">  <?php  echo $_GET['suscces_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+                
+
+
                     <div class="mb-4">
                         <label for="text" class="form-label">Ingrese su RUT</label>
                         <div class="usr_rutdiv">
-                         <input type="text" class="form-control" name="rut_reg" id="rut_reg" placeholder="00000000-0">
+                         <input type="text" class="form-control" name="rut_reg" placeholder="00000000-0">
                         <span></span>    
                         </div>
                         
@@ -76,7 +60,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Ingrese su Nombre y Apellido</label>
                         <div class="usr_empassdiv">
-                        <input type="text" class="form-control" name="nombr_reg" id="nombr_reg"  placeholder="Fernando Ejemplos">
+                        <input type="text" class="form-control" name="nombr_reg"  placeholder="Fernando Ejemplos">
                         <span></span>
                         </div>
                          
@@ -86,7 +70,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Elija el Tipo de Mantenedor</label>
                         <div class="usr_div">
-                            <select class="form-select" name="type_mantensel" id="type_mantensel" aria-label="Default select example">
+                            <select class="form-select" name="type_mantensel" aria-label="Default select example">
                              
                              <option >Mantenedor Electrico</option>
                              <option >Mantenedor Mecanico</option>
@@ -99,7 +83,7 @@
                     <div class="mb-4">
                         <label for="email" class="form-label">Ingrese su Correo Electronico</label>
                         <div class="usr_maillen">
-                          <input type="email" class="form-control" name="email_reg" id="email_reg"  placeholder="gestiondemaquinas@ejemplos.com">
+                          <input type="email" class="form-control" name="email_reg" placeholder="gestiondemaquinas@ejemplos.com">
                         <span></span>   
                         </div>
                         
@@ -108,7 +92,7 @@
                     <div class="mb-4">
                         <label for="password" class="form-label"> Ingrese una Contraseña</label>
                         <div class="usr_empassdiv">
-                          <input type="text" class="form-control" name="password_reg" id="password_reg"  placeholder="Contraseña Desconocida">
+                          <input type="password" class="form-control" name="password_reg" placeholder="Contraseña Desconocida">
                         <span></span>   
                         </div>
                         
@@ -117,7 +101,7 @@
                     <div class="mb-4">
                         <label for="password" class="form-label">Vuelva a Escribir la Contraseña</label>
                         <div class="usr_empassdiv">
-                           <input type="text" class="form-control" id="passagain_reg" name="passagain_reg"  placeholder="Contraseña Anterior">
+                           <input type="password" class="form-control" id="passagain_reg" name="passagain_reg"  placeholder="Contraseña Anterior">
                         <span></span>  
                         </div>
                         
@@ -130,7 +114,8 @@
                    </div>
 
                    <div class="col-auto p-2">
-                    <input type="submit" name="submit" class="btn btn-primary btn-lg" value="Guardar"></input>
+
+                    <input type="submit" class="btn btn-primary btn-lg" value="Guardar"></input>
                     
                    </div>
                     </div>
@@ -142,11 +127,6 @@
         </div>
     </div>
 
-    <?php
-    
-            }
-    
-    ?>
 
     <script src="js/valid_newUser.js"></script>
  

@@ -1,3 +1,16 @@
+<?php
+  session_start();
+
+  include('php/conect_BD.php');
+
+  if(!isset($_SESSION['user_manten'])){
+    header("Location: index.php");
+    session_destroy();
+    die();
+    
+  }
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +24,8 @@
 </head>
 <body class="menu_bacgr">
 
+
+
         <header class="nav_superior">
             <a href="menu.php" class="user_home">Mantencion</a>
 
@@ -19,14 +34,14 @@
             <i class='bx bx-menu' id="general_icon"></i>
             <i class='bx bx-x' id="general_close"></i>
             </label>
-            <a href="index.php" class='bx bx-exit' id="general_session"></a>
+            <a href="php/log_out.php" class='bx bx-exit' id="general_session"></a>
 
             <nav class="navbar_general">
             <a href="view_Manten.php" style="--i:0;">Mantenedor</a>
             <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
             <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
             <a href="view_Client.php" style="--i:3;">Clientes</a>
-            <a class="cerr_sess" href="index.php" style="--i:4;">Cerrar Sesion</a>
+            <a class="cerr_sess" href="php/log_out.php" style="--i:4;">Cerrar Sesion</a>
             
 
             </nav>
@@ -36,6 +51,8 @@
 
         <div class="container  mt-5 mb-5 ">
         <div class="row align-items-stretch p-2 ">
+
+
 <table class="Manten_table rounded">
 
 

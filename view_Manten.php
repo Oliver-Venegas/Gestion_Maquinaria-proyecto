@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  include('php/conect_BD.php');
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,14 +26,14 @@
             <i class='bx bx-menu' id="general_icon"></i>
             <i class='bx bx-x' id="general_close"></i>
             </label>
-            <a href="index.php" class='bx bx-exit' id="general_session"></a>
+            <a href="php/log_out.php" class='bx bx-exit' id="general_session"></a>
 
             <nav class="navbar_general">
             <a href="menu.php" style="--i:0;">Mantencion</a>
             <a href="chang_Mant.php" style="--i:1;">Estado de Mantencion</a>
             <a href="view_Maqui.php" style="--i:2;">Maquinas</a>    
             <a href="view_Client.php" style="--i:3;">Clientes</a>
-            <a class="cerr_sess" href="index.php" style="--i:4;">Cerrar Sesion</a>
+            <a class="cerr_sess" href="php/log_out.php" style="--i:4;">Cerrar Sesion</a>
             
 
             </nav>
@@ -37,6 +44,11 @@
             
         <div class="row align-items-stretch">
 
+        <?php
+
+          
+          ?>
+
             <div class="col bg-white mt-5 p-5 rounded shadow">
 
                 <h2 class="fw-bold text-center py-4">Mantenedor</h2>
@@ -44,25 +56,25 @@
                 <br>
                 <div class="col-auto p-1">
                     <label  for="text" class="form-label"><p><strong>RUT:  </strong></p></label>
-                    <label for="text" class="form-label">1937244-2</label>
+                    <label for="text" class="form-label"> <?php  ?>  </label>
                    
                 </div>
 
                 <div class="col-auto p-1">
                     <label  for="text" class="form-label"><p><strong>Nombre y Apellido:  </strong></p></label>
-                    <label for="text" class="form-label">Rodrigo Espejo</label>
+                    <label for="text" class="form-label"> <?php ?>  </label>
                    
                 </div>
 
                 <div class="col-auto p-1">
                     <label  for="text" class="form-label"><p><strong>Tipo de Mantenedor:  </strong></p></label>
-                    <label for="text" class="form-label">Mantenedor Electrico</label>
+                    <label for="text" class="form-label"> <?php ?>  </label>
                    
                 </div>
 
                 <div class="col-auto p-1">
                     <label  for="text" class="form-label"><p><strong>Correo Electronico:  </strong></p></label>
-                    <label for="text" class="form-label">rodrigoespejo@gmail.com</label>
+                    <label for="text" class="form-label"> <?php ?>  </label>
                    
                 </div>
 
@@ -79,9 +91,20 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar el Tipo de Mantenedor</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+ <?php
+    if(isset($_POST['submit'])){
+      $mant_chnge =$_POST['type_mantenchang'];
+
+      $edit_mant = mysqli_query($conexion,"UPDATE usuario_mantenedor SET mant_type='$mant_chnge' WHERE Rut=$rut") or die("Ocurrio un Error");
+    }
+   
+
+     ?>
+<form action="" method="post">
+
       <div class="modal-body">
 
-      <form action="#">
+   
 
                     <div class="mb-4">
                         <label for="text" class="form-label p-1">¿Dessea Cambiar a un Tipo de Mantenedor ya Existente o Crear un Nuevo Tipo de Mantenedor?</label>
@@ -93,12 +116,14 @@
 
                         <div id="tip_exmant"  >
                             <div class="col-6">
-                               <select class="form-select mb-4 align-items-stretch" aria-label="Default select example">
+
+                            
+                               <select class="form-select mb-4 align-items-stretch" name="type_mantenchang" id="type_mantenchang" aria-label="Default select example">
                              
-                             <option value="1">Mantenedor Electrico</option>
-                             <option value="2">Mantenedor Mecanico</option>
+                             <option>Mantenedor Electrico</option>
+                             <option>Mantenedor Mecanico</option>
                         </select>
- 
+                            
                             </div>
                             
                         </div>
@@ -119,13 +144,13 @@
                      
                     </div>
 
-
-                </form>
-
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        
+        <button type="submit" name="submit" data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
+      
+      </form>
       </div>
     </div>
   </div>
