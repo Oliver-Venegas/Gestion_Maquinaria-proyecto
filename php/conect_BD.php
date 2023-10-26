@@ -8,7 +8,9 @@
 
 
     /*
-     if($conexion){
+    
+ 
+    if($conexion){
         echo'Concexion Exitosa';
     }
     
@@ -16,10 +18,8 @@
         echo'No se pudo realizar la conexion';
     }
 
-    */
-   
         
     
-
+   */
 
 ?>

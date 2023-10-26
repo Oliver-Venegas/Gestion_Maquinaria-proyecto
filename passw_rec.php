@@ -18,6 +18,20 @@
                 <h2 class="fw-bold text-center py-4">Cambiar la Contraseña</h2>
 
                 <form action="recover_contr.php" method="POST">
+
+                <?php 
+                        if(isset($_GET['error_reg'])) {
+
+                            ?>
+                        <div class="message_creamant">
+                            <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
+                      
                     <div class="mb-4">
                         <label for="text" class="form-label">Corrreo Electronico del Mantenedor</label>
                         <div class="usr_maillen">
@@ -33,7 +47,7 @@
                    </div>
 
                    <div class="col-auto p-2">
-                    <a  class="btn btn-primary btn-lg" href="new_contr.php">Confirmar</a>
+                    <input type="submit" class="btn btn-primary btn-lg" name="send_emlpass" value="Confirmar">
                    </div>
                     </div>
                 
