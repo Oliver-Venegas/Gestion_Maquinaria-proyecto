@@ -13,7 +13,7 @@
 
   $mostra_email_user = $_SESSION['user_manten'];
 
-  $obtdatos_sql = "SELECT Rut, Nombre_mantenedor, Email_mantenedor, mant_type  FROM usuario_mantenedor WHERE Email_mantenedor = '$mostra_email_user";
+  $obtdatos_sql = "SELECT Rut, Nombre_mantenedor, Email_mantenedor, mant_type  FROM usuario_mantenedor WHERE Email_mantenedor = '$mostra_email_user'";
   $result_mostr = $conexion->query($obtdatos_sql);
 
   while($data_mostr = $result_mostr->fetch_assoc()){
