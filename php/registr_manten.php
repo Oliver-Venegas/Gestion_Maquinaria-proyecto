@@ -5,9 +5,7 @@ include ('conect_BD.php');
 $rut_reg = $_POST['rut_reg'];
 $nombr_reg = $_POST['nombr_reg'];
 $password_reg = $_POST['password_reg'];
-
-$password_reg = hash('sha512', $password_reg);
-
+$passagain_reg = $_POST['passagain_reg'];
 $email_reg = $_POST['email_reg'];
 $type_mantensel = $_POST['type_mantensel'];
 
@@ -30,6 +28,14 @@ else if(empty($password_reg)){
     exit();
 
 }
+if($password_reg != $passagain_reg){
+    header("Location: ../reg_man.php?error_reg=Las Contraseñas no coinciden");
+    exit();
+}
+
+
+$password_reg = hash('sha512', $password_reg);
+
 
 $query_regist = "INSERT INTO usuario_mantenedor (Rut, Nombre_mantenedor, Pass_mantenedor , Email_mantenedor ,mant_type )
                  VALUES ('$rut_reg', '$nombr_reg', '$password_reg', '$email_reg', '$type_mantensel')";

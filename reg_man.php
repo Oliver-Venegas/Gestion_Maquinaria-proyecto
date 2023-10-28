@@ -101,7 +101,7 @@
                     <div class="mb-4">
                         <label for="password" class="form-label">Vuelva a Escribir la Contraseña</label>
                         <div class="usr_empassdiv">
-                           <input type="password" class="form-control" id="passagain_reg" name="passagain_reg"  placeholder="Contraseña Anterior">
+                           <input type="password" class="form-control" name="passagain_reg"  placeholder="Contraseña Anterior">
                         <span></span>  
                         </div>
                         

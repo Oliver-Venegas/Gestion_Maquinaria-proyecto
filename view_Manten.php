@@ -3,6 +3,29 @@
 
   include('php/conect_BD.php');
 
+  if(!isset($_SESSION['user_manten'])){
+    header("Location: index.php");
+    session_destroy();
+    die();
+    
+  }
+
+
+  $mostra_email_user = $_SESSION['user_manten'];
+
+  $obtdatos_sql = "SELECT Rut, Nombre_mantenedor, Email_mantenedor, mant_type  FROM usuario_mantenedor WHERE Email_mantenedor = '$mostra_email_user";
+  $result_mostr = $conexion->query($obtdatos_sql);
+
+  while($data_mostr = $result_mostr->fetch_assoc()){
+
+    $rut_mostr = $data_mostr['Rut'];
+    $nombr_mostr = $data_mostr['Nombre_mantenedor'];
+    $email_mostr = $data_mostr['Email_mantenedor'];
+    $mantype_mostr = $data_mostr['mant_type'];
+
+
+  }
+
 ?>
 
 <html lang="en">
@@ -56,25 +79,25 @@
                 <br>
                 <div class="col-auto p-1">
                     <label  for="text" class="form-label"><p><strong>RUT:  </strong></p></label>
-                    <label for="text" class="form-label"> <?php  ?>  </label>
+                    <label for="text" class="form-label"> <?php echo $rut_mostr ?>  </label>
                    
                 </div>
 
                 <div class="col-auto p-1">
                     <label  for="text" class="form-label"><p><strong>Nombre y Apellido:  </strong></p></label>
-                    <label for="text" class="form-label"> <?php ?>  </label>
+                    <label for="text" class="form-label"> <?php echo $nombr_mostr ?>  </label>
                    
                 </div>
 
                 <div class="col-auto p-1">
                     <label  for="text" class="form-label"><p><strong>Tipo de Mantenedor:  </strong></p></label>
-                    <label for="text" class="form-label"> <?php ?>  </label>
+                    <label for="text" class="form-label"> <?php echo $mantype_mostr ?>  </label>
                    
                 </div>
 
                 <div class="col-auto p-1">
                     <label  for="text" class="form-label"><p><strong>Correo Electronico:  </strong></p></label>
-                    <label for="text" class="form-label"> <?php ?>  </label>
+                    <label for="text" class="form-label"> <?php echo $email_mostr ?>  </label>
                    
                 </div>
 
