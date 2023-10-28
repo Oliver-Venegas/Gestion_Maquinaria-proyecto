@@ -114,16 +114,8 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar el Tipo de Mantenedor</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
- <?php
-    if(isset($_POST['submit'])){
-      $mant_chnge =$_POST['type_mantenchang'];
 
-      $edit_mant = mysqli_query($conexion,"UPDATE usuario_mantenedor SET mant_type='$mant_chnge' WHERE Rut=$rut") or die("Ocurrio un Error");
-    }
-   
-
-     ?>
-<form action="" method="post">
+<form action="" method="POST">
 
       <div class="modal-body">
 
@@ -138,16 +130,17 @@
                         <br>
 
                         <div id="tip_exmant"  >
-                            <div class="col-6">
-
-                            
+                            <div class="col-6">    
                                <select class="form-select mb-4 align-items-stretch" name="type_mantenchang" id="type_mantenchang" aria-label="Default select example">
-                             
-                             <option>Mantenedor Electrico</option>
-                             <option>Mantenedor Mecanico</option>
-                        </select>
+                                <option>Mantenedor Electrico</option>
+                                <option>Mantenedor Mecanico</option>
+
+                              </select>
                             
                             </div>
+
+                            
+
                             
                         </div>
                         
@@ -170,7 +163,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        
+    
         <button type="submit" name="submit" data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
       
       </form>
