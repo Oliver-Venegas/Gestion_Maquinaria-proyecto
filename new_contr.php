@@ -17,7 +17,43 @@
 
                 <h2 class="fw-bold text-center py-4">Cambiar la Contraseña</h2>
 
-                <form action="#">
+                <form action="php/recover_contr.php" method="POST">
+
+                    <?php 
+                        if(isset($_GET['error_reg'])) {
+
+                            ?>
+                        <div class="message_creamant">
+                            <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
+                      <?php 
+                        if(isset($_GET['suscces_reg'])) {
+
+                            ?>
+                        <div class="usses_creamant">
+                            <strong class="suscces_reg">  <?php  echo $_GET['suscces_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
+                      <input type="hidden" name="pass_token" value="<?php if(isset($_GET['reset_token']))  { echo $_GET['reset_token'];  } ?>">
+
+                <div class="mb-4">
+                        <label for="text" class="form-label">Ingrese su Correo Electronico</label>
+                        <div class="usr_maillen">
+                            <input type="email" class="form-control" name="email_torenew" value="<?php if(isset($_GET['Email_mantenedor']))  { echo $_GET['Email_mantenedor'];  } ?>" placeholder="Ingrese su Correo Electronico">
+                        </div>
+                        
+                    </div>
+
+
                     <div class="mb-4">
                         <label for="text" class="form-label">Contraseña Nueva</label>
                         <div class="usr_empassdiv">
@@ -39,7 +75,8 @@
                     <div class="row align-items-stretch" >
                     
                    <div class="d-grid">
-                    <a  class="btn btn-primary " href="index.php">Confirmar</a>
+                   <input type="submit" class="btn btn-primary" name="send_renewpassw" value="Confirmar">
+                
                    </div>
                     </div>
                 

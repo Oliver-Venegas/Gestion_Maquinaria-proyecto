@@ -36,6 +36,18 @@
 
                       <?php } ?>
 
+                      <?php 
+                        if(isset($_GET['suscces_reg'])) {
+
+                            ?>
+                        <div class="usses_creamant">
+                            <strong class="suscces_reg">  <?php  echo $_GET['suscces_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
                     <div class="mb-4">
                         <label for="email" class="form-label">Correo Electronico</label>
                         <div class="usr_maillen">

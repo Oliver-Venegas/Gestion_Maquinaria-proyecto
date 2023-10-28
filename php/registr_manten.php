@@ -57,7 +57,7 @@ $ejectura_regis = mysqli_query($conexion, $query_regist);
 
 if($ejectura_regis){
 
-    header("Location: ../reg_man.php?suscces_reg=Se Registro el Mantenedor");
+    header("Location: ../index.php?suscces_reg=Se Registro el Mantenedor");
 
 
 }else{

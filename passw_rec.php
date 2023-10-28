@@ -17,7 +17,7 @@
 
                 <h2 class="fw-bold text-center py-4">Cambiar la Contraseña</h2>
 
-                <form action="recover_contr.php" method="POST">
+                <form action="php/recover_contr.php" method="POST">
 
                 <?php 
                         if(isset($_GET['error_reg'])) {
@@ -25,6 +25,18 @@
                             ?>
                         <div class="message_creamant">
                             <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
+                      <?php 
+                        if(isset($_GET['suscces_reg'])) {
+
+                            ?>
+                        <div class="usses_creamant">
+                            <strong class="suscces_reg">  <?php  echo $_GET['suscces_reg'];  ?> </strong>
                         
                         </div>
                         <br>
