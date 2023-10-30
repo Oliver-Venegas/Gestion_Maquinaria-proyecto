@@ -67,11 +67,6 @@
             
         <div class="row align-items-stretch">
 
-        <?php
-
-          
-          ?>
-
             <div class="col bg-white mt-5 p-5 rounded shadow">
 
                 <h2 class="fw-bold text-center py-4">Mantenedor</h2>
@@ -102,12 +97,22 @@
                 </div>
 
 <br>
+
+
+            <div class="row-auto">
+  
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Create_mantenetipe">Crear Tipo de Mantenedor</button>
+
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#Chang_mantenetipe">Cambiar Tipo de Mantenedor</button>
 
-                   </div>
+            </div>
+                
+        </div>
 
+    </div>
 
-                   <div class="modal fade" id="Chang_mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ 
+ <div class="modal fade" id="Chang_mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -115,71 +120,114 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-<form action="" method="POST">
+<form action="php/crea_TipMant.php" method="POST">
 
       <div class="modal-body">
 
-   
+                  <div class="col-6">
+                    <select class="form-select mb-4 align-items-stretch" name="type_mantenchang" aria-label="Default select example">
+                    
+                    <?php
 
-                    <div class="mb-4">
-                        <label for="text" class="form-label p-1">¿Dessea Cambiar a un Tipo de Mantenedor ya Existente o Crear un Nuevo Tipo de Mantenedor?</label>
-                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowTip_mant(2)" value="hide_tipe" checked> Crear Nuevo Tipo de Mantenedor</div>
-                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowTip_mant(1)" value="show_tipe" > Cambiar a Tipo de Mantenedor ya Existente</div>
+                     $busc_tipe = "SELECT * FROM tipo_mantenedor";
+                     $busc_tipe_run = mysqli_query($conexion, $busc_tipe) or die (mysqli_error($conexion));
+                     
+                     foreach($busc_tipe_run as $list_tipes):  ?>
+                                                
+                        <option value="<?php echo $list_tipes['Nombre_Tipo'] ?>"><?php echo $list_tipes['Nombre_Tipo'] ?></option>
+
+                      <?php endforeach ?>
+
+                    </select>
+
+                  </div>          
+                            
+                            
                         
+      </div>
+       
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    
+        <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
+      
+      </form>
+      
+ 
+      </div>
+    </div>
+  </div>
+
+
+
+ <div class="modal fade" id="Create_mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Nuevo Tipo de Mantenedor</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+  <form action="php/crea_TipMant.php" method="POST">
+
+      <div class="modal-body">
                         
+                      <?php 
+                        if(isset($_GET['error_reg'])) {
+
+                            ?>
+                        <div class="message_creamant">
+                            <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
+                        
+                        </div>
                         <br>
 
-                        <div id="tip_exmant"  >
-                            <div class="col-6">    
-                               <select class="form-select mb-4 align-items-stretch" name="type_mantenchang" id="type_mantenchang" aria-label="Default select example">
-                                <option>Mantenedor Electrico</option>
-                                <option>Mantenedor Mecanico</option>
+                      <?php } ?>
+                      
 
-                              </select>
-                            
-                            </div>
+                      <?php 
+                        if(isset($_GET['suscces_reg'])) {
 
-                            
-
-                            
-                        </div>
+                            ?>
+                        <div class="usses_creamant">
+                            <strong class="suscces_reg">  <?php  echo $_GET['suscces_reg'];  ?> </strong>
                         
-                       
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
                             <div class="row" id="tipe_creamant" >
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Nuevo Tipo de Mantenedor</label>
                                 <div class="col-5">
-                                  <input type="text" class="form-control" name="id_bol" placeholder="Mantenedor Hidraulico">  
+                                  <input type="text" class="form-control" name="creat_newmantenTipe" placeholder="Mantenedor Hidraulico">  
                                 </div>
                                 
                             </div>
    
                             </div>
-                            
-                        
-                     
-                    </div>
+                                    
 
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
     
-        <button type="submit" name="submit" data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
+        <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
       
       </form>
       </div>
     </div>
   </div>
-</div>
 
 
-        </div>
-
-        </div>
 
 
-        <script src="js/Tip_ChMant.js"></script>
-            
+
+  </div>
+
+       
+    
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

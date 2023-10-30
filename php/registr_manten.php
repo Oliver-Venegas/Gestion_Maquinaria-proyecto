@@ -68,7 +68,7 @@ if($ejectura_regis){
 
 }else{
 
-    header("Location: ../reg_man.php?error_reg=Intentelo de nuevo, el antenedor no se pudo guardar");
+    header("Location: ../reg_man.php?error_reg=Intentelo de nuevo, el Mantenedor no se pudo registrar");
 
     exit();
 }
