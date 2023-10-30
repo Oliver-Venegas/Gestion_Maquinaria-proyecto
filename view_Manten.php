@@ -99,19 +99,22 @@
 <br>
 
 
-            <div class="row-auto">
-  
+            <div class="row align-items-stretch" style="justify-content: space-between;">
+
+              <div class="col-auto p-2">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Create_mantenetipe">Crear Tipo de Mantenedor</button>
 
+              </div>
+
+              <div class="col-auto p-2">
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#Chang_mantenetipe">Cambiar Tipo de Mantenedor</button>
+
+              </div>               
 
             </div>
                 
         </div>
 
-    </div>
-
- 
  <div class="modal fade" id="Chang_mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -120,11 +123,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-<form action="php/crea_TipMant.php" method="POST">
+<form action="php/chang_TipMant.php" method="POST">
 
       <div class="modal-body">
 
+      <input type="hidden" name="chang_rut" value="<?php echo $rut_mostr ?>">
+
                   <div class="col-6">
+                  <label for="text" class="form-label">Seleccione el Tipo de Mantenedor</label>
+
                     <select class="form-select mb-4 align-items-stretch" name="type_mantenchang" aria-label="Default select example">
                     
                     <?php
@@ -150,7 +157,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
     
         <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
-      
+      </div>
       </form>
       
  
@@ -199,7 +206,7 @@
 
                             <div class="row" id="tipe_creamant" >
                                <div class="mb-4 align-items-stretch">
-                                <label for="text" class="form-label">Nuevo Tipo de Mantenedor</label>
+                                <label for="text" class="form-label">Ingrese el nuevo Tipo de Mantenedor</label>
                                 <div class="col-5">
                                   <input type="text" class="form-control" name="creat_newmantenTipe" placeholder="Mantenedor Hidraulico">  
                                 </div>
@@ -214,12 +221,19 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
     
         <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
-      
+      </div>
+
       </form>
       </div>
     </div>
   </div>
 
+
+
+        
+    </div>
+
+ 
 
 
 
