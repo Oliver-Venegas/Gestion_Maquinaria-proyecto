@@ -1,3 +1,18 @@
+<?php
+  session_start();
+
+  include('php/conect_BD.php');
+
+  if(!isset($_SESSION['user_manten'])){
+    header("Location: index.php");
+    session_destroy();
+    die();
+    
+  }
+
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +23,7 @@
     <!-- CONEXION CSS -->
     <link rel="stylesheet" href="estilos.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 </head>
 <body class="menu_bacgr">
 
@@ -37,72 +53,54 @@
 
     <div class="container  mt-5 mb-5 ">
         <div class="row align-items-stretch p-4">
-<table class="client_table ">
+
+          <table  class="client_table table-borderless">
 
             <caption class="tabcli_capti">Listado de los Clientes</caption>
-
-            <tr>
+            <thead>
+              <tr>
                 <th class="tabcli_head">Rut Empresa</th>
                 <th class="tabcli_head">Nombre Empresa</th>
                 <th class="tabcli_head">Fecha del Trabajo</th>
                 <th class="tabcli_head"> </th>
                 <th class="tabcli_head"> </th>
+                <th class="tabcli_head"> </th>
 
             </tr>
+            </thead>
 
-            <tr class="tabcli_fila">
-                <td class="tabcli_body" data-bs-toggle="modal" data-bs-target="#Viewdata_clien" data-cell="Rut Empresa">2197828-1</td>
-                <td class="tabcli_body" data-bs-toggle="modal" data-bs-target="#Viewdata_clien" data-cell="Nombre Empresa">Sanander</td>
-                <td class="tabcli_body" data-bs-toggle="modal" data-bs-target="#Viewdata_clien" data-cell="Fecha del Trabajo">23/02/2022</td>
-                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+            <tbody>
 
-            </tr>
+            <?php 
+            $querytabl_Client = "SELECT * FROM cliente_mantened";
+            $querytabl_Client_run = mysqli_query($conexion, $querytabl_Client);
 
-            <tr class="tabcli_fila">
-                <td class="tabcli_body" data-cell="Rut Empresa">1143228-4</td>
-                <td class="tabcli_body" data-cell="Nombre Empresa">Deca</td>
-                <td class="tabcli_body" data-cell="Fecha del Trabajo">21/05/2021</td>
-                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
+            if(mysqli_num_rows($querytabl_Client_run) > 0)
+            {
+              foreach($querytabl_Client_run as $Client_mantened){
+
+                 ?>
+
+                <tr class="tabcli_fila">
+                  <td  style="display: none;" class="tabcli_body"> <?= $Client_mantened['ID_Cliente'] ?>  </td>
+                <td class="tabcli_body "  data-cell="Rut Empresa"> <?= $Client_mantened['Rut_empresa'] ?>  </td>
+                <td class="tabcli_body "  data-cell="Nombre Empresa"> <?= $Client_mantened['Nombre_empresa'] ?>  </td>
+                <td class="tabcli_body "  data-cell="Fecha del Trabajo"> <?= $Client_mantened['Fecha_del_trabajo'] ?>  </td>
                 
-            </tr>
+                <td class="tabcli_body"><button type="button" value="<?= $Client_mantened['ID_Cliente']; ?>" class="ViewClient_btnmodal btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#Viewdata_clien">Datos</button></td>
+                <td class="tabcli_body"><button type="button" value="<?= $Client_mantened['ID_Cliente']; ?>" class="EditClient_btnmodal btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
+                <td class="tabcli_body"><button type="button" value="<?= $Client_mantened['ID_Cliente']; ?>" class="DeletClient_btnmodal btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
 
-            <tr class="tabcli_fila">
-                <td class="tabcli_body" data-cell="Rut de Empresa">1223234-8</td>
-                <td class="tabcli_body" data-cell="Nombre de la Empresa">Santa Isabel</td>
-                <td class="tabcli_body" data-cell="Fecha del Trabajo">07/10/2022</td>
-                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
-                
-            </tr>
+                </tr>
+                <?php
+              }
 
-            <tr class="tabcli_fila">
-                <td class="tabcli_body" data-cell="Rut Empresa">2190820-3</td>
-                <td class="tabcli_body" data-cell="Nombre Empresa">Torrico</td>
-                <td class="tabcli_body" data-cell="Fecha del Trabajo">11/02/2023</td>
-                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
-                
-            </tr>
-
-            <tr class="tabcli_fila">
-                <td class="tabcli_body" data-cell="Rut Empresa">1720075-2</td>
-                <td class="tabcli_body" data-cell="Nombre Empresa">Corona</td>
-                <td class="tabcli_body" data-cell="Fecha del Trabajo">03/12/2020</td>
-                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
-                
-            </tr>
-
-            <tr class="tabcli_fila">
-                <td class="tabcli_body" data-cell="Rut Empresa">2813922-k</td>
-                <td class="tabcli_body" data-cell="Nombre Empresa">Totus</td>
-                <td class="tabcli_body" data-cell="Fecha del Trabajo">18/09/2022</td>
-                <td class="tabcli_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_cliedi">Editar</button></td>
-                <td class="tabcli_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_cli">Eliminar</button></td>
-                
-            </tr>
+            }
+            ?>
+            
+            
+            
+            </tbody>
 
             
         </table>
@@ -127,15 +125,20 @@
         </div>
         
 <div class="modal fade" id="Modal_cli" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+
+  <form id="crearClientMod" >
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content mod_clicre">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese los Datos del Cliente</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body ">
-        
-      <form action="#">
+
+      <div class="modal-body">
+
+       <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+      
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de Empresa</label>
                         <div class="col-5">
@@ -184,7 +187,6 @@
                         <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(2)" value="show_cli" > Si</div>
                         <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(1)" value="hide_cli" checked> No</div>
                         
-                        <br>
                        
                             <div class="row" id="bolet_cli" style="display: none;">
                                <div class="mb-4 align-items-stretch">
@@ -194,42 +196,64 @@
                                 </div>
                                 
                             </div>
-                            <div class="mb-4 align-items-stretch">
+
+<!-- 
+
+ <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Ingrese la Boleta</label>
                                 <input type="file" class="form-control" name="data_bol">
-                            </div> 
+                           </div>
+
+
+ -->
+                           
+                            
+                            
                             </div>
                             
                     </div>
 
-                </form>
+               
 
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        
       </div>
+
+     
     </div>
   </div>
+
+    </form>
 </div>
 
 
 
 
 <div class="modal fade" id="Modal_cliedi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+
+<form id="updatClientMod" >
+
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content mod_cliedi">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Editar los Datos del Cliente</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
       <div class="modal-body">
         
-      <form action="#">
+      <div id="errorMessageUpdat" class="alert alert-warning d-none"></div>
+
+      <input type="hidden" name="client_id" id="client_id">
+     
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de Empresa</label>
                         <div class="col-5">
-                        <input type="text" class="form-control" name="rutempr_Clienedi">
+                        <input type="text" class="form-control" name="rutempr_Clienedi" id="rutempr_Clienedi">
                         <span></span> 
                         </div>
                         
@@ -238,7 +262,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de la Empresa</label>
                         <div class="col-7">
-                        <input type="text" class="form-control" name="nombrempr_Clienedi">
+                        <input type="text" class="form-control" name="nombrempr_Clienedi" id="nombrempr_Clienedi">
                         <span></span>  
                         </div>
                         
@@ -247,7 +271,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de Contacto</label>
                         <div class="col-7">
-                         <input type="text" class="form-control" name="nombrcont_Clienedi"> 
+                         <input type="text" class="form-control" name="nombrcont_Clienedi" id="nombrcont_Clienedi"> 
                         </div>
                         
                     </div>
@@ -255,7 +279,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Horas de Trabajo en la Empresa</label>
                         <div class="col-4">
-                          <input type="time" class="form-control" name="hrsempr_Clienedi">
+                          <input type="time" class="form-control" name="hrsempr_Clienedi" id="hrsempr_Clienedi">
                         </div>
                         
                     </div>
@@ -263,7 +287,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Fecha del Trabajo</label>
                         <div class="col-5">
-                        <input type="date" class="form-control" name="dateempr_Clienedi">
+                        <input type="date" class="form-control" name="dateempr_Clienedi" id="dateempr_Clienedi">
                         <span></span> 
                         </div>
                         
@@ -280,32 +304,45 @@
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Codigo de la Boleta</label>
                                 <div class="col-6">
-                                  <input type="text" class="form-control" name="id_boledi">
+                                  <input type="text" class="form-control" name="id_boledi" id="id_boledi">
                                 </div>
                                 
                             </div>
+
+                            <!-- 
                             <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Ingrese la Boleta</label>
                             <input type="file" class="form-control" name="data_boledi">
-                            </div> 
+                            </div>
+                            -->
+
+
                             </div>
                             
                     </div>
 
-                </form>
-
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
+
+      
+               
+
     </div>
   </div>
+
+      </form>
+
 </div>
 
 
 
 <div class="modal fade" id="Elim_cli" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<form id="deletClientMod">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -313,14 +350,25 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h5>¿Esta Seguro que desea eliminar al Cliente?</h3>
+
+      <input type="hidden" name="client_iddel" id="client_iddel">
+
+      <div id="errorMessageDelet" class="alert alert-warning d-none"></div>
+
+
+        <h5>¿Esta Seguro que desea eliminar al Cliente?</h5>
+
+
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
       </div>
     </div>
   </div>
+
+  </form>
+
 </div>
 
 
@@ -333,49 +381,49 @@
       </div>
       <div class="modal-body">
         
-      <form action="#">
+  
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Rut de Empresa: </strong></label>
-                        <label for="text" class="form-label">2197828-1</label>
+                        <label id="rutempr_Clienview" for="text" class="form-label"></label>
 
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Nombre de la Empresa: </strong></label>
-                        <label for="text" class="form-label">Sanander</label>
+                        <label id="nombrempr_Clienview" for="text" class="form-label"></label>
                         
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Nombre de Contacto: </strong></label>
-                        <label for="text" class="form-label">Patrcicio Vega</label>
+                        <label id="nombrcont_Clienview" for="text" class="form-label"></label>
+
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Horas de Trabajo en la Empresa: </strong></label>
-                        <label for="text" class="form-label"></label>
+                        <label id="hrsempr_Clienview" for="text" class="form-label"></label>
                       
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Fecha del Trabajo: </strong></label>
-                        <label for="text" class="form-label">23/02/2022</label>
+                        <label id="dateempr_Clienview" for="text" class="form-label"></label>
                       
                     </div>          
                     
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Codigo de la Boleta: </strong></label>
-                        <label for="text" class="form-label"></label>
+                        <label id="id_bolview" for="text" class="form-label"></label>                       
                       
                     </div>     
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Datos de la Boleta: </strong></label>
-                        <label for="text" class="form-label"></label>
+                        <p  class="form-control"></p>
                       
                     </div>     
 
-                </form>
 
       </div>
       <div class="modal-footer justify-content-between">
@@ -395,7 +443,241 @@
     <script src="js/CliBol_val.js"></script>
     <script src="js/valid_AdClien.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-</body>
+
+        <script>
+
+        $(document).on('submit', '#crearClientMod', function (e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            formData.append("crear_ClientMod", true);
+
+            $.ajax({
+              type: "POST",
+              url: "php/Client_CRUD_inst.php",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+
+                var res = jQuery.parseJSON(response);
+                if (res.status == 422) {
+
+                  $('#errorMessage').removeClass('d-none');
+                  $('#errorMessage').text(res.message);
+                  
+                }else if(res.status == 200) {
+
+                  $('#errorMessage').addClass('d-none');
+                  $('#Modal_cli').modal('hide');
+                  $('#crearClientMod')[0].reset();
+
+                  alertify.set('notifier','position', 'top-center');
+                  alertify.success(res.message);
+
+                  $('.client_table').load(location.href + " .client_table");
+
+                }
+                
+              }
+
+            });
+
+
+        });
+
+          $(document).on('click', '.EditClient_btnmodal', function () {
+
+            var client_id = $(this).val();
+
+            $.ajax({
+              type: "GET",
+              url: "php/Client_CRUD_inst.php?client_id=" + client_id,
+              success: function (response) {
+
+                var res =jQuery.parseJSON(response);
+                if(res.status == 422){
+
+                  alert(res.message);
+
+                }else if(res.status == 200){
+
+                  $('#client_id').val(res.data.ID_Cliente);
+                  $('#rutempr_Clienedi').val(res.data.Rut_empresa);
+                  $('#nombrempr_Clienedi').val(res.data.Nombre_empresa);
+                  $('#nombrcont_Clienedi').val(res.data.Nombre_contacto);
+                  $('#hrsempr_Clienedi').val(res.data.Hora_trabaj_empresa);
+                  $('#dateempr_Clienedi').val(res.data.Fecha_del_trabajo);
+                  $('#id_boledi').val(res.data.Codigo_boleta);
+
+                //  $('#').val(res.data.Datos_boleta);
+
+                  $('#Modal_cliedi').modal('show');
+
+                }
+
+              }
+
+              });
+
+          });
+
+
+
+          $(document).on('submit', '#updatClientMod', function (e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            formData.append("updat_ClientMod", true);
+
+            $.ajax({
+              type: "POST",
+              url: "php/Client_CRUD_inst.php",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+
+                var res = jQuery.parseJSON(response);
+                if (res.status == 422) {
+
+                  $('#errorMessageUpdat').removeClass('d-none');
+                  $('#errorMessageUpdat').text(res.message);
+                  
+                }else if(res.status == 200) {
+
+                  $('#errorMessageUpdat').addClass('d-none');
+                  $('#Modal_cliedi').modal('hide');
+                  $('#updatClientMod')[0].reset();
+
+                  alertify.set('notifier','position', 'top-center');
+                  alertify.success(res.message);
+
+                  $('.client_table').load(location.href + " .client_table");
+
+                }
+                
+              }
+
+            });
+
+
+          });
+
+
+          $(document).on('click', '.ViewClient_btnmodal', function () {
+
+            var client_id = $(this).val();
+
+              $.ajax({
+              type: "GET",
+              url: "php/Client_CRUD_inst.php?client_id=" + client_id,
+              success: function (response) {
+
+              var res =jQuery.parseJSON(response);
+              if(res.status == 422){
+
+                alert(res.message);
+
+              }else if(res.status == 200){
+
+                $('#rutempr_Clienview').text(res.data.Rut_empresa);
+                $('#nombrempr_Clienview').text(res.data.Nombre_empresa);
+                $('#nombrcont_Clienview').text(res.data.Nombre_contacto);
+                $('#hrsempr_Clienview').text(res.data.Hora_trabaj_empresa);
+                $('#dateempr_Clienview').text(res.data.Fecha_del_trabajo);
+                $('#id_bolview').text(res.data.Codigo_boleta);
+
+            //  $('#').val(res.data.Datos_boleta);
+
+                $('#Viewdata_clien').modal('show');
+
+             }
+
+           }
+
+            });
+
+          });
+
+
+
+          $(document).on('click', '.DeletClient_btnmodal', function () {
+
+            var client_id = $(this).val();
+
+              $.ajax({
+               type: "GET",
+               url: "php/Client_CRUD_inst.php?client_id=" + client_id,
+               success: function (response) {
+
+                var res =jQuery.parseJSON(response);
+                if(res.status == 422){
+
+                alert(res.message);
+
+              }else if(res.status == 200){
+
+                 $('#client_iddel').val(res.data.ID_Cliente);
+
+                 $('#Elim_cli').modal('show');
+
+    }
+
+  }
+
+  });
+
+});
+
+     
+          $(document).on('submit', '#deletClientMod', function (e) {
+            e.preventDefault();
+
+
+            var formData = new FormData(this);
+            formData.append("delet_ClientMod", true);
+
+            $.ajax({
+              type: "POST",
+              url: "php/Client_CRUD_inst.php",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+
+                var res = jQuery.parseJSON(response);
+                if (res.status == 500) {
+
+                  $('#errorMessageDelet').removeClass('d-none');
+                  $('#errorMessageDelet').text(res.message);
+                  
+                }else if(res.status == 200) {
+
+                  $('#errorMessageDelet').addClass('d-none');
+                  $('#Elim_cli').modal('hide');
+
+                  alertify.set('notifier','position', 'top-center');
+                  alertify.success(res.message);
+
+                  $('.client_table').load(location.href + " .client_table");
+
+                }
+                
+              }
+
+            });
+
+            
+
+          });
+
+        </script>
+
+      </body>
 </html>

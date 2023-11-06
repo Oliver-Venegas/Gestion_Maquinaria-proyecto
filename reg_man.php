@@ -70,11 +70,22 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Elija el Tipo de Mantenedor</label>
                         <div class="usr_div">
-                            <select class="form-select" name="type_mantensel" aria-label="Default select example">
-                             
-                             <option >Mantenedor Electrico</option>
-                             <option >Mantenedor Mecanico</option>
-                        </select>
+
+                            <select class="form-select mb-4 align-items-stretch" name="type_mantensel" aria-label="Default select example">
+
+<?php
+include('php/conect_BD.php');
+
+ $busc_tipe = "SELECT * FROM tipo_mantenedor";
+ $busc_tipe_run = mysqli_query($conexion, $busc_tipe) or die (mysqli_error($conexion));
+ 
+ foreach($busc_tipe_run as $list_tipes):  ?>
+                            
+    <option value="<?php echo $list_tipes['Nombre_Tipo'] ?>"><?php echo $list_tipes['Nombre_Tipo'] ?></option>
+
+  <?php endforeach ?>
+
+                            </select>
                         </div>
                         
 
