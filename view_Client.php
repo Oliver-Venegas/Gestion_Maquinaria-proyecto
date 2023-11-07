@@ -10,6 +10,17 @@
     
   }
 
+  $mostra_email_user = $_SESSION['user_manten'];
+
+  $obtdatos_sql = "SELECT Rut  FROM usuario_mantenedor WHERE Email_mantenedor = '$mostra_email_user'";
+  $result_tolog = $conexion->query($obtdatos_sql);
+
+  while($data_oflog = $result_tolog->fetch_assoc()){
+
+    $rut_load_log = $data_oflog['Rut'];
+
+
+  }
 
 ?>
 
@@ -55,11 +66,12 @@
     <div class="container  mt-5 mb-5 ">
         <div class="row align-items-stretch p-4">
 
-          <table class="client_table table-borderless">
+          <table class="client_table ">
 
-            <caption class="tabcli_capti">Listado de los Clientes</caption>
+            
             <thead>
               <tr>
+                
                 <th class="tabcli_head">Rut Empresa</th>
                 <th class="tabcli_head">Nombre Empresa</th>
                 <th class="tabcli_head">Fecha del Trabajo</th>
@@ -70,10 +82,11 @@
             </tr>
             </thead>
 
-            <tbody>
+            
+            <tbody id="serchresut">
 
             <?php 
-            $querytabl_Client = "SELECT * FROM cliente_mantened";
+            $querytabl_Client = "SELECT * FROM cliente_mantened WHERE rut_LogUser_Clint= '$rut_load_log'";
             $querytabl_Client_run = mysqli_query($conexion, $querytabl_Client);
 
             if(mysqli_num_rows($querytabl_Client_run) > 0)
@@ -103,7 +116,7 @@
             
             </tbody>
 
-            
+         <caption class="tabcli_capti">Listado de los Clientes</caption>   
         </table>
 
         </div>
@@ -117,7 +130,7 @@
                     </div>
                    
                     <div class="col-auto p-1">
-                        <input type="text"  class="form-control"  placeholder="Buscar Cliente">
+                        <input type="text"  class="form-control" id="Client_serch" placeholder="Buscar Cliente">
                     </div>
                         
                 </div>
@@ -127,7 +140,7 @@
         
 <div class="modal fade" id="Modal_cli" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
 
-  <form id="crearClientMod" >
+  <form id="crearClientMod">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content mod_clicre">
       <div class="modal-header">
@@ -135,11 +148,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body" >
 
        <div id="errorMessage" class="alert alert-warning d-none"></div>
 
-      
+
+       <input type="hidden" name="torutuserLoad" value="<?php echo $rut_load_log ?>">
+
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de Empresa</label>
                         <div class="col-5">
@@ -200,7 +215,7 @@
 
 <!-- 
 
- <div class="mb-4 align-items-stretch">
+                           <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Ingrese la Boleta</label>
                                 <input type="file" class="form-control" name="data_bol">
                            </div>
@@ -448,7 +463,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    
+
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
@@ -456,7 +471,48 @@
 
 
 
-  
+  <script>
+
+    $(document).ready(function(){
+
+      $("#Client_serch").keyup(function(){
+
+        var input = $(this).val();
+
+        if(input != ""){
+          $.ajax({
+
+            url:"php/Clien_serchTabl.php",
+            method:"POST",
+            data:{input:input},
+
+            success:function(data){
+              $("#serchresut").html(data);
+
+            }
+
+          });
+
+        }else{
+          
+          $.ajax({
+
+            url:"php/Clien_serchTabl.php",
+            method:"POST",
+            data:{input:input},
+
+            success:function(data){
+              $("#serchresut").html(data);
+
+            }
+
+            });
+        }
+
+      });
+
+    });
+  </script>
 
         <script>
 
