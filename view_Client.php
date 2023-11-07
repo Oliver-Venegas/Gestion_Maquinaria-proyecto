@@ -117,6 +117,7 @@
                     </div>
                    
                     <div class="col-auto p-1">
+                        <input type="text"  class="form-control"  placeholder="Buscar Cliente">
                     </div>
                         
                 </div>
