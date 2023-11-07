@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="estilos.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 </head>
 <body class="menu_bacgr">
 
@@ -54,7 +55,7 @@
     <div class="container  mt-5 mb-5 ">
         <div class="row align-items-stretch p-4">
 
-          <table  class="client_table table-borderless">
+          <table class="client_table table-borderless">
 
             <caption class="tabcli_capti">Listado de los Clientes</caption>
             <thead>
@@ -116,7 +117,6 @@
                     </div>
                    
                     <div class="col-auto p-1">
-                        <input type="text"  class="form-control" name="" placeholder="Buscar Cliente">
                     </div>
                         
                 </div>
@@ -447,7 +447,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+  
 
         <script>
 
