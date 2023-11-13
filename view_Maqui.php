@@ -1,3 +1,29 @@
+<?php
+  session_start();
+
+  include('php/conect_BD.php');
+
+  if(!isset($_SESSION['user_manten'])){
+    header("Location: index.php");
+    session_destroy();
+    die();
+    
+  }
+
+  $mostra_email_user = $_SESSION['user_manten'];
+
+  $obtdatos_sql = "SELECT Rut  FROM usuario_mantenedor WHERE Email_mantenedor = '$mostra_email_user'";
+  $result_tolog = $conexion->query($obtdatos_sql);
+
+  while($data_oflog = $result_tolog->fetch_assoc()){
+
+    $rut_load_log = $data_oflog['Rut'];
+
+
+  }
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +34,8 @@
     <!-- CONEXION CSS -->
     <link rel="stylesheet" href="estilos.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 </head>
 <body class="menu_bacgr">
 
@@ -40,68 +68,50 @@
 
             <caption class="tabmaqui_capti">Listado de las Maquinas</caption>
 
-            <tr>
+            <thead>
+              <tr>
                 <th class="tabmaqui_head">Numero Serie</th>
                 <th class="tabmaqui_head">Nombre Maquina</th>
                 <th class="tabmaqui_head">Rut de la Empresa</th>
                 <th class="tabmaqui_head"> </th>
                 <th class="tabmaqui_head"> </th>
+                <th class="tabmaqui_head"> </th>
+
+              </tr>
+            </thead>
+
+            <tbody id="serchresut_maqui">
+
+            <?php 
+            $querytabl_Maquin = "SELECT * FROM maquina_mantened WHERE rut_LogUser_Maqui= '$rut_load_log'";
+            $querytabl_Maquin_run = mysqli_query($conexion, $querytabl_Maquin);
+
+            if(mysqli_num_rows($querytabl_Maquin_run) > 0)
+            {
+              foreach($querytabl_Maquin_run as $Maquin_mantened){
+
+                 ?>
+
+                <tr class="tabmaqui_fila">
+                <td class="tabmaqui_body"  data-cell="Numero Serie"> <?= $Maquin_mantened['Numer_Serie'] ?> </td>
+                <td class="tabmaqui_body"  data-cell="Nombre Maquina"> <?= $Maquin_mantened['Nombr_Maquina'] ?> </td>
+                <td class="tabmaqui_body"  data-cell="Rut de la Empresa"> <?= $Maquin_mantened['Rut_Empresa'] ?> </td>
+                <td class="tabmaqui_body"><button type="button" value="<?= $Maquin_mantened['Numer_Serie'] ?>" class="ViewMaqui_btnmodal btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#Viewdata_maqui">Datos</button></td>
+                <td class="tabmaqui_body"><button type="button" value="<?= $Maquin_mantened['Numer_Serie'] ?>" class="EditMaqui_btnmodal btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
+                <td class="tabmaqui_body"><button type="button" value="<?= $Maquin_mantened['Numer_Serie'] ?>" class="DeletMaqui_btnmodal btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
 
             </tr>
 
-            <tr class="tabmaqui_fila">
-                <td class="tabmaqui_body" data-bs-toggle="modal" data-bs-target="#Viewdata_maqui" data-cell="Numero Serie">53233321</td>
-                <td class="tabmaqui_body" data-bs-toggle="modal" data-bs-target="#Viewdata_maqui" data-cell="Nombre Maquina">Pantalla LED</td>
-                <td class="tabmaqui_body" data-bs-toggle="modal" data-bs-target="#Viewdata_maqui" data-cell="Rut de la Empresa">1143228-4</td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
 
-            </tr>
+                <?php
+              }
 
-            <tr class="tabmaqui_fila">
-                <td class="tabmaqui_body" data-cell="Numero Serie">12221241</td>
-                <td class="tabmaqui_body" data-cell="Nombre Maquina">Sensor de Metales</td>
-                <td class="tabmaqui_body" data-cell="Rut de la Empresa">2197828-1</td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
-                
-            </tr>
+            }
+            ?>
 
-            <tr class="tabmaqui_fila">
-                <td class="tabmaqui_body" data-cell="Numero Serie">32123212</td>
-                <td class="tabmaqui_body" data-cell="Nombre Maquina">Bomba Cav/Prog</td>
-                <td class="tabmaqui_body" data-cell="Rut de la Empresa">1223234-8</td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
-                
-            </tr>
+            </tbody>
+            
 
-            <tr class="tabmaqui_fila">
-                <td class="tabmaqui_body" data-cell="Numero Serie">1234123</td>
-                <td class="tabmaqui_body" data-cell="Nombre Maquina">Supresor de Gas</td>
-                <td class="tabmaqui_body" data-cell="Rut de la Empresa">1720075-2</td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
-                
-            </tr>
-
-            <tr class="tabmaqui_fila">
-                <td class="tabmaqui_body" data-cell="Numero Serie">577771993</td>
-                <td class="tabmaqui_body" data-cell="Nombre Maquina">Compreso Hidraulico</td>
-                <td class="tabmaqui_body" data-cell="Rut de la Empresa">2813922-k</td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
-                
-            </tr>
-
-            <tr class="tabmaqui_fila">
-                <td class="tabmaqui_body" data-cell="Numero Serie">231123334</td>
-                <td class="tabmaqui_body" data-cell="Nombre Maquina">Microondas Industrial</td>
-                <td class="tabmaqui_body" data-cell="Rut de la Empresa">2190820-3</td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_maqui">Editar</button></td>
-                <td class="tabmaqui_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_maqui">Eliminar</button></td>
-                
-            </tr>
 
             
         </table>
@@ -117,7 +127,7 @@
                     </div>
                    
                     <div class="col-auto p-1">
-                        <input type="text"  class="form-control" name="" placeholder="Buscar Maquina">
+                        <input type="text"  class="form-control" id="Maquin_serch" placeholder="Buscar Maquina">
                     </div>
                                          
                 </div>
@@ -126,6 +136,9 @@
         </div>
         
 <div class="modal fade" id="Modal_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+
+  <form id="crearMaquinMod">
+
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content mod_maquicre">
       <div class="modal-header">
@@ -133,8 +146,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+
+      <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+
+       <input type="hidden" name="torutuserLoad" value="<?php echo $rut_load_log ?>">
         
-      <form action="#">
+      
                     <div class="mb-4">
                         <label for="text" class="form-label">Numero de Serie</label>
                         <div class="col-6">
@@ -155,8 +173,23 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
-                        <div class="col-5">
-                        <input type="text" class="form-control" name="rutEmpr_Maqui" placeholder="00000000-0">
+                        <div class="col-9">
+
+                        <select class="form-select mb-4 align-items-stretch" name="rutEmpr_Maqui" aria-label="Default select example">
+
+
+                        <?php
+
+ $busc_rutempr = "SELECT * FROM cliente_mantened";
+ $busc_rutempr_run = mysqli_query($conexion, $busc_rutempr) or die (mysqli_error($conexion));
+ 
+ foreach($busc_rutempr_run as $list_ruts):  ?>
+                            
+    <option value="<?php echo $list_ruts['Rut_empresa'] ?>"><?php echo $list_ruts['Rut_empresa']," / ". $list_ruts['Fecha_del_trabajo'] ?></option>
+
+  <?php endforeach ?>
+
+                        </select>
                         <span></span>
                         </div>
                         
@@ -203,21 +236,27 @@
                     </div>
 
 
-                </form>
+                
 
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>
+
+  </form>
+
 </div>
 
 
 
 
 <div class="modal fade" id="Edit_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<form id="updatMaquinMod">
+
   <div class="modal-dialog">
     <div class="modal-content mod_maquiedi">
       <div class="modal-header">
@@ -225,12 +264,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
-      <form action="#">
+
+      <div id="errorMessageUpdat" class="alert alert-warning d-none"></div>
+
+      <input type="hidden" name="maqui_id" id="maqui_id">
+
+
                     <div class="mb-4">
                         <label for="text" class="form-label">Numero de Serie</label>
                         <div class="col-6">
-                        <input type="text" class="form-control" name="numser_Maquiedi">
+                        <input type="text" class="form-control" name="numser_Maquiedi" id="numser_Maquiedi">
                         <span></span> 
                         </div>
                         
@@ -239,7 +282,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Nombre de la Maquina</label>
                         <div class="col-7">
-                        <input type="text" class="form-control" name="nombr_Maquiedi">
+                        <input type="text" class="form-control" name="nombr_Maquiedi" id="nombr_Maquiedi">
                         <span></span> 
                         </div>
                         
@@ -247,8 +290,23 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
-                        <div class="col-5">
-                        <input type="text" class="form-control" name="rutEmpr_Maquiedi">
+                        <div class="col-9">
+
+                        <select class="form-select mb-4 align-items-stretch" name="rutEmpr_Maquiedi" id="rutEmpr_Maquiedi" aria-label="Default select example">
+
+
+                        <?php
+
+ $busc_rutempr = "SELECT * FROM cliente_mantened";
+ $busc_rutempr_run = mysqli_query($conexion, $busc_rutempr) or die (mysqli_error($conexion));
+ 
+ foreach($busc_rutempr_run as $list_ruts):  ?>
+                            
+    <option value="<?php echo $list_ruts['Rut_empresa'] ?>"><?php echo $list_ruts['Rut_empresa']," / ". $list_ruts['Fecha_del_trabajo'] ?></option>
+
+  <?php endforeach ?>
+
+                        </select>
                         <span></span>
                         </div>
                         
@@ -267,7 +325,7 @@
                                <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Numero de Serie del Repuesto</label>
                                 <div class="col-6">
-                                  <input type="text" class="form-control" name="seri_repuedi">
+                                  <input type="text" class="form-control" name="seri_repuedi" id="seri_repuedi">
                                 </div>
                                 
                             </div>
@@ -275,7 +333,7 @@
                             <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Nombre del Repuesto</label>
                                 <div class="col-7">
-                                <input type="text" class="form-control" name="nombr_repuedi">
+                                <input type="text" class="form-control" name="nombr_repuedi" id="nombr_repuedi">
                                 </div>
                                 
                             </div> 
@@ -283,7 +341,7 @@
                             <div class="mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Cantidad de Repuestos</label>
                                 <div class="col-3">
-                                <input type="text" class="form-control" name="cant_repuedi">
+                                <input type="text" class="form-control" name="cant_repuedi" id="cant_repuedi">
                                 </div>
                                 
                             </div>
@@ -295,20 +353,26 @@
                     </div>
 
 
-                </form>
+                
 
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>
+
+  </form>
+
 </div>
     
 
 
 <div class="modal fade" id="Elim_maqui" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<form id="deletMaquintMod">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -316,14 +380,24 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h5>¿Esta Seguro que desea eliminar la Maquina?</h3>
+
+      <input type="hidden" name="maqui_iddel" id="maqui_iddel">
+
+      <div id="errorMessageDelet" class="alert alert-warning d-none"></div>
+
+        <h5>¿Esta Seguro que desea eliminar la Maquina?</h5>
+
+
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
       </div>
     </div>
   </div>
+
+</form>
+
 </div>
 
 
@@ -337,49 +411,40 @@
       </div>
       <div class="modal-body">
         
-      <form action="#">
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Numero de Serie: </strong></label>
-                        <label for="text" class="form-label">53233321</label>
+                        <label id="numser_Maquinview" for="text" class="form-label"></label>
 
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Nombre de la Maquina: </strong></label>
-                        <label for="text" class="form-label">Pantalla LED</label>
+                        <label id="nombrmaq_Maquinview" for="text" class="form-label"></label>
                         
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Rut de la Empresa que pertenece la Maquina: </strong></label>
-                        <label for="text" class="form-label">1143228-4</label>
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label"><strong>Horas de Trabajo en la Empresa: </strong></label>
-                        <label for="text" class="form-label"></label>
-                      
+                        <label id="rutempr_Maquinview" for="text" class="form-label"></label>
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Numero de Serie del Repuesto: </strong></label>
-                        <label for="text" class="form-label">1828221</label>
+                        <label id="repseri_Maquinview" for="text" class="form-label"></label>
                       
                     </div>          
                     
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Nombre del Repuesto: </strong></label>
-                        <label for="text" class="form-label">Resistencia</label>
+                        <label id="nombrep_Maquinview" for="text" class="form-label"></label>
                       
                     </div>     
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Cantidad de Repuestos: </strong></label>
-                        <label for="text" class="form-label">10</label>
+                        <label id="cantrep_Maquinview" for="text" class="form-label"></label>
                       
                     </div>     
-
-                </form>
 
       </div>
       <div class="modal-footer justify-content-between">
@@ -399,6 +464,285 @@
     <script src="js/MaquRep_val.js"></script>
     <script src="js/valid_AdMaqui.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+    <script>
+
+$(document).on('submit', '#crearMaquinMod', function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    formData.append("crear_MaquinMod", true);
+
+    $.ajax({
+      type: "POST",
+      url: "php/Maquin_CRUD_inst.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+
+        var res = jQuery.parseJSON(response);
+        if (res.status == 422) {
+
+          $('#errorMessage').removeClass('d-none');
+          $('#errorMessage').text(res.message);
+          
+        }else if(res.status == 200) {
+
+          $('#errorMessage').addClass('d-none');
+          $('#Modal_maqui').modal('hide');
+          $('#crearMaquinMod')[0].reset();
+
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.message);
+
+          $('.maquina_table').load(location.href + " .maquina_table");
+
+        }
+        
+      }
+
+    });
+
+
+});
+
+  $(document).on('click', '.EditMaqui_btnmodal', function () {
+
+    var maqui_id = $(this).val();
+
+    $.ajax({
+      type: "GET",
+      url: "php/Maquin_CRUD_inst.php?maqui_id=" + maqui_id,
+      success: function (response) {
+
+        var res =jQuery.parseJSON(response);
+        if(res.status == 422){
+
+          alert(res.message);
+
+        }else if(res.status == 200){
+
+          $('#maqui_id').val(res.data.Numer_Serie);
+          $('#numser_Maquiedi').val(res.data.Numer_Serie);
+          $('#nombr_Maquiedi').val(res.data.Nombr_Maquina);
+          $('#rutEmpr_Maquiedi').val(res.data.Rut_Empresa);
+          $('#seri_repuedi').val(res.data.Num_SerRepuest);
+          $('#nombr_repuedi').val(res.data.Nombre_Repuest);
+          $('#cant_repuedi').val(res.data.Cant_Repuest);
+
+          $('#Edit_maqui').modal('show');
+
+        }
+
+      }
+
+      });
+
+  });
+
+
+
+  $(document).on('submit', '#updatMaquinMod', function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    formData.append("updat_MaquinMod", true);
+
+    $.ajax({
+      type: "POST",
+      url: "php/Maquin_CRUD_inst.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+
+        var res = jQuery.parseJSON(response);
+        if (res.status == 422) {
+
+          $('#errorMessageUpdat').removeClass('d-none');
+          $('#errorMessageUpdat').text(res.message);
+          
+        }else if(res.status == 200) {
+
+          $('#errorMessageUpdat').addClass('d-none');
+          $('#Edit_maqui').modal('hide');
+          $('#updatMaquinMod')[0].reset();
+
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.message);
+
+          $('.maquina_table').load(location.href + " .maquina_table");
+
+        }
+        
+      }
+
+    });
+
+
+  });
+
+
+  $(document).on('click', '.ViewMaqui_btnmodal', function () {
+
+    var maqui_id = $(this).val();
+
+      $.ajax({
+      type: "GET",
+      url: "php/Maquin_CRUD_inst.php?maqui_id=" + maqui_id,
+      success: function (response) {
+
+      var res =jQuery.parseJSON(response);
+      if(res.status == 422){
+
+        alert(res.message);
+
+      }else if(res.status == 200){
+
+          $('#numser_Maquinview').text(res.data.Numer_Serie);
+          $('#nombrmaq_Maquinview').text(res.data.Nombr_Maquina);
+          $('#rutempr_Maquinview').text(res.data.Rut_Empresa);
+          $('#repseri_Maquinview').text(res.data.Num_SerRepuest);
+          $('#nombrep_Maquinview').text(res.data.Nombre_Repuest);
+          $('#cantrep_Maquinview').text(res.data.Cant_Repuest);
+
+          $('#Viewdata_maqui').modal('show');
+
+     }
+
+   }
+
+    });
+
+  });
+
+
+  $(document).on('submit', '#down_bolet', function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    formData.append("download_boleta", true);
+
+    $.ajax({
+      type: "POST",
+      url: "php/descarg_bol.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+
+        var res = jQuery.parseJSON(response);
+        if (res.status == 422) {
+
+          $('#errorMessage').removeClass('d-none');
+          $('#errorMessage').text(res.message);
+          
+        }else if(res.status == 200) {
+
+          $('#errorMessage').addClass('d-none');
+          $('#crearClientMod')[0].reset();
+
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.message);
+
+
+        }
+        
+      }
+
+    });
+
+
+});
+
+
+
+
+  $(document).on('click', '.DeletMaqui_btnmodal', function () {
+
+    var maqui_id = $(this).val();
+
+      $.ajax({
+       type: "GET",
+       url: "php/Maquin_CRUD_inst.php?maqui_id=" + maqui_id,
+       success: function (response) {
+
+        var res =jQuery.parseJSON(response);
+        if(res.status == 422){
+
+        alert(res.message);
+
+      }else if(res.status == 200){
+
+         $('#maqui_iddel').val(res.data.Numer_Serie);
+
+         $('#Elim_maqui').modal('show');
+
+}
+
+}
+
+});
+
+});
+
+
+  $(document).on('submit', '#deletMaquintMod', function (e) {
+    e.preventDefault();
+
+
+    var formData = new FormData(this);
+    formData.append("delet_MaquintMod", true);
+
+    $.ajax({
+      type: "POST",
+      url: "php/Maquin_CRUD_inst.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+
+        var res = jQuery.parseJSON(response);
+        if (res.status == 500) {
+
+          $('#errorMessageDelet').removeClass('d-none');
+          $('#errorMessageDelet').text(res.message);
+          
+        }else if(res.status == 200) {
+
+          $('#errorMessageDelet').addClass('d-none');
+          $('#Elim_maqui').modal('hide');
+
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.message);
+
+          $('.maquina_table').load(location.href + " .maquina_table");
+
+        }
+        
+      }
+
+    });
+
+    
+
+  });
+
+</script>
+
+
+
 </body>
 </html>

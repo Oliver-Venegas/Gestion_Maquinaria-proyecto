@@ -101,66 +101,107 @@
 
             <div class="row align-items-stretch" style="justify-content: space-between;">
 
+            <div class="col-auto p-2">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#Mantenetipe">Tipo de Mantenedor</button>
+
+              </div> 
+
               <div class="col-auto p-2">
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Create_mantenetipe">Crear Tipo de Mantenedor</button>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Delet_userprep">Eliminar Session</button>
 
-              </div>
-
-              <div class="col-auto p-2">
-                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#Chang_mantenetipe">Cambiar Tipo de Mantenedor</button>
-
-              </div>               
+              </div>                            
 
             </div>
                 
         </div>
 
- <div class="modal fade" id="Chang_mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal fade" id="Delet_userprep" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar el Tipo de Mantenedor</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-<form action="php/chang_TipMant.php" method="POST">
+      <div class="modal-body">
+              
+      <h5>¿Esta Seguro de Eliminar el Usuario en que se encuentra?</h5>
+      <br>
+                                    
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+        <button type="button" class="btn btn-danger" data-bs-target="#Delet_userLog" data-bs-toggle="modal">Eliminar</button>
+      </div>
+
+      
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="Delet_userLog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <form action="php/delet_User.php" method="POST">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+                    
+      <h5>Eliminar el Usuario Borrara todo lo Realizado por este ¿Esta Seguro de Eliminar el Usuario con todos sus Datos ingresados?</h5>
+      <br>       
+
+      <input type="hidden" name="delet_rut" value="<?php echo $rut_mostr ?>">
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+        <button type="submit"  data-bs-dismiss="modal" class="btn btn-danger">Eliminar</button>
+      </div>
+
+      
+      </div>
+    </div>
+
+    </form>
+
+  </div>
+
+
+ <div class="modal fade" id="Mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Tipo de Mantenedor</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
       <div class="modal-body">
 
-      <input type="hidden" name="chang_rut" value="<?php echo $rut_mostr ?>">
+      <h5>Seleccione la Accion que desea Realizar</h5>
+      <br>
 
-                  <div class="col-6">
-                  <label for="text" class="form-label">Seleccione el Tipo de Mantenedor</label>
+      <button class="mb-4 btn btn-primary" data-bs-target="#Create_mantenetipe" data-bs-toggle="modal">Crear Tipo de Mantenedor</button>
+<br>
+      <button class="mb-4 btn btn-secondary" data-bs-target="#Chang_mantenetipe" data-bs-toggle="modal">Cambiar Tipo de Mantenedor</button>
+<br>
+      <button class="mb-4 btn btn-danger" data-bs-target="#Delet_mantenetipe" data-bs-toggle="modal">Eliminar Tipo de Mantenedor</button>          
+       
 
-                    <select class="form-select mb-4 align-items-stretch" name="type_mantenchang" aria-label="Default select example">
-                    
-                    <?php
-
-                     $busc_tipe = "SELECT * FROM tipo_mantenedor";
-                     $busc_tipe_run = mysqli_query($conexion, $busc_tipe) or die (mysqli_error($conexion));
-                     
-                     foreach($busc_tipe_run as $list_tipes):  ?>
-                                                
-                        <option value="<?php echo $list_tipes['Nombre_Tipo'] ?>"><?php echo $list_tipes['Nombre_Tipo'] ?></option>
-
-                      <?php endforeach ?>
-
-                    </select>
-
-                  </div>          
-                            
-                            
                         
       </div>
        
       <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    
-        <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
       </div>
-      </form>
-      
- 
       </div>
     </div>
   </div>
@@ -168,6 +209,9 @@
 
 
  <div class="modal fade" id="Create_mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+ <form action="php/crea_TipMant.php" method="POST">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -175,7 +219,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-  <form action="php/crea_TipMant.php" method="POST">
+  
 
       <div class="modal-body">
                         
@@ -218,14 +262,128 @@
 
       </div>
       <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" data-bs-target="#Mantenetipe" data-bs-toggle="modal">Atras</button>
     
+        <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
+      </div> 
+      </div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="modal fade" id="Chang_mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <form action="php/chang_TipMant.php" method="POST">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Nuevo Tipo de Mantenedor</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+
+        <input type="hidden" name="chang_rut" value="<?php echo $rut_mostr ?>">
+
+        <label for="text" class="form-label">Seleccione el Tipo de Mantenedor al que Cambiar</label>
+            <div class="col-6">
+            
+
+              <select class="form-select mb-4 align-items-stretch" name="type_mantenchang" aria-label="Default select example">
+              
+              <?php
+
+               $busc_tipe = "SELECT * FROM tipo_mantenedor";
+               $busc_tipe_run = mysqli_query($conexion, $busc_tipe) or die (mysqli_error($conexion));
+               
+               foreach($busc_tipe_run as $list_tipes):  ?>
+                                          
+                  <option value="<?php echo $list_tipes['Nombre_Tipo'] ?>"><?php echo $list_tipes['Nombre_Tipo'] ?></option>
+
+                <?php endforeach ?>
+
+              </select>
+
+            </div>          
+                      
+                      
+                  
+      </div>
+      
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-target="#Mantenetipe" data-bs-toggle="modal">Atras</button>
         <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
       </div>
 
-      </form>
       </div>
     </div>
+
+    </form>
+  
+  </div>
+
+  <div class="modal fade" id="Delet_mantenetipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <form action="php/del_TipMant.php" method="POST">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Tipo de Mantenedor</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+                        
+                      <?php 
+                        if(isset($_GET['error_reg'])) {
+
+                            ?>
+                        <div class="message_creamant">
+                            <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
+          <label for="text" class="form-label">Seleccione el Tipo de Mantenedor a Eliminar</label>
+            <div class="col-6">
+            
+
+              <select class="form-select mb-4 align-items-stretch" name="type_mantendelet" aria-label="Default select example">
+              
+              <?php
+
+               $busc_tipe = "SELECT * FROM tipo_mantenedor";
+               $busc_tipe_run = mysqli_query($conexion, $busc_tipe) or die (mysqli_error($conexion));
+               
+               foreach($busc_tipe_run as $list_tipes):  ?>
+                                          
+                  <option value="<?php echo $list_tipes['ID_Tipo_Mantenedor'] ?>"><?php echo $list_tipes['Nombre_Tipo'] ?></option>
+
+                <?php endforeach ?>
+
+              </select>
+
+            </div>  
+                                    
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-target="#Mantenetipe" data-bs-toggle="modal">Atras</button>
+    
+        <button type="submit"  data-bs-dismiss="modal" class="btn btn-danger">Eliminar</button>
+      </div>
+
+      
+      </div>
+    </div>
+
+    </form>
+
   </div>
 
 

@@ -140,7 +140,7 @@
         
 <div class="modal fade" id="Modal_cli" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
 
-  <form id="crearClientMod">
+  <form id="crearClientMod" enctype="multipart/form-data">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content mod_clicre">
       <div class="modal-header">
@@ -213,15 +213,15 @@
                                 
                             </div>
 
-<!-- 
+<!-- -->
 
                            <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Ingrese la Boleta</label>
-                                <input type="file" class="form-control" name="data_bol">
+                                <input type="file" class="form-control" id="data_bol" name="data_bol">
                            </div>
 
 
- -->
+ 
                            
                             
                             
@@ -251,7 +251,7 @@
 
 <div class="modal fade" id="Modal_cliedi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
 
-<form id="updatClientMod" >
+<form id="updatClientMod" enctype="multipart/form-data">
 
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content mod_cliedi">
@@ -325,12 +325,12 @@
                                 
                             </div>
 
-                            <!-- 
+                            <!-- -->
                             <div class="mb-4 align-items-stretch">
                             <label for="text" class="form-label">Ingrese la Boleta</label>
-                            <input type="file" class="form-control" name="data_boledi">
+                            <input type="file" class="form-control" id="data_boledi" name="data_boledi">
                             </div>
-                            -->
+                            
 
 
                             </div>
@@ -396,7 +396,33 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+
+      
         
+      <?php 
+                        if(isset($_GET['error_reg'])) {
+
+                            ?>
+                            
+                        <div class="message_creamant">
+                            <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
+
+                      <?php 
+                        if(isset($_GET['suscces_reg'])) {
+
+                            ?>
+                        <div class="usses_creamant">
+                            <strong class="suscces_reg">  <?php  echo $_GET['suscces_reg'];  ?> </strong>
+                        
+                        </div>
+                        <br>
+
+                      <?php } ?>
   
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Rut de Empresa: </strong></label>
@@ -435,8 +461,18 @@
                     </div>     
 
                     <div class="mb-4">
+                        
+
+                        <form action="php/descarg_bol.php" method="POST">
                         <label for="text" class="form-label"><strong>Datos de la Boleta: </strong></label>
-                        <p  class="form-control"></p>
+                        <label id="data_bolview" for="text" class="form-label p-1"></label>
+                          <input type="hidden" id="client_id_bolt" name="client_id_bolt" >
+
+                          
+                          
+                          <button type="submit" class="btn btn-sm btn-secondary"><i class='bx bx-download'></i></button>
+                        </form>
+
                       
                     </div>     
 
@@ -580,7 +616,7 @@
                   $('#dateempr_Clienedi').val(res.data.Fecha_del_trabajo);
                   $('#id_boledi').val(res.data.Codigo_boleta);
 
-                //  $('#').val(res.data.Datos_boleta);
+                  $('#data_boledi').val(res.data.Datos_boleta);
 
                   $('#Modal_cliedi').modal('show');
 
@@ -651,6 +687,8 @@
 
               }else if(res.status == 200){
 
+                $('#client_id_bolt').val(res.data.ID_Cliente);
+
                 $('#rutempr_Clienview').text(res.data.Rut_empresa);
                 $('#nombrempr_Clienview').text(res.data.Nombre_empresa);
                 $('#nombrcont_Clienview').text(res.data.Nombre_contacto);
@@ -658,7 +696,7 @@
                 $('#dateempr_Clienview').text(res.data.Fecha_del_trabajo);
                 $('#id_bolview').text(res.data.Codigo_boleta);
 
-            //  $('#').val(res.data.Datos_boleta);
+                $('#data_bolview').text(res.data.Datos_boleta);
 
                 $('#Viewdata_clien').modal('show');
 
@@ -669,6 +707,46 @@
             });
 
           });
+
+
+          $(document).on('submit', '#down_bolet', function (e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            formData.append("download_boleta", true);
+
+            $.ajax({
+              type: "POST",
+              url: "php/descarg_bol.php",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+
+                var res = jQuery.parseJSON(response);
+                if (res.status == 422) {
+
+                  $('#errorMessage').removeClass('d-none');
+                  $('#errorMessage').text(res.message);
+                  
+                }else if(res.status == 200) {
+
+                  $('#errorMessage').addClass('d-none');
+                  $('#crearClientMod')[0].reset();
+
+                  alertify.set('notifier','position', 'top-center');
+                  alertify.success(res.message);
+
+
+                }
+                
+              }
+
+            });
+
+
+        });
+
 
 
 
