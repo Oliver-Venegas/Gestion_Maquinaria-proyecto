@@ -67,6 +67,46 @@
             
         <div class="row align-items-stretch">
 
+        <?php 
+    if(isset($_SESSION['del_tipno'])){
+    ?>
+
+      <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+      <strong>Error</strong> <?php echo $_SESSION['del_tipno']; ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+      
+
+
+    <?php
+
+    unset($_SESSION['del_tipno']);
+
+    }
+
+    ?>
+
+<?php 
+    if(isset($_SESSION['suss_cretip'])){
+    ?>
+
+      <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+      <strong>Success</strong> <?php echo $_SESSION['suss_cretip']; ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+      
+
+
+    <?php
+
+    unset($_SESSION['suss_cretip']);
+
+    }
+
+    ?>
+
             <div class="col bg-white mt-5 p-5 rounded shadow">
 
                 <h2 class="fw-bold text-center py-4">Mantenedor</h2>
@@ -222,31 +262,6 @@
   
 
       <div class="modal-body">
-                        
-                      <?php 
-                        if(isset($_GET['error_reg'])) {
-
-                            ?>
-                        <div class="message_creamant">
-                            <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
-                        
-                        </div>
-                        <br>
-
-                      <?php } ?>
-                      
-
-                      <?php 
-                        if(isset($_GET['suscces_reg'])) {
-
-                            ?>
-                        <div class="usses_creamant">
-                            <strong class="suscces_reg">  <?php  echo $_GET['suscces_reg'];  ?> </strong>
-                        
-                        </div>
-                        <br>
-
-                      <?php } ?>
 
                             <div class="row" id="tipe_creamant" >
                                <div class="mb-4 align-items-stretch">
@@ -336,18 +351,6 @@
       </div>
 
       <div class="modal-body">
-                        
-                      <?php 
-                        if(isset($_GET['error_reg'])) {
-
-                            ?>
-                        <div class="message_creamant">
-                            <strong class="error_reg">  <?php  echo $_GET['error_reg'];  ?> </strong>
-                        
-                        </div>
-                        <br>
-
-                      <?php } ?>
 
           <label for="text" class="form-label">Seleccione el Tipo de Mantenedor a Eliminar</label>
             <div class="col-6">

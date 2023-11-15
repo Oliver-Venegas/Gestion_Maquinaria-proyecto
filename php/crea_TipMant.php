@@ -1,11 +1,12 @@
 <?php
-
+ session_start();
 include ('conect_BD.php');
 
 $crea_mantentipe = $_POST['creat_newmantenTipe'];
 
 if(empty($crea_mantentipe)){
-    header("Location: ../view_Manten.php?error_reg=Debe ingresar un Tipo de Mantenedor");
+    $_SESSION['del_tipno'] = "Debe ingresar un Tipo de Mantenedor";
+    header("Location: ../view_Manten.php");
     exit();
 }
 
@@ -17,12 +18,14 @@ $ejectura_creatipe = mysqli_query($conexion, $query_creatipe);
 
 if($ejectura_creatipe){
 
-    header("Location: ../view_Manten.php?suscces_reg=Se Creo el Tipo de Mantenedor");
+    $_SESSION['suss_cretip'] = "Se Creo el Tipo de Mantenedor";
+    header("Location: ../view_Manten.php");
 
 
 }else{
 
-    header("Location: ../view_Manten.php?error_reg=Intentelo de nuevo, no se pudo crear el Tipo de Mantenedor");
+    $_SESSION['del_tipno'] = "Intentelo de nuevo, no se pudo crear el Tipo de Mantenedor";
+    header("Location: ../view_Manten.php");
 
     exit();
 }

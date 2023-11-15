@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include ('conect_BD.php');
 
     $client_id_bolet = $_POST['client_id_bolt'];
@@ -19,7 +19,8 @@ include ('conect_BD.php');
         $archivo = $fila_boleta['Datos_boleta'];
 
         if($archivo == NULL){
-            header("Location: ../view_Client.php?error_reg=El Cliente no tiene un Archivo ingresado");
+            $_SESSION['pdf_no'] = "El Cliente no tiene un Archivo ingresado";
+            header("Location: ../view_Client.php");
 
         }else{
             
@@ -36,7 +37,8 @@ include ('conect_BD.php');
 
             
         }else{
-            header("Location: ../view_Client.php?error_reg=Debe ingresar un Nombre y Apellido");
+            $_SESSION['pdf_no'] = "El Archivo no Existe";
+            header("Location: ../view_Client.php");
 
         }  
         
@@ -46,7 +48,8 @@ include ('conect_BD.php');
         
 
     }else{
-        header("Location: ../view_Client.php?error_reg=Debe ingresar un Nombre y Apellido");
+        $_SESSION['pdf_no'] = "No hay registro de Archivo ingresado por este Cliente";
+        header("Location: ../view_Client.php");
 
     }
 

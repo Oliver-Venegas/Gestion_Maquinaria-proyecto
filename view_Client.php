@@ -36,6 +36,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
 </head>
 <body class="menu_bacgr">
 
@@ -64,10 +65,33 @@
 
 
     <div class="container  mt-5 mb-5 ">
+
+    
+
         <div class="row align-items-stretch p-4">
 
-          <table class="client_table ">
+          
 
+          <table class="client_table ">
+<?php 
+    if(isset($_SESSION['pdf_no'])){
+    ?>
+
+      <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+      <strong>Error</strong> <?php echo $_SESSION['pdf_no']; ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+      
+
+
+    <?php
+
+    unset($_SESSION['pdf_no']);
+
+    }
+
+    ?>
             
             <thead>
               <tr>
@@ -192,7 +216,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Fecha del Trabajo</label>
                         <div class="col-5">
-                         <input type="date" class="form-control" name="dateempr_Clien">
+                         <input type="date" class="form-control" name="dateempr_Clien" id="dateempr_Clien">
                         <span></span>  
                         </div>
                         
@@ -494,6 +518,7 @@
         
     <script src="js/CliBol_val.js"></script>
     <script src="js/valid_AdClien.js"></script>
+    <script src="js/cust_dateclient.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -506,6 +531,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
+    <script>
+      var date = new Date();
+      var tdate = date.getDate();
+      var month = date.getMonth() + 1;
+      if(tdate < 10){
+        tdate = '0' + tdate;
+
+      }
+      if(month < 10){
+        month = '0' + month;
+
+      }
+
+      var year = date.getUTCFullYear();
+      var minDate = year + "-" + month + "-" + tdate; 
+      document.getElementById("dateempr_Clien").setAttribute('min', minDate);
+    </script>
+
+<script>
+      var dateedi = new Date();
+      var tdateedi = dateedi.getDate();
+      var monthedi = dateedi.getMonth() + 1;
+      if(tdateedi < 10){
+        tdateedi = '0' + tdateedi;
+
+      }
+      if(monthedi < 10){
+        monthedi = '0' + monthedi;
+
+      }
+
+      var yearedi = dateedi.getUTCFullYear();
+      var minDateedi = yearedi + "-" + monthedi + "-" + tdateedi; 
+      document.getElementById("dateempr_Clienedi").setAttribute('min', minDateedi);
+    </script>
 
   <script>
 
@@ -622,7 +682,7 @@
 
                 }
 
-              }
+              }, cache: false
 
               });
 
@@ -663,7 +723,7 @@
 
                 }
                 
-              }
+              }, cache: false
 
             });
 
@@ -702,7 +762,7 @@
 
              }
 
-           }
+           }, cache: false
 
             });
 

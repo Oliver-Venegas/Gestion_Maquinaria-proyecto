@@ -180,7 +180,7 @@
 
                         <?php
 
- $busc_rutempr = "SELECT * FROM cliente_mantened";
+ $busc_rutempr = "SELECT * FROM cliente_mantened WHERE rut_LogUser_Clint = '$rut_load_log'";
  $busc_rutempr_run = mysqli_query($conexion, $busc_rutempr) or die (mysqli_error($conexion));
  
  foreach($busc_rutempr_run as $list_ruts):  ?>
@@ -475,6 +475,48 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
+    <script>
+
+$(document).ready(function(){
+
+  $("#Maquin_serch").keyup(function(){
+
+    var input = $(this).val();
+
+    if(input != ""){
+      $.ajax({
+
+        url:"php/Maqui_serchTabl.php",
+        method:"POST",
+        data:{input:input},
+
+        success:function(data){
+          $("#serchresut_maqui").html(data);
+
+        }
+
+      });
+
+    }else{
+      
+      $.ajax({
+
+        url:"php/Maqui_serchTabl.php",
+        method:"POST",
+        data:{input:input},
+
+        success:function(data){
+          $("#serchresut_maqui").html(data);
+
+        }
+
+        });
+    }
+
+  });
+
+});
+</script>
 
     <script>
 
@@ -546,7 +588,7 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
         }
 
-      }
+      }, cache: false
 
       });
 
@@ -587,7 +629,7 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
         }
         
-      }
+      }, cache: false
 
     });
 
@@ -622,7 +664,7 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
      }
 
-   }
+   }, cache: false
 
     });
 

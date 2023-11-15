@@ -58,7 +58,7 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
     if($seri_repu == NULL){
 
-        $query_cremaquin = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutEmpr_Maqui'
+        $query_cremaquin = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutEmpr_Maqui', Num_SerRepuest= NULL, Nombre_Repuest= NULL, Cant_Repuest= NULL
                                 WHERE Numer_Serie= '$maqui_id'";
 
                 
@@ -209,8 +209,8 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
     if($seri_repu == NULL){
 
-        $query_cremaquin = "INSERT INTO maquina_mantened (Numer_Serie, Nombr_Maquina, 	Rut_Empresa, rut_LogUser_Maqui)
-        VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutEmpr_Maqui', '$torutuserLoad')";
+        $query_cremaquin = "INSERT INTO maquina_mantened (Numer_Serie, Nombr_Maquina, Rut_Empresa, Num_SerRepuest, Nombre_Repuest, Cant_Repuest, rut_LogUser_Maqui)
+        VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutEmpr_Maqui', NULL, NULL, NULL, '$torutuserLoad')";
                 
         $query_cremaquin_run = mysqli_query($conexion, $query_cremaquin);
 

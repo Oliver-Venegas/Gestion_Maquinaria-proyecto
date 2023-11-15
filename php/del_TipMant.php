@@ -1,7 +1,13 @@
 <?php
-
+  session_start();
 include ('conect_BD.php');
 
+
+    $valrow_query = "SELECT * FROM tipo_mantenedor";
+    $valrow_query_run = mysqli_query($conexion, $valrow_query);
+    $count_valrow = mysqli_num_rows($valrow_query_run);
+
+    if($count_valrow > 1){
 
     $type_mantendelet = mysqli_real_escape_string($conexion, $_POST['type_mantendelet']);
 
@@ -15,8 +21,18 @@ include ('conect_BD.php');
         header("Location: ../view_Manten.php");
 
     }else{
-        header("Location: ../view_Manten.php?suscces_reg=Error al intentar Eliminar el Tipo de Cliente");
+        $_SESSION['del_tipno'] = "Error al intentar Eliminar el Tipo de Mantenedor";
+        header("Location: ../view_Manten.php");
 
     }
+
+
+    }else{
+        $_SESSION['del_tipno'] = "No puede borrar mas Tipos de Mantenedor";
+        header("Location: ../view_Manten.php");
+
+    }
+
+    
     
 ?>
