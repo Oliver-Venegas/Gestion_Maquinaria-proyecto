@@ -44,6 +44,8 @@ $hrsempr_Clien = mysqli_real_escape_string($conexion, $_POST['hrsempr_Clienedi']
 
 $dateempr_Clien = date('Y-m-d', strtotime($_POST['dateempr_Clienedi']));
 
+$rad_cliedi = mysqli_real_escape_string($conexion, $_POST['rad_cliedi']);
+
 $id_bol = mysqli_real_escape_string($conexion, $_POST['id_boledi']);
 
 
@@ -130,9 +132,10 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
     }
     if ($dvr == strtoupper($dv)) {
 
-    if($id_bol == NULL){
 
-        $query_creclient = "UPDATE cliente_mantened SET Rut_empresa= '$rut_empresa', Nombre_empresa= '$nombrempr_Clien', Nombre_contacto= '$nombrcont_Clien', Hora_trabaj_empresa= '$hrsempr_Clien', Fecha_del_trabajo= '$dateempr_Clien', Codigo_boleta= NULL, Datos_boleta= NULL
+        if($rad_cliedi == 'hide_cliedi'){
+
+            $query_creclient = "UPDATE cliente_mantened SET Rut_empresa= '$rut_empresa', Nombre_empresa= '$nombrempr_Clien', Nombre_contacto= '$nombrcont_Clien', Hora_trabaj_empresa= '$hrsempr_Clien', Fecha_del_trabajo= '$dateempr_Clien', Codigo_boleta= NULL, Datos_boleta= NULL
                                 WHERE ID_Cliente= '$Cliente_id'";
                     
         $query_creclient_run = mysqli_query($conexion, $query_creclient);
@@ -155,7 +158,15 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
                 return false;
 
         } 
-    
+
+        }else if($rad_cliedi == 'show_cliedi'){
+
+    if($id_bol == NULL){
+        $res = 
+        ['status' => 422, 
+        'message' => 'Debe ingrear el ID de la Boleta'];
+        echo json_encode($res);
+        return false;
     
     }else{
 
@@ -212,16 +223,20 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
             return false;
 
         }
-                
-                    
-
+                      
         
-        
-
 
     }
 
-    
+
+        }else{
+            $res = 
+            ['status' => 422, 
+            'message' => 'Debe Seleccionar Si desea Ingresar o No la Boleta'];
+            echo json_encode($res);
+            return false;
+
+        }
 
     }else {
             $res = 
@@ -292,6 +307,8 @@ $nombrcont_Clien = mysqli_real_escape_string($conexion, $_POST['nombrcont_Clien'
 $hrsempr_Clien = mysqli_real_escape_string($conexion, $_POST['hrsempr_Clien']);
 
 $dateempr_Clien = date('Y-m-d', strtotime($_POST['dateempr_Clien']));
+
+$rad_cli = mysqli_real_escape_string($conexion, $_POST['rad_cli']);
 
 $id_bol = mysqli_real_escape_string($conexion, $_POST['id_bol']);
 
@@ -377,10 +394,9 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
         }
         if ($dvr == strtoupper($dv)) {
 
+            if($rad_cli == 'hide_cli'){
 
-    if($id_bol == NULL){
-
-        $query_creclient = "INSERT INTO cliente_mantened (Rut_empresa, Nombre_empresa, 	Nombre_contacto, Hora_trabaj_empresa, Fecha_del_trabajo, Codigo_boleta, Datos_boleta, rut_LogUser_Clint)
+                $query_creclient = "INSERT INTO cliente_mantened (Rut_empresa, Nombre_empresa, 	Nombre_contacto, Hora_trabaj_empresa, Fecha_del_trabajo, Codigo_boleta, Datos_boleta, rut_LogUser_Clint)
         VALUES ('$rut_empresa', '$nombrempr_Clien', '$nombrcont_Clien', '$hrsempr_Clien', '$dateempr_Clien', NULL, NULL, '$torutuserLoad')";
                 
         $query_creclient_run = mysqli_query($conexion, $query_creclient);
@@ -403,6 +419,16 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
         return false;
 
 }
+
+
+            }else if($rad_cli == 'show_cli'){
+
+         if($id_bol == NULL){
+        $res = 
+                ['status' => 422, 
+                'message' => 'Debe ingrear el ID de la Boleta'];
+                echo json_encode($res);
+                return false;
 
 
     }else{
@@ -462,12 +488,17 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
 
         }
 
-         
+    }       
 
 
+            }else{
 
-    }
-
+            $res = 
+            ['status' => 422, 
+            'message' => 'Debe Seleccionar Si desea Ingresar o No la Boleta'];
+            echo json_encode($res);
+            return false;
+            }
 
 
     

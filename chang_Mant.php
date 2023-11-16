@@ -1,3 +1,18 @@
+<?php
+  session_start();
+
+  include('php/conect_BD.php');
+
+  if(!isset($_SESSION['user_manten'])){
+    header("Location: index.php");
+    session_destroy();
+    die();
+    
+  }
+
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,29 +52,79 @@
         <div class="container mt-5 mb-5 conent_Mantchang">
         <div class="row align-items-stretch">
 
+        <?php 
+    if(isset($_SESSION['estd_no'])){
+    ?>
+
+      <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+      <strong>Error</strong> <?php echo $_SESSION['estd_no']; ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+      
+
+
+    <?php
+
+    unset($_SESSION['estd_no']);
+
+    }
+
+    ?>
+
+<?php 
+    if(isset($_SESSION['estd_succe'])){
+    ?>
+
+      <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+      <strong>Success</strong> <?php echo $_SESSION['estd_succe']; ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    
+      
+
+
+    <?php
+
+    unset($_SESSION['estd_succe']);
+
+    }
+
+    ?>
+
             <div class="col p-5 bg-white mt-5 rounded shadow">
 
                 <h2 class="fw-bold text-lg-center py-1">Crear Estado de Mantencion</h2>
                 <br>
 
-                <form action="#">
+                <form action="php/manten_state.php" method="POST">
 
                     <div class="mb-4">
                         <label for="text" class="form-label p-1">¿Dessea Eliminar un Estado de Mantencion o Crear un Nuevo Estado de Mantencion?</label>
-                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowEst_mant(2)" value="hide_Estd" checked> Crear Nuevo Estado de Mantencion</div>
+                        <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowEst_mant(2)" value="hide_Estd"> Crear Nuevo Estado de Mantencion</div>
                         <div class="p-2"><input type="radio" name="rad_tipe" onclick="hideshowEst_mant(1)" value="show_Estd" > Eliminar Estado de Mantencion </div>
                         
                         
                         <br>
 
                         <div class="col-5" id="estd_exmant"  >
-                            <select class="form-select mb-4 align-items-stretch" aria-label="Default select example">
-                             
-                             <option value="1">Realizado</option>
-                             <option value="2">Normalizado</option>
-                             <option value="3">Pendiente</option>
-                             <option value="4">En curso</option>
-                        </select>
+
+
+                        <select class="form-select mb-4 align-items-stretch" name="estd_mantencion" aria-label="Default select example">
+              
+              <?php
+
+               $busc_estd = "SELECT * FROM estad_manten";
+               $busc_estd_run = mysqli_query($conexion, $busc_estd) or die (mysqli_error($conexion));
+               
+               foreach($busc_estd_run as $list_estd):  ?>
+                                          
+                  <option value="<?php echo $list_estd['id_estd_mantenc'] ?>"><?php echo $list_estd['Nombre_estado'] ?></option>
+
+                <?php endforeach ?>
+
+              </select>
+
 
                         </div>
                         
@@ -67,7 +132,7 @@
                             <div class="row" id="estd_creamant" >
                                <div class="col-5 mb-4 align-items-stretch">
                                 <label for="text" class="form-label">Nuevo Estado de Mantencion</label>
-                                <input type="text" class="form-control" name="id_bol">
+                                <input type="text" class="form-control" name="crea_estdmanten">
                             </div>
    
                             </div>
@@ -83,7 +148,7 @@
                    </div>
 
                    <div class="col-auto p-2">
-                    <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Confirmar</button>
                    </div>
                     </div>
 

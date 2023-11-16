@@ -198,8 +198,8 @@
 
                     <div class="mb-4">
                         <label for="text" class="form-label p-1">¿Tiene Repuestos la Maquina?</label>
-                        <div class="p-2"><input type="radio" name="rad_maqu" onclick="hideshowRep_Maqu(2)" value="show_maqu" > Si</div>
-                        <div class="p-2"><input type="radio" name="rad_maqu" onclick="hideshowRep_Maqu(1)" value="hide_maqu" checked> No</div>
+                        <div class="p-2"><input type="radio" name="rad_maqu" onclick="hideshowRep_Maqu(2)" value="show_maqu"> Si</div>
+                        <div class="p-2"><input type="radio" name="rad_maqu" onclick="hideshowRep_Maqu(1)" value="hide_maqu"> No</div>
                         
                         <br>
                        
@@ -316,7 +316,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label p-1">¿Tiene Repuestos la Maquina?</label>
                         <div class="p-2"><input type="radio" name="rad_maquedi" onclick="hideshowRep_Maquedi(2)" value="show_maquedi" > Si</div>
-                        <div class="p-2"><input type="radio" name="rad_maquedi" onclick="hideshowRep_Maquedi(1)" value="hide_maquedi" checked> No</div>
+                        <div class="p-2"><input type="radio" name="rad_maquedi" onclick="hideshowRep_Maquedi(1)" value="hide_maquedi"> No</div>
                         
                         <br>
                        

@@ -46,6 +46,9 @@ $seri_repu = mysqli_real_escape_string($conexion, $_POST['seri_repuedi']);
 $nombr_repu = mysqli_real_escape_string($conexion, $_POST['nombr_repuedi']);
 $cant_repu = mysqli_real_escape_string($conexion, $_POST['cant_repuedi']);
 
+$rad_maquedi= mysqli_real_escape_string($conexion, $_POST['rad_maquedi']);
+
+
 if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
     $res = 
     ['status' => 422, 
@@ -55,8 +58,7 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
 }else{
 
-
-    if($seri_repu == NULL){
+    if($rad_maquedi == 'hide_maquedi'){
 
         $query_cremaquin = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutEmpr_Maqui', Num_SerRepuest= NULL, Nombre_Repuest= NULL, Cant_Repuest= NULL
                                 WHERE Numer_Serie= '$maqui_id'";
@@ -83,20 +85,28 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
 }
 
+    }else if($rad_maquedi == 'show_maquedi'){
+
+     if($seri_repu == NULL){
+        $res = 
+                ['status' => 422, 
+                'message' => 'Debe ingresar el Numero de Serie del Repuesto'];
+                echo json_encode($res);
+                return false;  
 
     }else{
 
         if($nombr_repu == NULL){
             $res = 
                 ['status' => 422, 
-                'message' => 'Nombre del Repuesto debe ser Rellenado'];
+                'message' => 'Debe ingresar el Nombre del Repuesto'];
                 echo json_encode($res);
                 return false;
         }
         else if($cant_repu == NULL){
             $res = 
                 ['status' => 422, 
-                'message' => 'Cantidad del Repuesto debe ser Rellenado'];
+                'message' => 'Debe ingresar la cantidad del Repuesto'];
                 echo json_encode($res);
                 return false;
         
@@ -129,10 +139,21 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
         }
 
-        
 
+    }   
+
+    }else{
+
+        $res = 
+                ['status' => 422, 
+                'message' => 'Debe Seleccionar Si tiene Repuestos o No la Maquina'];
+                echo json_encode($res);
+                return false;
 
     }
+
+
+    
 
 
 
@@ -197,6 +218,11 @@ $seri_repu = mysqli_real_escape_string($conexion, $_POST['seri_repu']);
 $nombr_repu = mysqli_real_escape_string($conexion, $_POST['nombr_repu']);
 $cant_repu = mysqli_real_escape_string($conexion, $_POST['cant_repu']);
 
+
+$rad_maqu= mysqli_real_escape_string($conexion, $_POST['rad_maqu']);
+
+
+
 if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
     $res = 
     ['status' => 422, 
@@ -206,8 +232,69 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
 }else{
 
+    
 
+    if($rad_maqu == 'show_maqu'){
+
+    
     if($seri_repu == NULL){
+
+                    $res = 
+                    ['status' => 422, 
+                    'message' => 'Debe ingresar un Numero de Serie'];
+                    echo json_encode($res);
+                    return false;    
+
+            }else{
+
+                if($nombr_repu == NULL){
+                    $res = 
+                        ['status' => 422, 
+                        'message' => 'Debe ingresar un Nombre del Repuesto'];
+                        echo json_encode($res);
+                        return false;
+                }
+                else if($cant_repu == NULL){
+                    $res = 
+                        ['status' => 422, 
+                        'message' => 'Debe ingresar Cantidad de Repuestos'];
+                        echo json_encode($res);
+                        return false;
+                
+                }else{
+
+                    $query_cremaquin_rep = "INSERT INTO maquina_mantened (Numer_Serie, Nombr_Maquina, 	Rut_Empresa, Num_SerRepuest, Nombre_Repuest, Cant_Repuest, rut_LogUser_Maqui)
+                            VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutEmpr_Maqui', '$seri_repu', '$nombr_repu', '$cant_repu', '$torutuserLoad')";
+                            
+                $query_cremaquinrep_run = mysqli_query($conexion, $query_cremaquin_rep);
+                
+                if($query_cremaquinrep_run){
+
+                    $res = [
+                        'status' => 200, 
+                        'message' => 'Se Creo la Maquina'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }else{
+                    $res = [
+                        'status' => 500, 
+                        'message' => 'No se pudo Crear la Maquina'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }
+
+                }
+
+                    
+
+
+            }
+
+    }else if($rad_maqu == 'hide_maqu'){
 
         $query_cremaquin = "INSERT INTO maquina_mantened (Numer_Serie, Nombr_Maquina, Rut_Empresa, Num_SerRepuest, Nombre_Repuest, Cant_Repuest, rut_LogUser_Maqui)
         VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutEmpr_Maqui', NULL, NULL, NULL, '$torutuserLoad')";
@@ -235,77 +322,21 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
 
     }else{
-
-        if($nombr_repu == NULL){
+       
             $res = 
-                ['status' => 422, 
-                'message' => 'Nombre del Repuesto debe ser Rellenado'];
-                echo json_encode($res);
-                return false;
-        }
-        else if($cant_repu == NULL){
-            $res = 
-                ['status' => 422, 
-                'message' => 'Cantidad del Repuesto debe ser Rellenado'];
-                echo json_encode($res);
-                return false;
+        ['status' => 422, 
+        'message' => 'Debe Seleccionar Si tiene Repuestos o No la Maquina'];
+        echo json_encode($res);
+        return false;
         
-        }else{
 
-            $query_cremaquin_rep = "INSERT INTO maquina_mantened (Numer_Serie, Nombr_Maquina, 	Rut_Empresa, Num_SerRepuest, Nombre_Repuest, Cant_Repuest, rut_LogUser_Maqui)
-                    VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutEmpr_Maqui', '$seri_repu', '$nombr_repu', '$cant_repu', '$torutuserLoad')";
-                    
-        $query_cremaquinrep_run = mysqli_query($conexion, $query_cremaquin_rep);
-        
-        if($query_cremaquinrep_run){
-
-            $res = [
-                'status' => 200, 
-                'message' => 'Se Creo la Maquina'
-                ];
-            echo json_encode($res);
-            return false;
-
-        }else{
-            $res = [
-                'status' => 500, 
-                'message' => 'No se pudo Crear la Maquina'
-                ];
-            echo json_encode($res);
-            return false;
-
-        }
-
-        }
-
-            
-
-
-    }
-
-
+}
 
     
-        
-    
-
-
-
-
-
-
-        
-
         
 
 
     }   
-
-    
-
-
-    
-
 
 
 

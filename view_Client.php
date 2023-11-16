@@ -225,7 +225,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label p-1">¿Desea ingresar la Boleta?</label>
                         <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(2)" value="show_cli" > Si</div>
-                        <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(1)" value="hide_cli" checked> No</div>
+                        <div class="p-2"><input type="radio" name="rad_cli" onclick="hideshowBol_Cli(1)" value="hide_cli"> No</div>
                         
                        
                             <div class="row" id="bolet_cli" style="display: none;">
@@ -336,7 +336,7 @@
                     <div class="mb-4">
                         <label for="text" class="form-label p-1">¿Desea ingresar la Boleta?</label>
                         <div class="p-2"><input type="radio" name="rad_cliedi" onclick="hideshowBol_Cliedi(2)" value="show_cliedi" > Si</div>
-                        <div class="p-2"><input type="radio" name="rad_cliedi" onclick="hideshowBol_Cliedi(1)" value="hide_cliedi" checked> No</div>
+                        <div class="p-2"><input type="radio" name="rad_cliedi" onclick="hideshowBol_Cliedi(1)" value="hide_cliedi" > No</div>
                         
                         <br>
                        
