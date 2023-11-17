@@ -767,48 +767,7 @@
             });
 
           });
-
-
-          $(document).on('submit', '#down_bolet', function (e) {
-            e.preventDefault();
-
-            var formData = new FormData(this);
-            formData.append("download_boleta", true);
-
-            $.ajax({
-              type: "POST",
-              url: "php/descarg_bol.php",
-              data: formData,
-              processData: false,
-              contentType: false,
-              success: function (response) {
-
-                var res = jQuery.parseJSON(response);
-                if (res.status == 422) {
-
-                  $('#errorMessage').removeClass('d-none');
-                  $('#errorMessage').text(res.message);
-                  
-                }else if(res.status == 200) {
-
-                  $('#errorMessage').addClass('d-none');
-                  $('#crearClientMod')[0].reset();
-
-                  alertify.set('notifier','position', 'top-center');
-                  alertify.success(res.message);
-
-
-                }
-                
-              }
-
-            });
-
-
-        });
-
-
-
+          
 
           $(document).on('click', '.DeletClient_btnmodal', function () {
 

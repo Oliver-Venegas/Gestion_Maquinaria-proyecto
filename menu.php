@@ -9,6 +9,19 @@
     die();
     
   }
+
+    $mostra_email_user = $_SESSION['user_manten'];
+
+  $obtdatos_sql = "SELECT Rut  FROM usuario_mantenedor WHERE Email_mantenedor = '$mostra_email_user'";
+  $result_tolog = $conexion->query($obtdatos_sql);
+
+  while($data_oflog = $result_tolog->fetch_assoc()){
+
+    $rut_load_log = $data_oflog['Rut'];
+
+
+  }
+
 ?>
 
 <html lang="en">
@@ -21,6 +34,8 @@
     <!-- CONEXION CSS -->
     <link rel="stylesheet" href="estilos.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 </head>
 <body class="menu_bacgr">
 
@@ -55,13 +70,12 @@
 
 <table class="Manten_table rounded">
 
-
-
             <tr>
-                
-                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</th>
+                <thead>
+                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sensor de Metales</th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test"">23/02/2022</th>
+                <th class="tabmante_main"> </th>
                 <th class="tabmante_main "><i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i></th>
                 <th class="tabmante_main"><i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i></th>
 
@@ -69,16 +83,18 @@
                 <div class="row plusex_mant">
                     <div class="col-auto" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</div>
                     <div class="col-auto">
+                      
                         <i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i>
                         <i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i>
                     </div>
                 </div>
                     
-                </th>
+                </th>                
                 
+            </tr> 
+
+                </thead>
                 
-                
-            </tr>
 
         <tbody class="collapse colap_test">
 
@@ -88,12 +104,13 @@
                 <th class="tabmante_head">Estado</th>
                 <th class="tabmante_head"> </th>
                 <th class="tabmante_head"> </th>
+                <th class="tabmante_head"> </th>
 
             </tr>
 
             <tr class="tabmante_fila">
                 <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
-                <td class="tabmante_body" data-cell="Observacion" data-bs-toggle="modal" data-bs-target="#Viewdata_manten">Compresor D DE BIOGAS</td>
+                <td class="tabmante_body" data-cell="Observacion">Compresor D DE BIOGAS</td>
                 <td class="tabmante_body" data-cell="Estado">
                 <select class="form-select" aria-label="Default select example">
                              
@@ -103,73 +120,20 @@
                              <option value="4">En curso</option>
                         </select>
                 </td>
+                <td class="tabmante_body"><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#Viewdata_manten">Datos</button></td>
                 <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
                 <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
 
-            </tr>
-
-            <tr class="tabmante_fila">
-                <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
-                <td class="tabmante_body" data-cell="Observacion">Revision de Supresor</td>
-                <td class="tabmante_body" data-cell="Estado">
-                    <select class="form-select" aria-label="Default select example">
-                             
-                             <option value="1">Realizado</option>
-                             <option value="2">Normalizado</option>
-                             <option value="3">Pendiente</option>
-                             <option value="4">En curso</option>
-                        </select>
-                </td>
-                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
-                
-            </tr>
-
-            <tr class="tabmante_fila">
-                <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
-                <td class="tabmante_body" data-cell="Observacion">Lectura erronea</td>
-                <td class="tabmante_body" data-cell="Estado">
-                <select class="form-select" aria-label="Default select example">
-                             
-                             <option value="1">Realizado</option>
-                             <option value="2">Normalizado</option>
-                             <option value="3">Pendiente</option>
-                             <option value="4">En curso</option>
-                        </select>
-                </td>
-                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
-                
-            </tr>
-
-            <tr class="tabmante_fila">
-                <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
-                <td class="tabmante_body" data-cell="Observacion">Revision Sentido de Giro</td>
-                <td class="tabmante_body" data-cell="Estado">
-                        <select class="form-select" aria-label="Default select example">
-                             <option value="1">Realizado</option>
-                             <option value="2">Normalizado</option>
-                             <option value="3">Pendiente</option>
-                             <option value="4">En curso</option>
-
-                        </select>
-                </td>
-                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
-                
-            </tr>
-
+            </tr>       
             
             </tbody>
-
-
-            
+    
         </table>
 
         </div>
 
 
-        <div class="modal fade" id="Elim_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Elim_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -177,7 +141,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h5>¿Esta Seguro que desea eliminar esta seccion del Informe de Fallas?</h3>
+        <h5>¿Esta Seguro que desea eliminar esta Seccion del Informe de Fallas?</h3>
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -210,6 +174,9 @@
 
 
 <div class="modal fade" id="Crea_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<form action="#">
+
   <div class="modal-dialog">
     <div class="modal-content mod_mantencre">
       <div class="modal-header">
@@ -218,7 +185,11 @@
       </div>
       <div class="modal-body">
         
-      <form action="#">
+      <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+
+       <input type="hidden" name="torutuserLoad_manten" value="<?php echo $rut_load_log ?>">
+      
                     <div class="mb-4">
                         <label for="text" class="form-label">Orden</label>
                         <div class="col-4">
@@ -248,22 +219,24 @@
                     <div class="mb-4">
                         <label for="text" class="form-label">Observacion</label>
                         <textarea class="form-control "  name="obser_Manten" placeholder="Ingrese el la Descripcion del roblema encontrado"></textarea>
-                        <span></span> 
                     </div>
 
 
 
                     
 
-                </form>
+                
 
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>
+
+  </form>
+
 </div>
 
 
@@ -395,6 +368,246 @@
 
 <script src="js/valid_AdManten.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+    <script>
+
+$(document).on('submit', '#crearMaquinMod', function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    formData.append("crear_MaquinMod", true);
+
+    $.ajax({
+      type: "POST",
+      url: "php/Maquin_CRUD_inst.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+
+        var res = jQuery.parseJSON(response);
+        if (res.status == 422) {
+
+          $('#errorMessage').removeClass('d-none');
+          $('#errorMessage').text(res.message);
+          
+        }else if(res.status == 200) {
+
+          $('#errorMessage').addClass('d-none');
+          $('#Modal_maqui').modal('hide');
+          $('#crearMaquinMod')[0].reset();
+
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.message);
+
+          $('.maquina_table').load(location.href + " .maquina_table");
+
+        }
+        
+      }
+
+    });
+
+
+});
+
+  $(document).on('click', '.EditMaqui_btnmodal', function () {
+
+    var maqui_id = $(this).val();
+
+    $.ajax({
+      type: "GET",
+      url: "php/Maquin_CRUD_inst.php?maqui_id=" + maqui_id,
+      success: function (response) {
+
+        var res =jQuery.parseJSON(response);
+        if(res.status == 422){
+
+          alert(res.message);
+
+        }else if(res.status == 200){
+
+          $('#maqui_id').val(res.data.Numer_Serie);
+          $('#numser_Maquiedi').val(res.data.Numer_Serie);
+          $('#nombr_Maquiedi').val(res.data.Nombr_Maquina);
+          $('#rutEmpr_Maquiedi').val(res.data.Rut_Empresa);
+          $('#seri_repuedi').val(res.data.Num_SerRepuest);
+          $('#nombr_repuedi').val(res.data.Nombre_Repuest);
+          $('#cant_repuedi').val(res.data.Cant_Repuest);
+
+          $('#Edit_maqui').modal('show');
+
+        }
+
+      }, cache: false
+
+      });
+
+  });
+
+
+
+  $(document).on('submit', '#updatMaquinMod', function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    formData.append("updat_MaquinMod", true);
+
+    $.ajax({
+      type: "POST",
+      url: "php/Maquin_CRUD_inst.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+
+        var res = jQuery.parseJSON(response);
+        if (res.status == 422) {
+
+          $('#errorMessageUpdat').removeClass('d-none');
+          $('#errorMessageUpdat').text(res.message);
+          
+        }else if(res.status == 200) {
+
+          $('#errorMessageUpdat').addClass('d-none');
+          $('#Edit_maqui').modal('hide');
+          $('#updatMaquinMod')[0].reset();
+
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.message);
+
+          $('.maquina_table').load(location.href + " .maquina_table");
+
+        }
+        
+      }, cache: false
+
+    });
+
+
+  });
+
+
+  $(document).on('click', '.Viewdata_manten', function () {
+
+    var manten_id = $(this).val();
+
+      $.ajax({
+      type: "GET",
+      url: "php/Manten_CRUD_inst.php?manten_id=" + manten_id,
+      success: function (response) {
+
+      var res =jQuery.parseJSON(response);
+      if(res.status == 422){
+
+        alert(res.message);
+
+      }else if(res.status == 200){
+
+          $('#numser_Maquinview').text(res.data.Numer_Serie);
+          $('#nombrmaq_Maquinview').text(res.data.Nombr_Maquina);
+          $('#rutempr_Maquinview').text(res.data.Rut_Empresa);
+          $('#repseri_Maquinview').text(res.data.Num_SerRepuest);
+          $('#nombrep_Maquinview').text(res.data.Nombre_Repuest);
+          $('#cantrep_Maquinview').text(res.data.Cant_Repuest);
+
+          $('#Viewdata_maqui').modal('show');
+
+     }
+
+   }, cache: false
+
+    });
+
+  });
+
+
+
+  $(document).on('click', '.DeletMaqui_btnmodal', function () {
+
+    var maqui_id = $(this).val();
+
+      $.ajax({
+       type: "GET",
+       url: "php/Maquin_CRUD_inst.php?maqui_id=" + maqui_id,
+       success: function (response) {
+
+        var res =jQuery.parseJSON(response);
+        if(res.status == 422){
+
+        alert(res.message);
+
+      }else if(res.status == 200){
+
+         $('#maqui_iddel').val(res.data.Numer_Serie);
+
+         $('#Elim_maqui').modal('show');
+
+}
+
+}
+
+});
+
+});
+
+
+  $(document).on('submit', '#deletMaquintMod', function (e) {
+    e.preventDefault();
+
+
+    var formData = new FormData(this);
+    formData.append("delet_MaquintMod", true);
+
+    $.ajax({
+      type: "POST",
+      url: "php/Maquin_CRUD_inst.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+
+        var res = jQuery.parseJSON(response);
+        if (res.status == 500) {
+
+          $('#errorMessageDelet').removeClass('d-none');
+          $('#errorMessageDelet').text(res.message);
+          
+        }else if(res.status == 200) {
+
+          $('#errorMessageDelet').addClass('d-none');
+          $('#Elim_maqui').modal('hide');
+
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.message);
+
+          $('.maquina_table').load(location.href + " .maquina_table");
+
+        }
+        
+      }
+
+    });
+
+    
+
+  });
+
+</script>
+
+
+
+
+      </body>
 </html>
