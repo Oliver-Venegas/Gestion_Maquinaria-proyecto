@@ -68,7 +68,7 @@
 
     
 
-        <div class="row align-items-stretch p-4">
+        <div class="row align-items-stretch p-4 uppermant_table">
 
           
 

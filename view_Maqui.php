@@ -63,8 +63,8 @@
 </header>
 
     <div class="container  mt-5 ">
-        <div class="row align-items-stretch p-4">
-<table class="maquina_table ">
+        <div class="row align-items-stretch p-4 uppermant_table">
+<table class="maquina_table">
 
             <caption class="tabmaqui_capti">Listado de las Maquinas</caption>
 
@@ -116,6 +116,7 @@
             
         </table>
 
+        </div>
         </div>
 
         <div class="d-flex justify-content-center rounded shadow">
@@ -458,7 +459,7 @@
 
 
 
-    </div>
+    
         
 
     <script src="js/MaquRep_val.js"></script>
@@ -624,6 +625,7 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
           alertify.set('notifier','position', 'top-center');
           alertify.success(res.message);
+
 
           $('.maquina_table').load(location.href + " .maquina_table");
 

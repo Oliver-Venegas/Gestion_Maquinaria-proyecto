@@ -65,17 +65,18 @@
 
 
         <div class="container  mt-5 mb-5 ">
-        <div class="row align-items-stretch p-2 ">
+        <div class="row align-items-stretch p-2 uppermant_table">
 
 
 <table class="Manten_table rounded">
-
+  
+<thead>
             <tr>
-                <thead>
-                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</th>
+                
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sensor de Metales</th>
-                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test"">23/02/2022</th>
-                <th class="tabmante_main"> </th>
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">23/02/2022</th>
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test"> </th>
                 <th class="tabmante_main "><i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i></th>
                 <th class="tabmante_main"><i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i></th>
 
@@ -89,51 +90,86 @@
                     </div>
                 </div>
                     
-                </th>                
+                </th>        
                 
             </tr> 
-
-                </thead>
+ </thead>
+               
                 
 
-        <tbody class="collapse colap_test">
+        <tbody class="collapse colap_test" >
 
             <tr>
-                <th class="tabmante_head">Hora</th>
-                <th class="tabmante_head">Observacion</th>
-                <th class="tabmante_head">Estado</th>
-                <th class="tabmante_head"> </th>
-                <th class="tabmante_head"> </th>
-                <th class="tabmante_head"> </th>
+                <td class="tabmante_head">Hora</td>
+                <td class="tabmante_head">Observacion</td>
+                <td class="tabmante_head">Estado</td>
+                <td class="tabmante_head"> </td>
+                <td class="tabmante_head"> </td>
+                <td class="tabmante_head"> </td>
 
             </tr>
 
-            <tr class="tabmante_fila">
-                <td class="tabmante_body" data-cell="Hora"><input type="time" class="form-control"></td>
-                <td class="tabmante_body" data-cell="Observacion">Compresor D DE BIOGAS</td>
-                <td class="tabmante_body" data-cell="Estado">
-                <select class="form-select" aria-label="Default select example">
-                             
-                             <option value="1">Realizado</option>
-                             <option value="2">Normalizado</option>
-                             <option value="3">Pendiente</option>
-                             <option value="4">En curso</option>
-                        </select>
-                </td>
-                <td class="tabmante_body"><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#Viewdata_manten">Datos</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
-                <td class="tabmante_body"><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
+            <?php 
+            $querytabl_Manten = "SELECT * FROM inform_fallas WHERE rut_LogUser_Manten= '$rut_load_log'";
+            $querytabl_Manten_run = mysqli_query($conexion, $querytabl_Manten);
 
-            </tr>       
+            if(mysqli_num_rows($querytabl_Manten_run) > 0)
+            {
+              foreach($querytabl_Manten_run as $Informsecc_mantened){
+
+                 ?>
+
+            <tr class="tabmante_fila">
+                <td class="tabmante_body" data-cell="Hora">
+                  <div class="edit"> <?= $Informsecc_mantened['HorasdelTrabajo'] ?> </div>
+                    <input type="time" class="form-control txt_edit" value="<?= $Informsecc_mantened['HorasdelTrabajo'] ?>" id="HorasdelTrabajo_<?= $Informsecc_mantened['ID_infor_fallas'] ?>"> 
+                   </td>
+                <td class="tabmante_body" data-cell="Observacion"> <?= $Informsecc_mantened['Titul_observ'] ?> </td>
+                <td class="tabmante_body" data-cell="Estado">
+                  
+                  <div class="edit"> <?= $Informsecc_mantened['Estadomanten'] ?></div>
+
+                    <select class="form-select txt_edit" value="<?= $Informsecc_mantened['Estadomanten'] ?>"  aria-label="Default select example" id="Estadomanten_<?= $Informsecc_mantened['ID_infor_fallas'] ?>">
+                <?php
+
+                $busc_estmanten = "SELECT * FROM estad_manten";
+                $busc_estmanten_run = mysqli_query($conexion, $busc_estmanten) or die (mysqli_error($conexion));
+
+                foreach($busc_estmanten_run as $list_estad):  ?>
+                                          
+                  <option value="<?php echo $list_estad['Nombre_estado'] ?>"> <?php echo $list_estad['Nombre_estado'] ?> </option>
+
+                <?php endforeach ?>
+
+                    </select>
+
+                </td>
+                <td class="tabmante_body"><button type="button" value="<?= $Informsecc_mantened['ID_infor_fallas'] ?>" class="ViewManten_btnmodal btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#Viewdata_manten">Datos</button></td>
+                <td class="tabmante_body"><button type="button" value="<?= $Informsecc_mantened['ID_infor_fallas'] ?>" class="EditManten_btnmodal btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
+                <td class="tabmante_body"><button type="button" value="<?= $Informsecc_mantened['ID_infor_fallas'] ?>" class="DeletManten_btnmodal btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
+
+            </tr> 
+            
+            <?php
+              }
+
+            }
+            ?>
+            
             
             </tbody>
     
+            
+
         </table>
 
         </div>
 
 
 <div class="modal fade" id="Elim_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<form id="deletMantenMod">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -141,14 +177,24 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+
+      <input type="hidden" name="manten_iddel" id="manten_iddel">
+
+      <div id="errorMessageDelet" class="alert alert-warning d-none"></div>
+
         <h5>¿Esta Seguro que desea eliminar esta Seccion del Informe de Fallas?</h3>
+
+
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
       </div>
     </div>
   </div>
+
+  </form>
+
 </div>
 
 
@@ -175,7 +221,7 @@
 
 <div class="modal fade" id="Crea_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-<form action="#">
+<form id="crearMantenMod">
 
   <div class="modal-dialog">
     <div class="modal-content mod_mantencre">
@@ -220,10 +266,78 @@
                         <label for="text" class="form-label">Observacion</label>
                         <textarea class="form-control "  name="obser_Manten" placeholder="Ingrese el la Descripcion del roblema encontrado"></textarea>
                     </div>
+             
+
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  </form>
+
+</div>
 
 
 
-                    
+<div class="modal fade" id="Edit_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<form id="updatMantenMod">
+
+  <div class="modal-dialog">
+    <div class="modal-content mod_mantenedi">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Informe de Fallas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+      <div id="errorMessageUpdat" class="alert alert-warning d-none"></div>
+
+      <input type="hidden" name="mantenfall_id" id="mantenfall_id">
+
+        
+      
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Orden</label>
+                        <div class="col-4">
+                          <input type="text" class="form-control" name="order_Mantenedi" id="order_Mantenedi">
+                        </div>
+                        
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Horas del Trabajo</label>
+                        <div class="col-4">
+                          <input type="time" class="form-control" name="hors_Mantenedi" id="hors_Mantenedi">  
+                        </div>
+                           
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Aviso</label>
+                        <div class="col-4">
+                          <input type="text" class="form-control" name="avis_Mantenedi" id="avis_Mantenedi">
+                        </div>
+                        
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <div class="col-8">
+                          <input type="text" class="form-control" name="obtitul_Mantenedi" id="obtitul_Mantenedi">
+                        <span></span> 
+                        </div>
+                        
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Observacion</label>
+                       <textarea class="form-control " name="obser_Mantenedi" id="obser_Mantenedi"></textarea>
+                        <span></span> 
+                    </div>  
 
                 
 
@@ -241,72 +355,6 @@
 
 
 
-<div class="modal fade" id="Edit_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content mod_mantenedi">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Informe de Fallas</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
-      <form action="#">
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Orden</label>
-                        <div class="col-4">
-                          <input type="text" class="form-control" name="order_Mantenedi">
-                        </div>
-                        
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Horas del Trabajo</label>
-                        <div class="col-4">
-                          <input type="time" class="form-control" name="hors_Mantenedi">  
-                        </div>
-                           
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Aviso</label>
-                        <div class="col-4">
-                          <input type="text" class="form-control" name="avis_Mantenedi">
-                        </div>
-                        
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Titulo de la Observacion</label>
-                        <div class="col-8">
-                          <input type="text" class="form-control" name="obtitul_Mantenedi">
-                        <span></span> 
-                        </div>
-                        
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="text" class="form-label">Observacion</label>
-                       <textarea class="form-control " name="obser_Mantenedi"></textarea>
-                        <span></span> 
-                    </div>
-
-
-
-                    
-
-                </form>
-
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 
 
 <div class="modal fade" id="Viewdata_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -317,40 +365,36 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
-      <form action="#">
+
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Orden: </strong></label>
-                        <label for="text" class="form-label">1932783</label>
+                        <label id="order_Mantenview" for="text" class="form-label"></label>
 
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Horas del Trabajo: </strong></label>
-                        <label for="text" class="form-label">02:00</label>
+                        <label id="hors_Mantenview" for="text" class="form-label"></label>
                         
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Aviso: </strong></label>
-                        <label for="text" class="form-label">1727362</label>
+                        <label id="avis_Mantenview" for="text" class="form-label"></label>
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Titulo de la Observacion: </strong></label>
-                        <label for="text" class="form-label">Compresor D DE BIOGAS</label>
+                        <label id="obtitul_Mantenview" for="text" class="form-label"></label>
                       
                     </div>
 
                     <div class="mb-4">
                         <label for="text" class="form-label"><strong>Observacion: </strong></label>
-                        <label for="text" class="form-label">Falla Rastra del clarificador primario D, Motor A en local se revisa equipo en terreno y no se detexta problemas de ningun tipo,
-                          se revisan paradas de emergencias con revision de continuidad de pulsadores y todo se encuentra en buenas condiciones.
-                        </label>
+                        <label id="obser_Mantenview" for="text" class="form-label"></label>
                       
                     </div>                
 
-                </form>
 
       </div>
       <div class="modal-footer justify-content-between">
@@ -379,18 +423,69 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
+    <script>
+
+$(document).on('click', '.edit', function () {
+
+
+  $('.txt_edit').hide();
+  $(this).next('.txt_edit').show().focus();
+  $(this).hide();
+  
+
+
+$(".txt_edit").focusout(function(){
+
+  var id = this.id;
+  var split_id = id.split("_");
+  var field_name = split_id[0];
+  var edit_id = split_id[1];
+  var value = $(this).val();
+
+$(this).hide();
+
+$(this).prev('.edit').show();
+$(this).prev('.edit').text(value);
+
+
+  $.ajax({
+    url: "php/Manten_CRUD_inst.php",
+    type: "POST",
+    data: {field:field_name, value:value, id:edit_id },
+    succes:function(response){
+      if(response == 1){
+        console.log('saved');
+
+      }else{
+        console.log("not saved");
+
+      }
+
+    }, cache: false
+
+  });
+
+});
+
+
+});
+
+
+
+    </script>
+
 
     <script>
 
-$(document).on('submit', '#crearMaquinMod', function (e) {
+$(document).on('submit', '#crearMantenMod', function (e) {
     e.preventDefault();
 
     var formData = new FormData(this);
-    formData.append("crear_MaquinMod", true);
+    formData.append("crear_MantenMod", true);
 
     $.ajax({
       type: "POST",
-      url: "php/Maquin_CRUD_inst.php",
+      url: "php/Manten_CRUD_inst.php",
       data: formData,
       processData: false,
       contentType: false,
@@ -405,13 +500,14 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
         }else if(res.status == 200) {
 
           $('#errorMessage').addClass('d-none');
-          $('#Modal_maqui').modal('hide');
-          $('#crearMaquinMod')[0].reset();
+          $('#Crea_manten').modal('hide');
+          $('#crearMantenMod')[0].reset();
 
           alertify.set('notifier','position', 'top-center');
           alertify.success(res.message);
+          
 
-          $('.maquina_table').load(location.href + " .maquina_table");
+          $('.Manten_table').load(location.href + " .Manten_table");
 
         }
         
@@ -422,13 +518,13 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
 });
 
-  $(document).on('click', '.EditMaqui_btnmodal', function () {
+  $(document).on('click', '.EditManten_btnmodal', function () {
 
-    var maqui_id = $(this).val();
+    var mantenfall_id = $(this).val();
 
     $.ajax({
       type: "GET",
-      url: "php/Maquin_CRUD_inst.php?maqui_id=" + maqui_id,
+      url: "php/Manten_CRUD_inst.php?mantenfall_id=" + mantenfall_id,
       success: function (response) {
 
         var res =jQuery.parseJSON(response);
@@ -438,15 +534,14 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
         }else if(res.status == 200){
 
-          $('#maqui_id').val(res.data.Numer_Serie);
-          $('#numser_Maquiedi').val(res.data.Numer_Serie);
-          $('#nombr_Maquiedi').val(res.data.Nombr_Maquina);
-          $('#rutEmpr_Maquiedi').val(res.data.Rut_Empresa);
-          $('#seri_repuedi').val(res.data.Num_SerRepuest);
-          $('#nombr_repuedi').val(res.data.Nombre_Repuest);
-          $('#cant_repuedi').val(res.data.Cant_Repuest);
+          $('#mantenfall_id').val(res.data.ID_infor_fallas);
+          $('#order_Mantenedi').val(res.data.Orden);
+          $('#hors_Mantenedi').val(res.data.HorasdelTrabajo);
+          $('#avis_Mantenedi').val(res.data.Aviso);
+          $('#obtitul_Mantenedi').val(res.data.Titul_observ);
+          $('#obser_Mantenedi').val(res.data.Observacion_data);
 
-          $('#Edit_maqui').modal('show');
+          $('#Edit_manten').modal('show');
 
         }
 
@@ -458,15 +553,15 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
 
 
-  $(document).on('submit', '#updatMaquinMod', function (e) {
+  $(document).on('submit', '#updatMantenMod', function (e) {
     e.preventDefault();
 
     var formData = new FormData(this);
-    formData.append("updat_MaquinMod", true);
+    formData.append("updat_MantenMod", true);
 
     $.ajax({
       type: "POST",
-      url: "php/Maquin_CRUD_inst.php",
+      url: "php/Manten_CRUD_inst.php",
       data: formData,
       processData: false,
       contentType: false,
@@ -481,13 +576,13 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
         }else if(res.status == 200) {
 
           $('#errorMessageUpdat').addClass('d-none');
-          $('#Edit_maqui').modal('hide');
-          $('#updatMaquinMod')[0].reset();
+          $('#Edit_manten').modal('hide');
+          $('#updatMantenMod')[0].reset();
 
           alertify.set('notifier','position', 'top-center');
           alertify.success(res.message);
 
-          $('.maquina_table').load(location.href + " .maquina_table");
+          $('.Manten_table').load(location.href + " .Manten_table");
 
         }
         
@@ -499,13 +594,13 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
   });
 
 
-  $(document).on('click', '.Viewdata_manten', function () {
+  $(document).on('click', '.ViewManten_btnmodal', function () {
 
-    var manten_id = $(this).val();
+    var mantenfall_id = $(this).val();
 
       $.ajax({
       type: "GET",
-      url: "php/Manten_CRUD_inst.php?manten_id=" + manten_id,
+      url: "php/Manten_CRUD_inst.php?mantenfall_id=" + mantenfall_id,
       success: function (response) {
 
       var res =jQuery.parseJSON(response);
@@ -514,15 +609,14 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
         alert(res.message);
 
       }else if(res.status == 200){
+        
+          $('#order_Mantenview').text(res.data.Orden);
+          $('#hors_Mantenview').text(res.data.HorasdelTrabajo);
+          $('#avis_Mantenview').text(res.data.Aviso);
+          $('#obtitul_Mantenview').text(res.data.Titul_observ);
+          $('#obser_Mantenview').text(res.data.Observacion_data);
 
-          $('#numser_Maquinview').text(res.data.Numer_Serie);
-          $('#nombrmaq_Maquinview').text(res.data.Nombr_Maquina);
-          $('#rutempr_Maquinview').text(res.data.Rut_Empresa);
-          $('#repseri_Maquinview').text(res.data.Num_SerRepuest);
-          $('#nombrep_Maquinview').text(res.data.Nombre_Repuest);
-          $('#cantrep_Maquinview').text(res.data.Cant_Repuest);
-
-          $('#Viewdata_maqui').modal('show');
+          $('#Viewdata_manten').modal('show');
 
      }
 
@@ -534,13 +628,13 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
 
 
-  $(document).on('click', '.DeletMaqui_btnmodal', function () {
+  $(document).on('click', '.DeletManten_btnmodal', function () {
 
-    var maqui_id = $(this).val();
+    var mantenfall_id = $(this).val();
 
       $.ajax({
        type: "GET",
-       url: "php/Maquin_CRUD_inst.php?maqui_id=" + maqui_id,
+       url: "php/Manten_CRUD_inst.php?mantenfall_id=" + mantenfall_id,
        success: function (response) {
 
         var res =jQuery.parseJSON(response);
@@ -550,9 +644,9 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
       }else if(res.status == 200){
 
-         $('#maqui_iddel').val(res.data.Numer_Serie);
+         $('#manten_iddel').val(res.data.ID_infor_fallas);
 
-         $('#Elim_maqui').modal('show');
+         $('#Elim_manten').modal('show');
 
 }
 
@@ -563,16 +657,15 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 });
 
 
-  $(document).on('submit', '#deletMaquintMod', function (e) {
+  $(document).on('submit', '#deletMantenMod', function (e) {
     e.preventDefault();
 
-
     var formData = new FormData(this);
-    formData.append("delet_MaquintMod", true);
+    formData.append("delet_MantenMod", true);
 
     $.ajax({
       type: "POST",
-      url: "php/Maquin_CRUD_inst.php",
+      url: "php/Manten_CRUD_inst.php",
       data: formData,
       processData: false,
       contentType: false,
@@ -587,12 +680,12 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
         }else if(res.status == 200) {
 
           $('#errorMessageDelet').addClass('d-none');
-          $('#Elim_maqui').modal('hide');
+          $('#Elim_manten').modal('hide');
 
           alertify.set('notifier','position', 'top-center');
           alertify.success(res.message);
 
-          $('.maquina_table').load(location.href + " .maquina_table");
+          $('.Manten_table').load(location.href + " .Manten_table");
 
         }
         

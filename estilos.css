@@ -111,7 +111,7 @@
 /* Tabla Mantencion*/
 .Manten_table{
     width: 100%;
-    margin-top: 4%;
+
     border-collapse: collapse;
     background: #fafafa;
 }
@@ -127,9 +127,19 @@
     align-items: center;
 }
 .tabmante_main, .tabmante_head, 
-.tabmante_body{
+.tabmante_body,.tabmante_capti{
     padding: 1rem;
 }
+
+.tabmante_capti{
+    text-align: center;
+    background: rgba(0, 0, 0, .7);
+    font-size: 20;
+    text-transform: uppercase;
+    color: #fafafa;
+
+}
+
 .tabmante_head{
     background: #2a2a2a;
     color: #fafafa;
@@ -265,7 +275,6 @@
 
 
 
-
 @media (max-width: 930px) {
     .nav_superior{
         padding: .7rem 5%;
@@ -380,7 +389,6 @@
 /* Listados Cliente*/
 .client_table{
     width: 100%;
-    margin-top: 4%;
     border-collapse: collapse;
     background: #fafafa;
 }
@@ -404,11 +412,9 @@
     background: #f2f2f2;
 }
 
-
 /* Listados Maquina*/
 .maquina_table{
     width: 100%;
-    margin-top: 4%;
     border-collapse: collapse;
     background: #fafafa;
 }
@@ -432,12 +438,18 @@
     background: #f2f2f2;
 }
 
+.uppermant_table{
+    margin-top: 8%;
+}
 
 @media (max-width: 880px) {
     /* Tabla Mantencion*/
+    .uppermant_table{
+        margin-top: 20%;
+    }
     .Manten_table{
         width: 100%;
-        margin-top: 10%;
+
         border-collapse: collapse;
         background: #fafafa;
     }
@@ -505,7 +517,6 @@
     /* Listados Maquina*/
     .maquina_table{
         width: 100%;
-        margin-top: 10%;
         border-collapse: collapse;
         background: #fafafa;
     }
@@ -594,4 +605,10 @@
         width: 100%;
         margin: auto;
     }
+}
+
+
+.txt_edit{
+    display: none;
+
 }
