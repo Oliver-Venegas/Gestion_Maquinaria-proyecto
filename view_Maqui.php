@@ -181,12 +181,12 @@
 
                         <?php
 
- $busc_rutempr = "SELECT * FROM cliente_mantened WHERE rut_LogUser_Clint = '$rut_load_log'";
+ $busc_rutempr = "SELECT * FROM cliente_mantened WHERE rut_LogUser_Clint = '$rut_load_log' AND seri_ConnMaqui = 0";
  $busc_rutempr_run = mysqli_query($conexion, $busc_rutempr) or die (mysqli_error($conexion));
  
  foreach($busc_rutempr_run as $list_ruts):  ?>
                             
-    <option value="<?php echo $list_ruts['Rut_empresa'] ?>"><?php echo $list_ruts['Rut_empresa']," / ". $list_ruts['Fecha_del_trabajo'] ?></option>
+    <option value="<?php echo $list_ruts['ID_Cliente'] ?>"><?php echo $list_ruts['Rut_empresa']," / ". $list_ruts['Fecha_del_trabajo'] ?></option>
 
   <?php endforeach ?>
 
@@ -294,16 +294,17 @@
                         <div class="col-9">
 
                         <select class="form-select mb-4 align-items-stretch" name="rutEmpr_Maquiedi" id="rutEmpr_Maquiedi" aria-label="Default select example">
+                        
 
 
                         <?php
 
- $busc_rutempr = "SELECT * FROM cliente_mantened";
+ $busc_rutempr = "SELECT * FROM cliente_mantened WHERE rut_LogUser_Clint = '$rut_load_log'";
  $busc_rutempr_run = mysqli_query($conexion, $busc_rutempr) or die (mysqli_error($conexion));
  
  foreach($busc_rutempr_run as $list_ruts):  ?>
                             
-    <option value="<?php echo $list_ruts['Rut_empresa'] ?>"><?php echo $list_ruts['Rut_empresa']," / ". $list_ruts['Fecha_del_trabajo'] ?></option>
+    <option value="<?php echo $list_ruts['ID_Cliente'] ?>"><?php echo $list_ruts['Rut_empresa']," / ". $list_ruts['Fecha_del_trabajo'] ?></option>
 
   <?php endforeach ?>
 
@@ -580,7 +581,7 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
           $('#maqui_id').val(res.data.Numer_Serie);
           $('#numser_Maquiedi').val(res.data.Numer_Serie);
           $('#nombr_Maquiedi').val(res.data.Nombr_Maquina);
-          $('#rutEmpr_Maquiedi').val(res.data.Rut_Empresa);
+          $('#rutEmpr_Maquiedi').val(res.data.Numer_Serie);
           $('#seri_repuedi').val(res.data.Num_SerRepuest);
           $('#nombr_repuedi').val(res.data.Nombre_Repuest);
           $('#cant_repuedi').val(res.data.Cant_Repuest);

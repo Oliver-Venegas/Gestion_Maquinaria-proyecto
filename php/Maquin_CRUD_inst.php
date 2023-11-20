@@ -7,6 +7,78 @@ if(isset($_POST['delet_MaquintMod']))
 {
     $maqui_iddel = mysqli_real_escape_string($conexion, $_POST['maqui_iddel']);
 
+
+    $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= 0
+                          WHERE seri_ConnMaqui= '$maqui_iddel'";
+                                        
+    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+
+    if($query_renewClient_run){
+
+        $query_creamanten_connect = "UPDATE mantencion_maquin SET  Nomb_maquin_cone= NULL, seri_LogMaqui_cone= NULL
+                                WHERE seri_LogMaqui_cone= '$maqui_iddel'";
+                                        
+    $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+    if($query_creamanten_connect_run){
+        $query_del = "DELETE FROM maquina_mantened WHERE Numer_Serie= '$maqui_iddel'";
+    $query_del_run = mysqli_query($conexion, $query_del);
+
+    if($query_del_run)
+    {
+        $res = [
+            'status' => 200, 
+            'message' => 'Se Elimino la Maquina'
+            ];
+            echo json_encode($res);
+            return false;
+
+    }else{
+        $res = [
+            'status' => 500, 
+            'message' => 'No se pudo Eliminar la Maquina'
+            ];
+            echo json_encode($res);
+            return false;
+
+    }
+
+    }else{
+        $query_del = "DELETE FROM maquina_mantened WHERE Numer_Serie= '$maqui_iddel'";
+        $query_del_run = mysqli_query($conexion, $query_del);
+
+    if($query_del_run)
+    {
+        $res = [
+            'status' => 200, 
+            'message' => 'Se Elimino la Maquina'
+            ];
+            echo json_encode($res);
+            return false;
+
+    }else{
+        $res = [
+            'status' => 500, 
+            'message' => 'No se pudo Eliminar la Maquina'
+            ];
+            echo json_encode($res);
+            return false;
+
+    }
+
+    }
+
+
+    
+
+    }else{
+
+    $query_creamanten_connect = "UPDATE mantencion_maquin SET  Nomb_maquin_cone= NULL, seri_LogMaqui_cone= 0
+                                WHERE seri_LogMaqui_cone= '$maqui_iddel'";
+                                        
+    $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+
     $query_del = "DELETE FROM maquina_mantened WHERE Numer_Serie= '$maqui_iddel'";
     $query_del_run = mysqli_query($conexion, $query_del);
 
@@ -16,18 +88,25 @@ if(isset($_POST['delet_MaquintMod']))
             'status' => 200, 
             'message' => 'Se Elimino la Maquina'
             ];
-echo json_encode($res);
-return false;
+            echo json_encode($res);
+            return false;
 
     }else{
         $res = [
             'status' => 500, 
             'message' => 'No se pudo Eliminar la Maquina'
             ];
-echo json_encode($res);
-return false;
+            echo json_encode($res);
+            return false;
 
     }
+
+
+    }
+
+
+    
+
 
 }
 
@@ -58,9 +137,24 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
 }else{
 
+    $obtdatosconnect_sql = "SELECT Rut_empresa, Nombre_empresa, Fecha_del_trabajo, seri_ConnMaqui  FROM cliente_mantened WHERE ID_Cliente = '$rutEmpr_Maqui'";
+  $resultconnect_tolog = $conexion->query($obtdatosconnect_sql);
+
+  while($dataconn_oflog = $resultconnect_tolog->fetch_assoc()){
+
+    $rutempresa_dMaquina = $dataconn_oflog['Rut_empresa'];
+
+    $NombrEmpr_connect = $dataconn_oflog['Nombre_empresa'];
+    $FechaTrab_connect = $dataconn_oflog['Fecha_del_trabajo'];
+
+    $connect_changMaqui = $dataconn_oflog['seri_ConnMaqui'];
+
+
+  }
+
     if($rad_maquedi == 'hide_maquedi'){
 
-        $query_cremaquin = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutEmpr_Maqui', Num_SerRepuest= NULL, Nombre_Repuest= NULL, Cant_Repuest= NULL
+        $query_cremaquin = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutempresa_dMaquina', Num_SerRepuest= NULL, Nombre_Repuest= NULL, Cant_Repuest= NULL
                                 WHERE Numer_Serie= '$maqui_id'";
 
                 
@@ -68,16 +162,98 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
         if($query_cremaquin_run){
 
-        $res = [
-            'status' => 200, 
-            'message' => 'Se Actualizo la Maquina'
-            ];
-        echo json_encode($res);
-        return false;
+            if($connect_changMaqui == $maqui_id){
+
+                                    $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
+                                        WHERE ID_Cliente= '$rutEmpr_Maqui'";
+                                        
+                                    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+
+
+                                    $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', id_LogClien_cone= '$rutEmpr_Maqui', seri_LogMaqui_cone= '$numser_Maqui'
+                                        WHERE seri_LogMaqui_cone= '$maqui_id'";
+                                        
+                                $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+                                if($query_creamanten_connect_run){
+                                    $res = [
+                                    'status' => 200, 
+                                    'message' => 'Se Actualizo la Maquina y el Informe de Mantencion'
+                                    ];
+                                    echo json_encode($res);
+                                    return false;
+
+                                }else{
+                                    $res = [
+                                        'status' => 422, 
+                                        'message' => 'No se pudo Actualizar el Informe de Mantencion'
+                                        ];
+                                        echo json_encode($res);
+                                        return false;
+
+                                }
+                                    
+
+                                
+
+                
+            }else{
+
+                                    $query_coorectClient = "UPDATE cliente_mantened SET seri_ConnMaqui= 0
+                                        WHERE seri_ConnMaqui= '$maqui_id'";
+                                        
+                                $query_coorectClient_run = mysqli_query($conexion, $query_coorectClient);
+
+                                if($query_coorectClient_run){
+
+                                    $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
+                                        WHERE ID_Cliente= '$rutEmpr_Maqui'";
+                                        
+                                    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+
+               $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
+                                        WHERE seri_LogMaqui_cone= '$maqui_id'";
+                                        
+                                $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+                                if($query_creamanten_connect_run){
+                                    $res = [
+                                    'status' => 200, 
+                                    'message' => 'Se Actualizo la Maquina y el Informe de Mantencion'
+                                    ];
+                                    echo json_encode($res);
+                                    return false;
+
+                                }else{
+                                    $res = [
+                                        'status' => 422, 
+                                        'message' => 'No se pudo Actualizar el Informe de Mantencion'
+                                        ];
+                                        echo json_encode($res);
+                                        return false;
+
+                                } 
+
+
+                            }else{
+                                $res = [
+                                    'status' => 422, 
+                                    'message' => 'No se pudo Actualizar la relacion con el Cliente'
+                                    ];
+                                    echo json_encode($res);
+                                    return false;
+
+                            }
+
+
+            }
+
+            
+
 
         }else{
         $res = [
-            'status' => 500, 
+            'status' => 422, 
             'message' => 'No se pudo Actualizar la Maquina'
             ];
         echo json_encode($res);
@@ -113,19 +289,95 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
         }else{
 
             
-    $query_cremaquin_rep = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutEmpr_Maqui', Num_SerRepuest= '$seri_repu', Nombre_Repuest= '$nombr_repu', Cant_Repuest= '$cant_repu'
+    $query_cremaquin_rep = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutempresa_dMaquina', Num_SerRepuest= '$seri_repu', Nombre_Repuest= '$nombr_repu', Cant_Repuest= '$cant_repu'
                                 WHERE Numer_Serie= '$maqui_id'";
                     
         $query_cremaquinrep_run = mysqli_query($conexion, $query_cremaquin_rep);
         
         if($query_cremaquinrep_run){
 
-            $res = [
-                'status' => 200, 
-                'message' => 'Se Actualizo la Maquina'
-                ];
-            echo json_encode($res);
-            return false;
+            if($connect_changMaqui == 0){
+
+                $query_coorectClient = "UPDATE cliente_mantened SET seri_ConnMaqui= 0
+                                        WHERE seri_ConnMaqui= '$maqui_id'";
+                                        
+                                $query_coorectClient_run = mysqli_query($conexion, $query_coorectClient);
+
+                                if($query_coorectClient_run){
+
+
+                                    $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
+                                        WHERE ID_Cliente= '$rutEmpr_Maqui'";
+                                        
+                                    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+
+
+                                    $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
+                                        WHERE seri_LogMaqui_cone= '$maqui_id'";
+                                        
+                                $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+                                if($query_creamanten_connect_run){
+                                    $res = [
+                                    'status' => 200, 
+                                    'message' => 'Se Actualizo la Maquina y el Informe de Mantencion'
+                                    ];
+                                    echo json_encode($res);
+                                    return false;
+
+                                }else{
+                                    $res = [
+                                        'status' => 422, 
+                                        'message' => 'No se pudo Actualizar el Informe de Mantencion'
+                                        ];
+                                        echo json_encode($res);
+                                        return false;
+
+                                }
+                                    
+
+                                }else{
+                                    $res = [
+                                        'status' => 422, 
+                                        'message' => 'No se pudo Actualizar la relacion con el Cliente'
+                                        ];
+                                        echo json_encode($res);
+                                        return false;
+
+                                }
+
+                
+            }else{
+
+                $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
+                                        WHERE ID_Cliente= '$rutEmpr_Maqui'";
+                                        
+                                    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+
+               $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
+                                        WHERE seri_LogMaqui_cone= '$maqui_id'";
+                                        
+                                $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+                                if($query_creamanten_connect_run){
+                                    $res = [
+                                    'status' => 200, 
+                                    'message' => 'Se Actualizo la Maquina y el Informe de Mantencion'
+                                    ];
+                                    echo json_encode($res);
+                                    return false;
+
+                                }else{
+                                    $res = [
+                                        'status' => 422, 
+                                        'message' => 'No se pudo Actualizar el Informe de Mantencion'
+                                        ];
+                                        echo json_encode($res);
+                                        return false;
+
+                                } 
+                                
+            }
 
         }else{
             $res = [
@@ -232,7 +484,18 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
 }else{
 
-    
+    $obtdatosconnect_sql = "SELECT Rut_empresa, Nombre_empresa, Fecha_del_trabajo  FROM cliente_mantened WHERE ID_Cliente = '$rutEmpr_Maqui'";
+  $resultconnect_tolog = $conexion->query($obtdatosconnect_sql);
+
+  while($dataconn_oflog = $resultconnect_tolog->fetch_assoc()){
+
+    $rutempresa_dMaquina = $dataconn_oflog['Rut_empresa'];
+
+    $NombrEmpr_connect = $dataconn_oflog['Nombre_empresa'];
+    $FechaTrab_connect = $dataconn_oflog['Fecha_del_trabajo'];
+
+
+  }
 
     if($rad_maqu == 'show_maqu'){
 
@@ -264,22 +527,59 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
                 }else{
 
                     $query_cremaquin_rep = "INSERT INTO maquina_mantened (Numer_Serie, Nombr_Maquina, 	Rut_Empresa, Num_SerRepuest, Nombre_Repuest, Cant_Repuest, rut_LogUser_Maqui)
-                            VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutEmpr_Maqui', '$seri_repu', '$nombr_repu', '$cant_repu', '$torutuserLoad')";
+                            VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutempresa_dMaquina', '$seri_repu', '$nombr_repu', '$cant_repu', '$torutuserLoad')";
                             
-                $query_cremaquinrep_run = mysqli_query($conexion, $query_cremaquin_rep);
+                    $query_cremaquinrep_run = mysqli_query($conexion, $query_cremaquin_rep);
                 
                 if($query_cremaquinrep_run){
 
-                    $res = [
-                        'status' => 200, 
-                        'message' => 'Se Creo la Maquina'
-                        ];
-                    echo json_encode($res);
-                    return false;
+                    $query_connMaquiTo_client = "UPDATE cliente_mantened SET seri_ConnMaqui= '$numser_Maqui'
+                    WHERE ID_Cliente= '$rutEmpr_Maqui'";
+
+                    $query_connMaquiTo_client_run = mysqli_query($conexion, $query_connMaquiTo_client);
+
+                    if($query_connMaquiTo_client_run){
+
+                        $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
+                                        WHERE id_LogClien_cone= '$rutEmpr_Maqui'";
+                                        
+                                $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+                                if($query_creamanten_connect_run){
+                                    $res = [
+                                    'status' => 200, 
+                                    'message' => 'Se Creo la Maquina y el Informe de Mantencion'
+                                    ];
+                                    echo json_encode($res);
+                                    return false;
+
+                                }else{
+                                    $res = [
+                                        'status' => 422, 
+                                        'message' => 'No se pudo Crear el Informe de Mantencion'
+                                        ];
+                                        echo json_encode($res);
+                                        return false;
+
+                                }
+                        }else{
+
+                        $res = [
+                            'status' => 422, 
+                            'message' => 'No se pudo Actualizar la relacion de la Maquina con el Cliente '
+                            ];
+                            echo json_encode($res);
+                            return false;
+
+                    }
+                    
+                                
+
+                    
 
                 }else{
                     $res = [
-                        'status' => 500, 
+                        'status' => 422, 
                         'message' => 'No se pudo Crear la Maquina'
                         ];
                     echo json_encode($res);
@@ -297,18 +597,51 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
     }else if($rad_maqu == 'hide_maqu'){
 
         $query_cremaquin = "INSERT INTO maquina_mantened (Numer_Serie, Nombr_Maquina, Rut_Empresa, Num_SerRepuest, Nombre_Repuest, Cant_Repuest, rut_LogUser_Maqui)
-        VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutEmpr_Maqui', NULL, NULL, NULL, '$torutuserLoad')";
+        VALUES ('$numser_Maqui', '$nombr_Maqui', '$rutempresa_dMaquina', NULL, NULL, NULL, '$torutuserLoad')";
                 
         $query_cremaquin_run = mysqli_query($conexion, $query_cremaquin);
 
         if($query_cremaquin_run){
 
-        $res = [
-            'status' => 200, 
-            'message' => 'Se Creo la Maquina'
-            ];
-        echo json_encode($res);
-        return false;
+            $query_connMaquiTo_client = "UPDATE cliente_mantened SET seri_ConnMaqui= '$numser_Maqui'
+                    WHERE ID_Cliente= '$rutEmpr_Maqui'";
+
+                    $query_connMaquiTo_client_run = mysqli_query($conexion, $query_connMaquiTo_client);
+
+                    if($query_connMaquiTo_client_run){
+
+                        $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
+                                        WHERE id_LogClien_cone= '$rutEmpr_Maqui'";
+                                        
+                                $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+                                if($query_creamanten_connect_run){
+                                    $res = [
+                                    'status' => 200, 
+                                    'message' => 'Se Creo la Maquina y el Informe de Mantencion'
+                                    ];
+                                    echo json_encode($res);
+                                    return false;
+
+                                }else{
+                                    $res = [
+                                        'status' => 422, 
+                                        'message' => 'No se pudo Crear el Informe de Mantencion'
+                                        ];
+                                        echo json_encode($res);
+                                        return false;
+
+                                }
+                        }else{
+
+                        $res = [
+                            'status' => 422, 
+                            'message' => 'No se pudo Actualizar la relacion de la Maquina con el Cliente '
+                            ];
+                            echo json_encode($res);
+                            return false;
+
+                    }
 
         }else{
         $res = [

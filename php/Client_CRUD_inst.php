@@ -7,6 +7,9 @@ if(isset($_POST['delet_ClientMod']))
 {
     $client_iddel = mysqli_real_escape_string($conexion, $_POST['client_iddel']);
 
+    $query_delmanten = "DELETE FROM mantencion_maquin WHERE id_LogClien_cone= '$client_iddel'";
+    $query_delmanten_run = mysqli_query($conexion, $query_delmanten);
+
     $query_del = "DELETE FROM cliente_mantened WHERE ID_Cliente= '$client_iddel'";
     $query_del_run = mysqli_query($conexion, $query_del);
 
@@ -139,15 +142,34 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
                                 WHERE ID_Cliente= '$Cliente_id'";
                     
         $query_creclient_run = mysqli_query($conexion, $query_creclient);
+
         
         if($query_creclient_run){
 
-            $res = [
-                'status' => 200, 
-                'message' => 'Se Actualizaron los datos del Cliente'
-                ];
-                echo json_encode($res);
-                return false;
+            $query_creamantenconnect = "UPDATE  mantencion_maquin SET Nomb_empre_cone= '$nombrempr_Clien', Fecha_trab_cone= '$hrsempr_Clien'
+            WHERE id_LogClien_cone= '$Cliente_id'";
+            
+            $query_creamantenconnect_run = mysqli_query($conexion, $query_creamantenconnect);
+
+            if($query_creamantenconnect_run){
+                $res = [
+                    'status' => 200, 
+                    'message' => 'Se Actualizaron los datos relacionado al Cliente'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+            }else{
+                $res = [
+                    'status' => 422, 
+                    'message' => 'No se pudo Actualizar el Informe de Mantencion'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+    }
+
+            
 
         }else{
             $res = [
@@ -187,12 +209,29 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
                     
                     if($query_creclientbol_run){
             
-                        $res = [
-                            'status' => 200, 
-                            'message' => 'Se Actualizo el Cliente junto a su Boleta'
-                            ];
-                        echo json_encode($res);
-                        return false;
+                        $query_creamantenconnect = "UPDATE  mantencion_maquin SET Nomb_empre_cone= '$nombrempr_Clien', Fecha_trab_cone= '$hrsempr_Clien'
+                        WHERE id_LogClien_cone= '$Cliente_id'";
+                        
+                        $query_creamantenconnect_run = mysqli_query($conexion, $query_creamantenconnect);
+
+            if($query_creamantenconnect_run){
+                $res = [
+                    'status' => 200, 
+                    'message' => 'Se Actualizaron los datos relacionado al Cliente junto a su Boleta'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+            }else{
+                $res = [
+                    'status' => 422, 
+                    'message' => 'No se pudo Crear el Informe de Mantencion'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+    }
+
             
                     }else{
                         $res = [
@@ -396,19 +435,49 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
 
             if($rad_cli == 'hide_cli'){
 
-                $query_creclient = "INSERT INTO cliente_mantened (Rut_empresa, Nombre_empresa, 	Nombre_contacto, Hora_trabaj_empresa, Fecha_del_trabajo, Codigo_boleta, Datos_boleta, rut_LogUser_Clint)
-        VALUES ('$rut_empresa', '$nombrempr_Clien', '$nombrcont_Clien', '$hrsempr_Clien', '$dateempr_Clien', NULL, NULL, '$torutuserLoad')";
+                $query_creclient = "INSERT INTO cliente_mantened (Rut_empresa, Nombre_empresa, 	Nombre_contacto, Hora_trabaj_empresa, Fecha_del_trabajo, Codigo_boleta, Datos_boleta, rut_LogUser_Clint, seri_ConnMaqui)
+        VALUES ('$rut_empresa', '$nombrempr_Clien', '$nombrcont_Clien', '$hrsempr_Clien', '$dateempr_Clien', NULL, NULL, '$torutuserLoad', 0)";
                 
         $query_creclient_run = mysqli_query($conexion, $query_creclient);
 
+
+
         if($query_creclient_run){
 
-        $res = [
-            'status' => 200, 
-            'message' => 'Se Creo el Cliente'
-            ];
-        echo json_encode($res);
-        return false;
+            $obtdatosconnect_sql = "SELECT 	ID_Cliente FROM cliente_mantened WHERE Rut_empresa = '$rut_empresa' AND Nombre_empresa = '$nombrempr_Clien' AND Fecha_del_trabajo = '$dateempr_Clien' ";
+            $resultconnect_tolog = $conexion->query($obtdatosconnect_sql);
+
+            while($dataconn_oflog = $resultconnect_tolog->fetch_assoc()){
+
+                $id_toconnectmant = $dataconn_oflog['ID_Cliente'];
+
+
+  }
+
+            $query_creamantenconnect = "INSERT INTO mantencion_maquin (Nomb_empre_cone, Fecha_trab_cone, rut_LogUser_cone, id_LogClien_cone)
+            VALUES ('$nombrempr_Clien', '$dateempr_Clien', '$torutuserLoad', '$id_toconnectmant')";
+            
+            $query_creamantenconnect_run = mysqli_query($conexion, $query_creamantenconnect);
+
+            if($query_creamantenconnect_run){
+                $res = [
+                    'status' => 200, 
+                    'message' => 'Se Creo el Cliente'
+                    ];
+                echo json_encode($res);
+                return false;
+
+    }else{
+                $res = [
+                    'status' => 422, 
+                    'message' => 'No se pudo Crear el Informe de Mantencion'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+    }
+
+
 
         }else{
         $res = [
@@ -443,19 +512,46 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
 
             if(move_uploaded_file($_FILES['data_bol']['tmp_name'], $carpeta_destino . $data_bol)){
 
-            $query_creclient_bol = "INSERT INTO cliente_mantened (Rut_empresa, Nombre_empresa, 	Nombre_contacto, Hora_trabaj_empresa, Fecha_del_trabajo, Codigo_boleta, Datos_boleta, rut_LogUser_Clint)
-                    VALUES ('$rut_empresa', '$nombrempr_Clien', '$nombrcont_Clien', '$hrsempr_Clien', '$dateempr_Clien', '$id_bol', '$data_bol', '$torutuserLoad')";
+            $query_creclient_bol = "INSERT INTO cliente_mantened (Rut_empresa, Nombre_empresa, 	Nombre_contacto, Hora_trabaj_empresa, Fecha_del_trabajo, Codigo_boleta, Datos_boleta, rut_LogUser_Clint, seri_ConnMaqui)
+                    VALUES ('$rut_empresa', '$nombrempr_Clien', '$nombrcont_Clien', '$hrsempr_Clien', '$dateempr_Clien', '$id_bol', '$data_bol', '$torutuserLoad', 0)";
                     
         $query_creclientbol_run = mysqli_query($conexion, $query_creclient_bol);
         
         if($query_creclientbol_run){
 
-            $res = [
-                'status' => 200, 
-                'message' => 'Se Creo el Cliente'
-                ];
-            echo json_encode($res);
-            return false;
+
+            $obtdatosconnect_sql = "SELECT 	ID_Cliente FROM cliente_mantened WHERE Rut_empresa = '$rut_empresa' AND Nombre_empresa = '$nombrempr_Clien' AND Fecha_del_trabajo = '$dateempr_Clien' ";
+            $resultconnect_tolog = $conexion->query($obtdatosconnect_sql);
+
+            while($dataconn_oflog = $resultconnect_tolog->fetch_assoc()){
+
+                $id_toconnectmant = $dataconn_oflog['ID_Cliente'];
+
+
+  }
+
+            $query_creamantenconnect = "INSERT INTO mantencion_maquin (Nomb_empre_cone, Fecha_trab_cone, rut_LogUser_cone, id_LogClien_cone)
+            VALUES ('$nombrempr_Clien', '$dateempr_Clien', '$torutuserLoad', '$id_toconnectmant')";
+            
+            $query_creamantenconnect_run = mysqli_query($conexion, $query_creamantenconnect);
+
+            if($query_creamantenconnect_run){
+                $res = [
+                    'status' => 200, 
+                    'message' => 'Se Creo el Cliente'
+                    ];
+                echo json_encode($res);
+                return false;
+
+    }else{
+                $res = [
+                    'status' => 422, 
+                    'message' => 'No se pudo Crear el Informe de Mantencion'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+    }
 
         }else{
             $res = [
