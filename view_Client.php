@@ -397,6 +397,8 @@
 
 
         <h5>¿Esta Seguro que desea eliminar al Cliente?</h5>
+        <br>
+        <h6>Eliminar el Cliente Eliminara el Informe de Fallas Relacionado con el Cliente</h6>
 
 
       </div>

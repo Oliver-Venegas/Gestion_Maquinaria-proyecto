@@ -170,8 +170,12 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
                                     $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
 
 
-                                    $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', id_LogClien_cone= '$rutEmpr_Maqui', seri_LogMaqui_cone= '$numser_Maqui'
-                                        WHERE seri_LogMaqui_cone= '$maqui_id'";
+                                    $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect',
+                                                                                                Nomb_maquin_cone= '$nombr_Maqui',
+                                                                                                Fecha_trab_cone= '$FechaTrab_connect',
+                                                                                                id_LogClien_cone= '$rutEmpr_Maqui',
+                                                                                                seri_LogMaqui_cone= '$numser_Maqui'
+                                        WHERE id_LogClien_cone= '$rutEmpr_Maqui'";
                                         
                                 $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
 
@@ -199,7 +203,7 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
                 
             }else{
 
-                                    $query_coorectClient = "UPDATE cliente_mantened SET seri_ConnMaqui= 0
+                                $query_coorectClient = "UPDATE cliente_mantened SET seri_ConnMaqui= 0
                                         WHERE seri_ConnMaqui= '$maqui_id'";
                                         
                                 $query_coorectClient_run = mysqli_query($conexion, $query_coorectClient);
@@ -211,8 +215,13 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
                                         
                                     $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
 
-               $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
+                                    $query_rereite_connect = "UPDATE mantencion_maquin SET Nomb_maquin_cone= NULL, seri_LogMaqui_cone= NULL
                                         WHERE seri_LogMaqui_cone= '$maqui_id'";
+                                        
+                                    $query_rereite_connect_run = mysqli_query($conexion, $query_rereite_connect);
+
+               $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
+                                        WHERE id_LogClien_cone= '$rutEmpr_Maqui'";
                                         
                                 $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
 
@@ -296,88 +305,91 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
         
         if($query_cremaquinrep_run){
 
-            if($connect_changMaqui == 0){
-
-                $query_coorectClient = "UPDATE cliente_mantened SET seri_ConnMaqui= 0
-                                        WHERE seri_ConnMaqui= '$maqui_id'";
-                                        
-                                $query_coorectClient_run = mysqli_query($conexion, $query_coorectClient);
-
-                                if($query_coorectClient_run){
-
-
-                                    $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
-                                        WHERE ID_Cliente= '$rutEmpr_Maqui'";
-                                        
-                                    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
-
-
-                                    $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
-                                        WHERE seri_LogMaqui_cone= '$maqui_id'";
-                                        
-                                $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
-
-                                if($query_creamanten_connect_run){
-                                    $res = [
-                                    'status' => 200, 
-                                    'message' => 'Se Actualizo la Maquina y el Informe de Mantencion'
-                                    ];
-                                    echo json_encode($res);
-                                    return false;
-
-                                }else{
-                                    $res = [
-                                        'status' => 422, 
-                                        'message' => 'No se pudo Actualizar el Informe de Mantencion'
-                                        ];
-                                        echo json_encode($res);
-                                        return false;
-
-                                }
-                                    
-
-                                }else{
-                                    $res = [
-                                        'status' => 422, 
-                                        'message' => 'No se pudo Actualizar la relacion con el Cliente'
-                                        ];
-                                        echo json_encode($res);
-                                        return false;
-
-                                }
-
-                
-            }else{
+            if($connect_changMaqui == $maqui_id){
 
                 $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
-                                        WHERE ID_Cliente= '$rutEmpr_Maqui'";
-                                        
-                                    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+                    WHERE ID_Cliente= '$rutEmpr_Maqui'";
+                    
+                $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
 
-               $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
-                                        WHERE seri_LogMaqui_cone= '$maqui_id'";
-                                        
-                                $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
 
-                                if($query_creamanten_connect_run){
-                                    $res = [
-                                    'status' => 200, 
-                                    'message' => 'Se Actualizo la Maquina y el Informe de Mantencion'
-                                    ];
-                                    echo json_encode($res);
-                                    return false;
+                $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', id_LogClien_cone= '$rutEmpr_Maqui', seri_LogMaqui_cone= '$numser_Maqui'
+                    WHERE seri_LogMaqui_cone= '$maqui_id'";
+                    
+            $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
 
-                                }else{
-                                    $res = [
-                                        'status' => 422, 
-                                        'message' => 'No se pudo Actualizar el Informe de Mantencion'
-                                        ];
-                                        echo json_encode($res);
-                                        return false;
+            if($query_creamanten_connect_run){
+                $res = [
+                'status' => 200, 
+                'message' => 'Se Actualizo la Maquina y el Informe de Mantencion'
+                ];
+                echo json_encode($res);
+                return false;
 
-                                } 
-                                
+            }else{
+                $res = [
+                    'status' => 422, 
+                    'message' => 'No se pudo Actualizar el Informe de Mantencion'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
             }
+                
+
+            
+
+
+}else{
+
+            $query_coorectClient = "UPDATE cliente_mantened SET seri_ConnMaqui= 0
+                    WHERE seri_ConnMaqui= '$maqui_id'";
+                    
+            $query_coorectClient_run = mysqli_query($conexion, $query_coorectClient);
+
+            if($query_coorectClient_run){
+
+                $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
+                    WHERE ID_Cliente= '$rutEmpr_Maqui'";
+                    
+                $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+
+$query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
+                    WHERE seri_LogMaqui_cone= '$maqui_id'";
+                    
+            $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
+
+            if($query_creamanten_connect_run){
+                $res = [
+                'status' => 200, 
+                'message' => 'Se Actualizo la Maquina y el Informe de Mantencion'
+                ];
+                echo json_encode($res);
+                return false;
+
+            }else{
+                $res = [
+                    'status' => 422, 
+                    'message' => 'No se pudo Actualizar el Informe de Mantencion'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+            } 
+
+
+        }else{
+            $res = [
+                'status' => 422, 
+                'message' => 'No se pudo Actualizar la relacion con el Cliente'
+                ];
+                echo json_encode($res);
+                return false;
+
+        }
+
+
+}
 
         }else{
             $res = [

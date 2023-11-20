@@ -555,7 +555,7 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
         }
         
-      }
+      }, cache: false
 
     });
 
@@ -697,7 +697,7 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
 }
 
-}
+}, cache: false
 
 });
 
@@ -737,7 +737,7 @@ $(document).on('submit', '#crearMaquinMod', function (e) {
 
         }
         
-      }
+      }, cache: false
 
     });
 

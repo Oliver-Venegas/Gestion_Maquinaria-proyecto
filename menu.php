@@ -70,19 +70,32 @@
 
 <table class="Manten_table rounded">
   
+<?php 
+            $querytabl_Mantenupper = "SELECT * FROM mantencion_maquin WHERE rut_LogUser_cone= '$rut_load_log'";
+            $querytabl_Mantenupper_run = mysqli_query($conexion, $querytabl_Mantenupper);
+
+            if(mysqli_num_rows($querytabl_Mantenupper_run) > 0)
+            {
+              foreach($querytabl_Mantenupper_run as $Informfallas_mantened){
+
+                 ?>
+
 <thead>
+
+
+
             <tr>
                 
-                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</th>
-                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">Sensor de Metales</th>
-                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test">23/02/2022</th>
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Nomb_empre_cone'] ?> </th>
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Nomb_maquin_cone'] ?></th>
+                <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Fecha_trab_cone'] ?></th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test"> </th>
                 <th class="tabmante_main "><i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i></th>
                 <th class="tabmante_main"><i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i></th>
 
                 <th class="tabmante_main_phone">
                 <div class="row plusex_mant">
-                    <div class="col-auto" data-bs-toggle="collapse" data-bs-target=".colap_test">Sanander</div>
+                    <div class="col-auto" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Nomb_empre_cone'] ?></div>
                     <div class="col-auto">
                       
                         <i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i>
@@ -93,11 +106,12 @@
                 </th>        
                 
             </tr> 
+
  </thead>
                
                 
 
-        <tbody class="collapse colap_test" >
+        <tbody class="collapse colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>" >
 
             <tr>
                 <td class="tabmante_head">Hora</td>
@@ -159,7 +173,11 @@
             
             </tbody>
     
-            
+            <?php
+              }
+
+            }
+            ?>
 
         </table>
 
