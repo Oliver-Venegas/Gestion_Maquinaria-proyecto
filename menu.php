@@ -90,7 +90,7 @@
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Nomb_maquin_cone'] ?></th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Fecha_trab_cone'] ?></th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test"> </th>
-                <th class="tabmante_main "><i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i></th>
+                <th class="tabmante_main "> <button type="button" class="btm Creainform_btnmodal bx bx-plus plus_manten" value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Crea_manten"></button> </th>
                 <th class="tabmante_main"><i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i></th>
 
                 <th class="tabmante_main_phone">
@@ -98,8 +98,8 @@
                     <div class="col-auto" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Nomb_empre_cone'] ?></div>
                     <div class="col-auto">
                       
-                        <i class='bx bx-plus-circle plus_manten' data-bs-toggle="modal" data-bs-target="#Crea_manten"></i>
-                        <i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i>
+                    <button type="button" class="btm Creainform_btnmodal bx bx-plus plus_manten" value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Crea_manten">   </button>
+                        <i class='bx bx-x-circle close_manten' value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i>
                     </div>
                 </div>
                     
@@ -123,8 +123,10 @@
 
             </tr>
 
+            <?= $prueba = $Informfallas_mantened['ID_con_mantencion'] ?>
+
             <?php 
-            $querytabl_Manten = "SELECT * FROM inform_fallas WHERE rut_LogUser_Manten= '$rut_load_log'";
+            $querytabl_Manten = "SELECT * FROM inform_fallas WHERE rut_LogUser_Manten= '$rut_load_log' AND ID_InformFallas_cone= '$prueba'";
             $querytabl_Manten_run = mysqli_query($conexion, $querytabl_Manten);
 
             if(mysqli_num_rows($querytabl_Manten_run) > 0)
@@ -250,6 +252,8 @@
       <div class="modal-body">
         
       <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+      <input type="hidden" name="informfall_id" id="informfall_id">
 
 
        <input type="hidden" name="torutuserLoad_manten" value="<?php echo $rut_load_log ?>">
@@ -494,6 +498,37 @@ $(this).prev('.edit').text(value);
 
 
     <script>
+
+$(document).on('click', '.Creainform_btnmodal', function () {
+
+var informfall_id = $(this).val();
+
+$.ajax({
+  type: "GET",
+  url: "php/Manten_CRUD_inst.php?informfall_id=" + informfall_id,
+  success: function (response) {
+
+    var res =jQuery.parseJSON(response);
+    if(res.status == 422){
+
+      alert(res.message);
+
+    }else if(res.status == 200){
+
+      $('#informfall_id').val(res.data.ID_con_mantencion);
+
+      $('#Crea_manten').modal('show');
+
+    }
+
+  }, cache: false
+
+  });
+
+});
+
+
+
 
 $(document).on('submit', '#crearMantenMod', function (e) {
     e.preventDefault();

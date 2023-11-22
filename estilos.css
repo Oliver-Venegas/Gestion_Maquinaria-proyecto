@@ -149,9 +149,8 @@
 }
 .plus_manten{
     
-    padding-left: 2rem;
     font-size: 2.0rem;
-    color: #0059ff;
+    color: #ffffff;
     cursor: pointer;
    
 }
@@ -575,10 +574,21 @@
     margin: auto;
 }
 
+
+
+.Creainform_btnmodal{
+    background-color: #447be2d2;
+    padding: 1px 1px;
+    border-radius: 50%;
+    border: none;
+}
+
+
 @media (max-width: 500px) {
     .mod_clicre{
         width: 100%;
         margin: auto;
+        
     }
 
     .mod_cliedi{
@@ -612,4 +622,3 @@
     display: none;
 
 }
-

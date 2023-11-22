@@ -432,6 +432,173 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
             $dvr = 'K';
         }
         if ($dvr == strtoupper($dv)) {
+            
+            if($hrsempr_Clien == NULL){
+                
+                if($rad_cli == 'hide_cli'){
+
+                $query_creclient = "INSERT INTO cliente_mantened (Rut_empresa, Nombre_empresa, 	Nombre_contacto, Hora_trabaj_empresa, Fecha_del_trabajo, Codigo_boleta, Datos_boleta, rut_LogUser_Clint, seri_ConnMaqui)
+        VALUES ('$rut_empresa', '$nombrempr_Clien', '$nombrcont_Clien', '00:00:00', '$dateempr_Clien', NULL, NULL, '$torutuserLoad', 0)";
+                
+        $query_creclient_run = mysqli_query($conexion, $query_creclient);
+
+
+
+        if($query_creclient_run){
+
+            $obtdatosconnect_sql = "SELECT 	ID_Cliente FROM cliente_mantened WHERE Rut_empresa = '$rut_empresa' AND Nombre_empresa = '$nombrempr_Clien' AND Fecha_del_trabajo = '$dateempr_Clien' ";
+            $resultconnect_tolog = $conexion->query($obtdatosconnect_sql);
+
+            while($dataconn_oflog = $resultconnect_tolog->fetch_assoc()){
+
+                $id_toconnectmant = $dataconn_oflog['ID_Cliente'];
+
+
+  }
+
+            $query_creamantenconnect = "INSERT INTO mantencion_maquin (Nomb_empre_cone, Fecha_trab_cone, rut_LogUser_cone, id_LogClien_cone)
+            VALUES ('$nombrempr_Clien', '$dateempr_Clien', '$torutuserLoad', '$id_toconnectmant')";
+            
+            $query_creamantenconnect_run = mysqli_query($conexion, $query_creamantenconnect);
+
+            if($query_creamantenconnect_run){
+                $res = [
+                    'status' => 200, 
+                    'message' => 'Se Creo el Cliente'
+                    ];
+                echo json_encode($res);
+                return false;
+
+    }else{
+                $res = [
+                    'status' => 422, 
+                    'message' => 'No se pudo Crear el Informe de Mantencion'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+    }
+
+
+
+        }else{
+        $res = [
+            'status' => 500, 
+            'message' => 'No se pudo Crear el Cliente'
+            ];
+        echo json_encode($res);
+        return false;
+
+}
+
+
+            }else if($rad_cli == 'show_cli'){
+
+         if($id_bol == NULL){
+        $res = 
+                ['status' => 422, 
+                'message' => 'Debe ingrear el ID de la Boleta'];
+                echo json_encode($res);
+                return false;
+
+
+    }else{
+
+        $carpeta_destino = "../files/";
+
+        $data_bol =  basename($_FILES['data_bol']['name']);
+        $bol_text = strtolower(pathinfo($data_bol, PATHINFO_EXTENSION));
+
+        if($bol_text == "pdf" || $bol_text == "doc" || $bol_text == "docx"){
+
+
+            if(move_uploaded_file($_FILES['data_bol']['tmp_name'], $carpeta_destino . $data_bol)){
+
+            $query_creclient_bol = "INSERT INTO cliente_mantened (Rut_empresa, Nombre_empresa, 	Nombre_contacto, Hora_trabaj_empresa, Fecha_del_trabajo, Codigo_boleta, Datos_boleta, rut_LogUser_Clint, seri_ConnMaqui)
+                    VALUES ('$rut_empresa', '$nombrempr_Clien', '$nombrcont_Clien', '00:00:00', '$dateempr_Clien', '$id_bol', '$data_bol', '$torutuserLoad', 0)";
+                    
+        $query_creclientbol_run = mysqli_query($conexion, $query_creclient_bol);
+        
+        if($query_creclientbol_run){
+
+
+            $obtdatosconnect_sql = "SELECT 	ID_Cliente FROM cliente_mantened WHERE Rut_empresa = '$rut_empresa' AND Nombre_empresa = '$nombrempr_Clien' AND Fecha_del_trabajo = '$dateempr_Clien' ";
+            $resultconnect_tolog = $conexion->query($obtdatosconnect_sql);
+
+            while($dataconn_oflog = $resultconnect_tolog->fetch_assoc()){
+
+                $id_toconnectmant = $dataconn_oflog['ID_Cliente'];
+
+
+  }
+
+            $query_creamantenconnect = "INSERT INTO mantencion_maquin (Nomb_empre_cone, Fecha_trab_cone, rut_LogUser_cone, id_LogClien_cone)
+            VALUES ('$nombrempr_Clien', '$dateempr_Clien', '$torutuserLoad', '$id_toconnectmant')";
+            
+            $query_creamantenconnect_run = mysqli_query($conexion, $query_creamantenconnect);
+
+            if($query_creamantenconnect_run){
+                $res = [
+                    'status' => 200, 
+                    'message' => 'Se Creo el Cliente'
+                    ];
+                echo json_encode($res);
+                return false;
+
+    }else{
+                $res = [
+                    'status' => 422, 
+                    'message' => 'No se pudo Crear el Informe de Mantencion'
+                    ];
+                    echo json_encode($res);
+                    return false;
+
+    }
+
+        }else{
+            $res = [
+                'status' => 500, 
+                'message' => 'No se pudo Crear el Cliente'
+                ];
+            echo json_encode($res);
+            return false;
+
+        }
+
+        }else{
+
+            $res = 
+            ['status' => 422, 
+            'message' => 'No se pudo guardar el Archivo'];
+            echo json_encode($res);
+            return false;
+        
+        }
+
+
+
+        }else{
+            $res = 
+            ['status' => 422, 
+            'message' => 'El Archivo ingresado no es de tipo PDF o WORD'];
+            echo json_encode($res);
+            return false;
+
+        }
+
+    }       
+
+
+            }else{
+
+            $res = 
+            ['status' => 422, 
+            'message' => 'Debe Seleccionar Si desea Ingresar o No la Boleta'];
+            echo json_encode($res);
+            return false;
+            }
+                
+            }else{
 
             if($rad_cli == 'hide_cli'){
 
@@ -596,7 +763,7 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
             return false;
             }
 
-
+}
     
         } else {
             $res = 
@@ -630,7 +797,6 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
 
 
 }
-
 
 
 

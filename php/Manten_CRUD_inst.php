@@ -135,11 +135,44 @@ if(isset($_GET['mantenfall_id']))
     }
 }
 
+if(isset($_GET['informfall_id']))
+{
+
+    $informfall_id = mysqli_real_escape_string($conexion, $_GET['informfall_id']);
+
+    $query_informfallasID = "SELECT * FROM mantencion_maquin WHERE ID_con_mantencion='$informfall_id'";
+    $query_informfallasID_run = mysqli_query($conexion, $query_informfallasID);
+
+
+    if(mysqli_num_rows($query_informfallasID_run) == 1){
+
+        $inforfallas_mantencionfind = mysqli_fetch_array($query_informfallasID_run);
+
+        $res = 
+    ['status' => 200, 
+    'message' => 'Se Encontro la Seccion de Falas',
+    'data' => $inforfallas_mantencionfind];
+    echo json_encode($res);
+    return false;
+
+    }else{
+
+        $res = 
+        ['status' => 404, 
+        'message' => 'No se encontro la Maquina'];
+        echo json_encode($res);
+        return false;
+    
+    }
+}
+
 
 
 if(isset($_POST['crear_MantenMod']))
 {
-    
+
+
+$informfall_id = mysqli_real_escape_string($conexion, $_POST['informfall_id']);    
 
 $torutuserLoad_manten = mysqli_real_escape_string($conexion, $_POST['torutuserLoad_manten']);
 
@@ -158,8 +191,12 @@ if($obtitul_Manten == NULL){
 
 }else{
 
-                $query_cremanten = "INSERT INTO inform_fallas (Orden, HorasdelTrabajo, Aviso, Titul_observ, Observacion_data, Estadomanten, rut_LogUser_Manten)
-                            VALUES ('$order_Manten','00:00:00', '$avis_Manten', '$obtitul_Manten', '$obser_Manten', 'Pendiente', '$torutuserLoad_manten')";
+    if($order_Manten == NULL){
+
+        if($avis_Manten == NULL){
+
+            $query_cremanten = "INSERT INTO inform_fallas (Orden, HorasdelTrabajo, Aviso, Titul_observ, Observacion_data, Estadomanten, rut_LogUser_Manten, ID_InformFallas_cone)
+                            VALUES ('0','00:00:00', '0', '$obtitul_Manten', '$obser_Manten', 'Pendiente', '$torutuserLoad_manten', '$informfall_id')";
                             
                 $query_cremanten_run = mysqli_query($conexion, $query_cremanten);
                 
@@ -167,7 +204,7 @@ if($obtitul_Manten == NULL){
 
                     $res = [
                         'status' => 200, 
-                        'message' => 'Se Creo la Session de Fallas'
+                        'message' => 'Se Creo la Seccion de Fallas'
                         ];
                     echo json_encode($res);
                     return false;
@@ -181,6 +218,120 @@ if($obtitul_Manten == NULL){
                     return false;
 
                 }
+
+        }else{
+
+            $query_cremanten = "INSERT INTO inform_fallas (Orden, HorasdelTrabajo, Aviso, Titul_observ, Observacion_data, Estadomanten, rut_LogUser_Manten, ID_InformFallas_cone)
+                            VALUES ('0','00:00:00', '$avis_Manten', '$obtitul_Manten', '$obser_Manten', 'Pendiente', '$torutuserLoad_manten', '$informfall_id')";
+                            
+                $query_cremanten_run = mysqli_query($conexion, $query_cremanten);
+                
+                if($query_cremanten_run){
+
+                    $res = [
+                        'status' => 200, 
+                        'message' => 'Se Creo la Seccion de Fallas'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }else{
+                    $res = [
+                        'status' => 422, 
+                        'message' => 'No se pudo Crear la Seccion de Fallas'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }
+
+        }
+
+    }else if($avis_Manten == NULL){
+
+        if($order_Manten == NULL){
+
+            $query_cremanten = "INSERT INTO inform_fallas (Orden, HorasdelTrabajo, Aviso, Titul_observ, Observacion_data, Estadomanten, rut_LogUser_Manten, ID_InformFallas_cone)
+                            VALUES ('0','00:00:00', '0', '$obtitul_Manten', '$obser_Manten', 'Pendiente', '$torutuserLoad_manten', '$informfall_id')";
+                            
+                $query_cremanten_run = mysqli_query($conexion, $query_cremanten);
+                
+                if($query_cremanten_run){
+
+                    $res = [
+                        'status' => 200, 
+                        'message' => 'Se Creo la Seccion de Fallas'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }else{
+                    $res = [
+                        'status' => 422, 
+                        'message' => 'No se pudo Crear la Seccion de Fallas'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }
+
+        }else{
+
+            $query_cremanten = "INSERT INTO inform_fallas (Orden, HorasdelTrabajo, Aviso, Titul_observ, Observacion_data, Estadomanten, rut_LogUser_Manten, ID_InformFallas_cone)
+                            VALUES ('$order_Manten','00:00:00', '0', '$obtitul_Manten', '$obser_Manten', 'Pendiente', '$torutuserLoad_manten', '$informfall_id')";
+                            
+                $query_cremanten_run = mysqli_query($conexion, $query_cremanten);
+                
+                if($query_cremanten_run){
+
+                    $res = [
+                        'status' => 200, 
+                        'message' => 'Se Creo la Seccion de Fallas'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }else{
+                    $res = [
+                        'status' => 422, 
+                        'message' => 'No se pudo Crear la Seccion de Fallas'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }
+
+        }
+
+    }else{
+
+        $query_cremanten = "INSERT INTO inform_fallas (Orden, HorasdelTrabajo, Aviso, Titul_observ, Observacion_data, Estadomanten, rut_LogUser_Manten, ID_InformFallas_cone)
+                            VALUES ('$order_Manten','00:00:00', '$avis_Manten', '$obtitul_Manten', '$obser_Manten', 'Pendiente', '$torutuserLoad_manten', '$informfall_id')";
+                            
+                $query_cremanten_run = mysqli_query($conexion, $query_cremanten);
+                
+                if($query_cremanten_run){
+
+                    $res = [
+                        'status' => 200, 
+                        'message' => 'Se Creo la Seccion de Fallas'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }else{
+                    $res = [
+                        'status' => 422, 
+                        'message' => 'No se pudo Crear la Seccion de Fallas'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }
+
+    }
+
+                
 
                 
 }
