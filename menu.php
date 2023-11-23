@@ -69,7 +69,9 @@
 
 
 <table class="Manten_table rounded">
-  
+
+
+
 <?php 
             $querytabl_Mantenupper = "SELECT * FROM mantencion_maquin WHERE rut_LogUser_cone= '$rut_load_log'";
             $querytabl_Mantenupper_run = mysqli_query($conexion, $querytabl_Mantenupper);
@@ -79,6 +81,7 @@
               foreach($querytabl_Mantenupper_run as $Informfallas_mantened){
 
                  ?>
+                 
 
 <thead>
 
@@ -90,8 +93,8 @@
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Nomb_maquin_cone'] ?></th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test<?= $Informfallas_mantened['ID_con_mantencion'] ?>"><?= $Informfallas_mantened['Fecha_trab_cone'] ?></th>
                 <th class="tabmante_main" data-bs-toggle="collapse" data-bs-target=".colap_test"> </th>
-                <th class="tabmante_main "> <button type="button" class="btm Creainform_btnmodal bx bx-plus plus_manten" value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Crea_manten"></button> </th>
-                <th class="tabmante_main"><i class='bx bx-x-circle close_manten' data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i></th>
+                <th class="tabmante_main "> <button type="button" class="btm Creainform_btnmodal bx bx-plus plus_manten shadow" value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Crea_manten"></button> </th>
+                <th class="tabmante_main"><button type="button" class="btm Deletinform_btnmodal bx bx-x close_manten shadow" value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Elimall_manten">   </button></th>
 
                 <th class="tabmante_main_phone">
                 <div class="row plusex_mant">
@@ -99,7 +102,8 @@
                     <div class="col-auto">
                       
                     <button type="button" class="btm Creainform_btnmodal bx bx-plus plus_manten" value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Crea_manten">   </button>
-                        <i class='bx bx-x-circle close_manten' value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Elimall_manten"></i>
+                    <button type="button" class="btm Deletinform_btnmodal bx bx-x close_manten" value="<?= $Informfallas_mantened['ID_con_mantencion'] ?>" data-bs-toggle="modal" data-bs-target="#Elimall_manten">   </button>
+                    
                     </div>
                 </div>
                     
@@ -164,7 +168,9 @@
                 <td class="tabmante_body"><button type="button" value="<?= $Informsecc_mantened['ID_infor_fallas'] ?>" class="EditManten_btnmodal btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit_manten">Editar</button></td>
                 <td class="tabmante_body"><button type="button" value="<?= $Informsecc_mantened['ID_infor_fallas'] ?>" class="DeletManten_btnmodal btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Elim_manten">Eliminar</button></td>
 
-            </tr> 
+            </tr>
+
+            
             
             <?php
               }
@@ -172,9 +178,20 @@
             }
             ?>
             
-            
             </tbody>
     
+
+          <tr>
+              <td class="tabmante_invis"></td>
+              <td class="tabmante_invis"></td>
+              <td class="tabmante_invis"></td> 
+              <td class="tabmante_invis"></td> 
+              <td class="tabmante_invis"></td>
+              <td class="tabmante_invis"></td>
+          </tr>
+            
+
+
             <?php
               }
 
@@ -219,6 +236,9 @@
 
 
 <div class="modal fade" id="Elimall_manten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<form id="deletinfromfallasMod">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -226,14 +246,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h5>¿Esta Seguro que desea eliminar el Informe de Fallas?</h3>
+
+      <div id="errorMessageDelet" class="alert alert-warning d-none"></div>
+
+        <h5>¿Esta Seguro que desea eliminar el Informe de Fallas?</h5>
+
+        <input type="hidden" name="informfall_iddel" id="informfall_iddel">
+
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
       </div>
     </div>
   </div>
+
+  </form>
+
 </div>
 
 
@@ -526,6 +555,75 @@ $.ajax({
   });
 
 });
+
+$(document).on('click', '.Deletinform_btnmodal', function () {
+
+var informfall_id = $(this).val();
+
+$.ajax({
+  type: "GET",
+  url: "php/Manten_CRUD_inst.php?informfall_id=" + informfall_id,
+  success: function (response) {
+
+    var res =jQuery.parseJSON(response);
+    if(res.status == 422){
+
+      alert(res.message);
+
+    }else if(res.status == 200){
+
+      $('#informfall_iddel').val(res.data.ID_con_mantencion);
+
+      $('#Elimall_manten').modal('show');
+
+    }
+
+  }, cache: false
+
+  });
+
+});
+
+
+$(document).on('submit', '#deletinfromfallasMod', function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    formData.append("delet_infromfallasMod", true);
+
+    $.ajax({
+      type: "POST",
+      url: "php/Manten_CRUD_inst.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+
+        var res = jQuery.parseJSON(response);
+        if (res.status == 422) {
+
+          $('#errorMessageDelet').removeClass('d-none');
+          $('#errorMessageDelet').text(res.message);
+          
+        }else if(res.status == 200) {
+
+          $('#errorMessageDelet').addClass('d-none');
+          $('#Elimall_manten').modal('hide');
+
+          alertify.set('notifier','position', 'top-center');
+          alertify.success(res.message);
+
+          $('.Manten_table').load(location.href + " .Manten_table");
+
+        }
+        
+      }
+
+    });
+
+    
+
+  });
 
 
 

@@ -155,9 +155,8 @@
    
 }
 .close_manten{
-    padding-left: 2rem;
     font-size: 2.0rem;
-    color: #ff0000;
+    color: #ffffff;
     cursor: pointer;
 }
 .plusex_mant{
@@ -301,9 +300,23 @@
     align-items: center;
        
     }
+
     .tabmante_main{
         display: none;
     }
+
+    .tabmante_invis_phone{
+       
+    
+        opacity: 0.5;
+        padding: 15px;
+    }
+    
+
+    .tabmante_invis{
+        display: none;
+    }
+
 
     .conent_Clicre{
         width: 90%;
@@ -574,6 +587,23 @@
     margin: auto;
 }
 
+.Deletinform_btnmodal{
+    background-color: rgba(255, 22, 22, 0.876);
+    padding: 1px 1px;
+    border-radius: 50%;
+    border: none;
+}
+
+.tabmante_invis{
+    background-color: transparent;
+
+    opacity: 0.5;
+    padding: 1px;
+}
+
+.tabmante_invis_phone{
+    display: none;
+}
 
 
 .Creainform_btnmodal{

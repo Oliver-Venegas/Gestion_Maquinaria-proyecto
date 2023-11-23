@@ -155,7 +155,7 @@
         
       
                     <div class="mb-4">
-                        <label for="text" class="form-label">Numero de Serie</label>
+                        <label for="text" class="form-label">Numero de Serie <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-6">
                         <input type="text" class="form-control" name="numser_Maqui" placeholder="000000000">
                         <span></span> 
@@ -164,7 +164,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre de la Maquina</label>
+                        <label for="text" class="form-label">Nombre de la Maquina <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-7">
                           <input type="text" class="form-control" name="nombr_Maqui" placeholder="Aplanadora Industrial">
                           <span></span> 
@@ -173,7 +173,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
+                        <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-9">
 
                         <select class="form-select mb-4 align-items-stretch" name="rutEmpr_Maqui" aria-label="Default select example">
@@ -272,7 +272,7 @@
 
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Numero de Serie</label>
+                        <label for="text" class="form-label">Numero de Serie <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-6">
                         <input type="text" class="form-control" name="numser_Maquiedi" id="numser_Maquiedi">
                         <span></span> 
@@ -281,7 +281,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre de la Maquina</label>
+                        <label for="text" class="form-label">Nombre de la Maquina <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-7">
                         <input type="text" class="form-control" name="nombr_Maquiedi" id="nombr_Maquiedi">
                         <span></span> 
@@ -290,7 +290,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina</label>
+                        <label for="text" class="form-label">Rut de la Empresa que pertenece la Maquina <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-9">
 
                         <select class="form-select mb-4 align-items-stretch" name="rutEmpr_Maquiedi" id="rutEmpr_Maquiedi" aria-label="Default select example">

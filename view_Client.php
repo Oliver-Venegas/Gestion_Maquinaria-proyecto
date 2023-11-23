@@ -180,7 +180,7 @@
        <input type="hidden" name="torutuserLoad" value="<?php echo $rut_load_log ?>">
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Rut de Empresa</label>
+                        <label for="text" class="form-label">Rut de Empresa   <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-5">
                           <input type="text" class="form-control" name="rutempr_Clien" placeholder="00000000-0">
                           <span></span> 
@@ -189,7 +189,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre de la Empresa</label>
+                        <label for="text" class="form-label">Nombre de la Empresa <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-7">
                           <input type="text" class="form-control" name="nombrempr_Clien" placeholder="La Polar">
                           <span></span> 
@@ -214,7 +214,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Fecha del Trabajo</label>
+                        <label for="text" class="form-label">Fecha del Trabajo  <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-5">
                          <input type="date" class="form-control" name="dateempr_Clien" id="dateempr_Clien">
                         <span></span>  
@@ -291,7 +291,7 @@
       <input type="hidden" name="client_id" id="client_id">
      
                     <div class="mb-4">
-                        <label for="text" class="form-label">Rut de Empresa</label>
+                        <label for="text" class="form-label">Rut de Empresa  <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-5">
                         <input type="text" class="form-control" name="rutempr_Clienedi" id="rutempr_Clienedi">
                         <span></span> 
@@ -300,7 +300,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Nombre de la Empresa</label>
+                        <label for="text" class="form-label">Nombre de la Empresa  <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-7">
                         <input type="text" class="form-control" name="nombrempr_Clienedi" id="nombrempr_Clienedi">
                         <span></span>  
@@ -325,7 +325,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Fecha del Trabajo</label>
+                        <label for="text" class="form-label">Fecha del Trabajo  <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-5">
                         <input type="date" class="form-control" name="dateempr_Clienedi" id="dateempr_Clienedi">
                         <span></span> 
