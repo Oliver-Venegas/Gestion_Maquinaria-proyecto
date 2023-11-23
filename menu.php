@@ -305,7 +305,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <label for="text" class="form-label">Titulo de la Observacion <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-8">
                         <input type="text" class="form-control" name="obtitul_Manten" placeholder="Falla del Lente">
                         <span></span> 
@@ -376,7 +376,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="text" class="form-label">Titulo de la Observacion</label>
+                        <label for="text" class="form-label">Titulo de la Observacion <h7 style="color: gray; font-family: Arial;  font-size: 12px; margin-left: 5px;">  /*Campo Exigente*/</h7></label>
                         <div class="col-8">
                           <input type="text" class="form-control" name="obtitul_Mantenedi" id="obtitul_Mantenedi">
                         <span></span> 
