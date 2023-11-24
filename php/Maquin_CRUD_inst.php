@@ -121,9 +121,9 @@ $nombr_Maqui = mysqli_real_escape_string($conexion, $_POST['nombr_Maquiedi']);
 $rutEmpr_Maqui = mysqli_real_escape_string($conexion, $_POST['rutEmpr_Maquiedi']);
 
 
-$seri_repu = mysqli_real_escape_string($conexion, $_POST['seri_repuedi']);
-$nombr_repu = mysqli_real_escape_string($conexion, $_POST['nombr_repuedi']);
-$cant_repu = mysqli_real_escape_string($conexion, $_POST['cant_repuedi']);
+$seri_repuedi = mysqli_real_escape_string($conexion, $_POST['seri_repuedi']);
+$nombr_repuedi = mysqli_real_escape_string($conexion, $_POST['nombr_repuedi']);
+$cant_repuedi = mysqli_real_escape_string($conexion, $_POST['cant_repuedi']);
 
 $rad_maquedi= mysqli_real_escape_string($conexion, $_POST['rad_maquedi']);
 
@@ -210,15 +210,16 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
                                 if($query_coorectClient_run){
 
-                                    $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
-                                        WHERE ID_Cliente= '$rutEmpr_Maqui'";
-                                        
-                                    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
-
                                     $query_rereite_connect = "UPDATE mantencion_maquin SET Nomb_maquin_cone= NULL, seri_LogMaqui_cone= NULL
                                         WHERE seri_LogMaqui_cone= '$maqui_id'";
                                         
                                     $query_rereite_connect_run = mysqli_query($conexion, $query_rereite_connect);
+
+                                    $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
+                                        WHERE ID_Cliente= '$rutEmpr_Maqui'";
+                                        
+                                    $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+                                    
 
                $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
                                         WHERE id_LogClien_cone= '$rutEmpr_Maqui'";
@@ -272,7 +273,7 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
     }else if($rad_maquedi == 'show_maquedi'){
 
-     if($seri_repu == NULL){
+     if($seri_repuedi == NULL){
         $res = 
                 ['status' => 422, 
                 'message' => 'Debe ingresar el Numero de Serie del Repuesto'];
@@ -281,14 +282,14 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
     }else{
 
-        if($nombr_repu == NULL){
+        if($nombr_repuedi == NULL){
             $res = 
                 ['status' => 422, 
                 'message' => 'Debe ingresar el Nombre del Repuesto'];
                 echo json_encode($res);
                 return false;
         }
-        else if($cant_repu == NULL){
+        else if($cant_repuedi == NULL){
             $res = 
                 ['status' => 422, 
                 'message' => 'Debe ingresar la cantidad del Repuesto'];
@@ -297,15 +298,15 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
         
         }else{
 
-            
-    $query_cremaquin_rep = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutempresa_dMaquina', Num_SerRepuest= '$seri_repu', Nombre_Repuest= '$nombr_repu', Cant_Repuest= '$cant_repu'
-                                WHERE Numer_Serie= '$maqui_id'";
-                    
-        $query_cremaquinrep_run = mysqli_query($conexion, $query_cremaquin_rep);
-        
-        if($query_cremaquinrep_run){
+            $query_cremaquinRep = "UPDATE maquina_mantened SET Numer_Serie= '$numser_Maqui', Nombr_Maquina= '$nombr_Maqui', Rut_Empresa= '$rutempresa_dMaquina', Num_SerRepuest= '$seri_repuedi', Nombre_Repuest= '$nombr_repuedi', Cant_Repuest= '$cant_repuedi'
+            WHERE Numer_Serie= '$maqui_id'";
 
-            if($connect_changMaqui == $maqui_id){
+
+$query_cremaquinRep_run = mysqli_query($conexion, $query_cremaquinRep);
+
+if($query_cremaquinRep_run){
+
+if($connect_changMaqui == $maqui_id){
 
                 $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
                     WHERE ID_Cliente= '$rutEmpr_Maqui'";
@@ -313,8 +314,12 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
                 $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
 
 
-                $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', id_LogClien_cone= '$rutEmpr_Maqui', seri_LogMaqui_cone= '$numser_Maqui'
-                    WHERE seri_LogMaqui_cone= '$maqui_id'";
+                $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect',
+                                                                            Nomb_maquin_cone= '$nombr_Maqui',
+                                                                            Fecha_trab_cone= '$FechaTrab_connect',
+                                                                            id_LogClien_cone= '$rutEmpr_Maqui',
+                                                                            seri_LogMaqui_cone= '$numser_Maqui'
+                    WHERE id_LogClien_cone= '$rutEmpr_Maqui'";
                     
             $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
 
@@ -349,13 +354,19 @@ if($numser_Maqui == NULL || $nombr_Maqui == NULL || $rutEmpr_Maqui == NULL){
 
             if($query_coorectClient_run){
 
+                $query_rereite_connect = "UPDATE mantencion_maquin SET Nomb_maquin_cone= NULL, seri_LogMaqui_cone= NULL
+                    WHERE seri_LogMaqui_cone= '$maqui_id'";
+                    
+                $query_rereite_connect_run = mysqli_query($conexion, $query_rereite_connect);
+
                 $query_renewClient = "UPDATE cliente_mantened SET seri_ConnMaqui= '$maqui_id'
                     WHERE ID_Cliente= '$rutEmpr_Maqui'";
                     
                 $query_renewClient_run = mysqli_query($conexion, $query_renewClient);
+                
 
 $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$NombrEmpr_connect', Nomb_maquin_cone= '$nombr_Maqui', 	Fecha_trab_cone= '$FechaTrab_connect', seri_LogMaqui_cone= '$numser_Maqui'
-                    WHERE seri_LogMaqui_cone= '$maqui_id'";
+                    WHERE id_LogClien_cone= '$rutEmpr_Maqui'";
                     
             $query_creamanten_connect_run = mysqli_query($conexion, $query_creamanten_connect);
 
@@ -391,22 +402,29 @@ $query_creamanten_connect = "UPDATE mantencion_maquin SET Nomb_empre_cone= '$Nom
 
 }
 
-        }else{
-            $res = [
-                'status' => 500, 
-                'message' => 'No se pudo Crear Actualizar la Maquina'
-                ];
-            echo json_encode($res);
-            return false;
 
-        }
+
+
+}else{
+$res = [
+'status' => 422, 
+'message' => 'No se pudo Actualizar la Maquina'
+];
+echo json_encode($res);
+return false;
+
+}
+
+
 
         }
 
 
     }   
 
-    }else{
+    
+
+}else{
 
         $res = 
                 ['status' => 422, 

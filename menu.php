@@ -253,6 +253,8 @@
 
         <input type="hidden" name="informfall_iddel" id="informfall_iddel">
 
+        <input type="hidden" name="informfall_clientdel" id="informfall_clientdel">
+
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -573,6 +575,9 @@ $.ajax({
     }else if(res.status == 200){
 
       $('#informfall_iddel').val(res.data.ID_con_mantencion);
+      $('#informfall_clientdel').val(res.data.id_LogClien_cone);
+
+      
 
       $('#Elimall_manten').modal('show');
 

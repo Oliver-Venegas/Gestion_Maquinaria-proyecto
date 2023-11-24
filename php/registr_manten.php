@@ -35,7 +35,7 @@ if($password_reg != $passagain_reg){
 
 
 // Verifica que no esté vacio y que el string sea de tamaño mayor a 3 carácteres(1-9)        
-if ((empty($rut_empresa)) || strlen($rut_empresa) < 3) {
+if ((empty($rut_reg)) || strlen($rut_reg) < 3) {
     header("Location: ../reg_man.php?error_reg=RUT vacio o con menos de 3 caracteres");
     exit();
 
@@ -43,7 +43,7 @@ if ((empty($rut_empresa)) || strlen($rut_empresa) < 3) {
 
 // Quitar los últimos 2 valores (el guión y el dígito verificador) y luego verificar que sólo sea
 // numérico
-$parteNumerica = str_replace(substr($rut_empresa, -2, 2), '', $rut_empresa);
+$parteNumerica = str_replace(substr($rut_reg, -2, 2), '', $rut_reg);
 
 if (!preg_match("/^[0-9]*$/", $parteNumerica)) {
     header("Location: ../reg_man.php?error_reg=El RUT sólo debe contener numeros");
@@ -51,7 +51,7 @@ if (!preg_match("/^[0-9]*$/", $parteNumerica)) {
 
 }
 
-$guionYVerificador = substr($rut_empresa, -2, 2);
+$guionYVerificador = substr($rut_reg, -2, 2);
 // Verifica que el guion y dígito verificador tengan un largo de 2.
 if (strlen($guionYVerificador) != 2) {
     header("Location: ../reg_man.php?error_reg=Error en el largo del digito verificador");
@@ -68,13 +68,13 @@ if (!preg_match('/(^[-]{1}+[0-9kK]).{0}$/', $guionYVerificador)) {
 }
 
 // Valida que sólo sean números, excepto el último dígito que pueda ser k
-if (!preg_match("/^[0-9.]+[-]?+[0-9kK]{1}/", $rut_empresa)) {
+if (!preg_match("/^[0-9.]+[-]?+[0-9kK]{1}/", $rut_reg)) {
     header("Location: ../reg_man.php?error_reg=Error al ingresar el RUT");
     exit();
 
 }
 
-$rutV = preg_replace('/[\.\-]/i', '', $rut_empresa);
+$rutV = preg_replace('/[\.\-]/i', '', $rut_reg);
 $dv = substr($rutV, -1);
 $numero = substr($rutV, 0, strlen($rutV) - 1);
 $i = 2;
@@ -124,7 +124,7 @@ $ejectura_regis = mysqli_query($conexion, $query_regist);
 
 if($ejectura_regis){
 
-    header("Location: ../index.php?suscces_reg=Se Registro el Mantenedor");
+    header("Location: ../sessiMantenedor.php?suscces_reg=Se Registro el Mantenedor");
 
 
 }else{

@@ -146,7 +146,7 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
         
         if($query_creclient_run){
 
-            $query_creamantenconnect = "UPDATE  mantencion_maquin SET Nomb_empre_cone= '$nombrempr_Clien', Fecha_trab_cone= '$hrsempr_Clien'
+            $query_creamantenconnect = "UPDATE  mantencion_maquin SET Nomb_empre_cone= '$nombrempr_Clien', Fecha_trab_cone= '$dateempr_Clien'
             WHERE id_LogClien_cone= '$Cliente_id'";
             
             $query_creamantenconnect_run = mysqli_query($conexion, $query_creamantenconnect);
@@ -209,7 +209,7 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
                     
                     if($query_creclientbol_run){
             
-                        $query_creamantenconnect = "UPDATE  mantencion_maquin SET Nomb_empre_cone= '$nombrempr_Clien', Fecha_trab_cone= '$hrsempr_Clien'
+                        $query_creamantenconnect = "UPDATE  mantencion_maquin SET Nomb_empre_cone= '$nombrempr_Clien', Fecha_trab_cone= '$dateempr_Clien'
                         WHERE id_LogClien_cone= '$Cliente_id'";
                         
                         $query_creamantenconnect_run = mysqli_query($conexion, $query_creamantenconnect);

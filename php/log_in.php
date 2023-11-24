@@ -11,11 +11,11 @@ $password_user = hash('sha512', $password_user);
 
 
 if(empty($email_user)){
-    header("Location: ../index.php?error_reg=Debe ingresar un Correo Electronico");
+    header("Location: ../sessiMantenedor.php?error_reg=Debe ingresar un Correo Electronico");
     exit();
 }
 else if(empty($password_user)){
-    header("Location: ../index.php?error_reg=Debe ingresar una Contraseña");
+    header("Location: ../sessiMantenedor.php?error_reg=Debe ingresar una Contraseña");
     exit();
 
 }
@@ -32,7 +32,7 @@ $valid_log = mysqli_query($conexion, "SELECT * FROM usuario_mantenedor
         exit();
 
     }else{
-        header("Location: ../index.php?error_reg=Correo Electronico o Contraseña incorrecta");
+        header("Location: ../sessiMantenedor.php?error_reg=Correo Electronico o Contraseña incorrecta");
 
         exit();
     }

@@ -46,12 +46,17 @@ if(isset($_POST['delet_MantenMod']))
 if(isset($_POST['delet_infromfallasMod']))
 {
     $informfall_iddel = mysqli_real_escape_string($conexion, $_POST['informfall_iddel']);
+    $informfall_clientdel = mysqli_real_escape_string($conexion, $_POST['informfall_clientdel']);
 
     $query_delmantseccfalla = "DELETE FROM inform_fallas WHERE ID_InformFallas_cone = '$informfall_iddel'";
     $query_delmantseccfalla_run = mysqli_query($conexion, $query_delmantseccfalla);
 
     if($query_delmantseccfalla_run)
     {
+
+        $query_delmantcliente = "DELETE FROM cliente_mantened WHERE ID_Cliente = '$informfall_clientdel'";
+        $query_delmantcliente_run = mysqli_query($conexion, $query_delmantcliente);
+
         $query_delmantfalla = "DELETE FROM mantencion_maquin WHERE ID_con_mantencion = '$informfall_iddel'";
         $query_delmantfalla_run = mysqli_query($conexion, $query_delmantfalla);
     
@@ -75,6 +80,10 @@ if(isset($_POST['delet_infromfallasMod']))
         } 
 
     }else{
+
+        $query_delmantcliente = "DELETE FROM cliente_mantened WHERE ID_Cliente = '$informfall_clientdel'";
+        $query_delmantcliente_run = mysqli_query($conexion, $query_delmantcliente);
+
         $query_delmantfalla = "DELETE FROM mantencion_maquin WHERE ID_con_mantencion = '$informfall_iddel'";
     $query_delmantfalla_run = mysqli_query($conexion, $query_delmantfalla);
 

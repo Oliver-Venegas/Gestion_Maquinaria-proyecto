@@ -126,7 +126,7 @@ if(isset($_POST['send_renewpassw'])){
                     $update_passw_run = mysqli_query($conexion, $update_passw);
 
                     if($update_passw_run){
-                        header("Location: ../index.php?suscces_reg=Se Actualizo su Clave Exitosamente");
+                        header("Location: ../sessiMantenedor.php?suscces_reg=Se Actualizo su Clave Exitosamente");
                         exit();
 
 
