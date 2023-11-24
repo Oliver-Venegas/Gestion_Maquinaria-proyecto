@@ -47,7 +47,7 @@
             <a href="menuCliente.php" class="user_home">Mantencion</a>
 
             
-            <a href="php/log_out.php" class='bx bx-exit' id="general_sessioncliente"></a>
+            <a href="php/log_outCli.php" class='bx bx-exit' id="general_sessioncliente"></a>
 
         </header>
 
@@ -72,7 +72,6 @@
                  
 
 <thead>
-
 
 
             <tr>

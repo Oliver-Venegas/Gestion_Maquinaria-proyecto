@@ -9,11 +9,11 @@ $serie_maquina = $_POST['serie_maquina'];
 
 
 if(empty($rut_cliente)){
-    header("Location: ../sessiMantenedor.php?error_reg=Debe ingresar un Rut");
+    header("Location: ../sessiCliente.php?error_reg=Debe ingresar un Rut");
     exit();
 }
 else if(empty($serie_maquina)){
-    header("Location: ../sessiMantenedor.php?error_reg=Debe ingresar un Numero de Serie");
+    header("Location: ../sessiCliente.php?error_reg=Debe ingresar un Numero de Serie");
     exit();
 
 }
