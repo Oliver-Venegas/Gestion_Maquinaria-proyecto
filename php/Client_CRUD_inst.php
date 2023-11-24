@@ -7,6 +7,108 @@ if(isset($_POST['delet_ClientMod']))
 {
     $client_iddel = mysqli_real_escape_string($conexion, $_POST['client_iddel']);
 
+    $query_boldata = "SELECT * FROM cliente_mantened WHERE ID_Cliente = '$client_iddel'";
+    $query_boldata_run = mysqli_query($conexion, $query_boldata);
+    
+    if(mysqli_num_rows($query_boldata_run) == 1)
+    {
+        $fila_boleta = mysqli_fetch_assoc($query_boldata_run);  
+        $archivo = $fila_boleta['Datos_boleta'];
+
+        if($archivo == NULL){
+
+            $query_delmanten = "DELETE FROM mantencion_maquin WHERE id_LogClien_cone= '$client_iddel'";
+            $query_delmanten_run = mysqli_query($conexion, $query_delmanten);
+
+            $query_del = "DELETE FROM cliente_mantened WHERE ID_Cliente= '$client_iddel'";
+            $query_del_run = mysqli_query($conexion, $query_del);
+
+            if($query_del_run)
+            {
+                $res = [
+                    'status' => 200, 
+                    'message' => 'Se Elimino el Cliente'
+                    ];
+                echo json_encode($res);
+                return false;
+
+            }else{
+                $res = [
+                    'status' => 500, 
+                    'message' => 'No se pudo Eliminar el Cliente'
+                    ];
+                echo json_encode($res);
+                return false;
+
+                    }
+
+        }else{
+
+            $ruta_archivo = "../files/" . $archivo;
+     
+            if(file_exists($ruta_archivo)){
+
+                $Eliinar_archivo = unlink($ruta_archivo);
+
+                $query_delmanten = "DELETE FROM mantencion_maquin WHERE id_LogClien_cone= '$client_iddel'";
+                $query_delmanten_run = mysqli_query($conexion, $query_delmanten);
+
+                $query_del = "DELETE FROM cliente_mantened WHERE ID_Cliente= '$client_iddel'";
+                $query_del_run = mysqli_query($conexion, $query_del);
+
+                if($query_del_run)
+                {
+                    $res = [
+                        'status' => 200, 
+                        'message' => 'Se Elimino el Cliente'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }else{
+                    $res = [
+                        'status' => 500, 
+                        'message' => 'No se pudo Eliminar el Cliente'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+    }
+
+            }else{
+
+                $query_delmanten = "DELETE FROM mantencion_maquin WHERE id_LogClien_cone= '$client_iddel'";
+                $query_delmanten_run = mysqli_query($conexion, $query_delmanten);
+
+                $query_del = "DELETE FROM cliente_mantened WHERE ID_Cliente= '$client_iddel'";
+                $query_del_run = mysqli_query($conexion, $query_del);
+
+                if($query_del_run)
+                {
+                    $res = [
+                        'status' => 200, 
+                        'message' => 'Se Elimino el Cliente'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+                }else{
+                    $res = [
+                        'status' => 500, 
+                        'message' => 'No se pudo Eliminar el Cliente'
+                        ];
+                    echo json_encode($res);
+                    return false;
+
+    }
+
+            }
+        }
+
+
+
+    }else{
+
     $query_delmanten = "DELETE FROM mantencion_maquin WHERE id_LogClien_cone= '$client_iddel'";
     $query_delmanten_run = mysqli_query($conexion, $query_delmanten);
 
@@ -31,6 +133,15 @@ echo json_encode($res);
 return false;
 
     }
+
+    }
+        
+
+        
+
+
+
+ 
 
 }
 
