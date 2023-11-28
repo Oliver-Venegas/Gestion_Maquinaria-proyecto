@@ -10,7 +10,7 @@ if(isset($_POST['field']) && isset($_POST['value']) && isset($_POST['id'])){
 
     $query_cellupdt = "UPDATE inform_fallas SET ".$field."='".$value."' WHERE ID_infor_fallas = '$editid'";
     $query_cellupdt_run = mysqli_query($conexion, $query_cellupdt);
-
+    
     echo 1;
 }
 

@@ -67,9 +67,19 @@
         <div class="container  mt-5 mb-5 ">
         <div class="row align-items-stretch p-2 uppermant_table">
 
+<script>
+  function push(){
+
+  alertify.set('notifier','position', 'top-left');
+  alertify.success('No se Olvide de Cambiar la Hora');
+    
+
+  }
+
+</script>
+
 
 <table class="Manten_table rounded">
-
 
 
 <?php 
@@ -141,13 +151,13 @@
 
             <tr class="tabmante_fila">
                 <td class="tabmante_body" data-cell="Hora">
-                  <div class="edit"> <?= $Informsecc_mantened['HorasdelTrabajo'] ?> </div>
+                  <div class="edit form-control" > <?= $Informsecc_mantened['HorasdelTrabajo'] ?> </div>
                     <input type="time" class="form-control txt_edit" value="<?= $Informsecc_mantened['HorasdelTrabajo'] ?>" id="HorasdelTrabajo_<?= $Informsecc_mantened['ID_infor_fallas'] ?>"> 
                    </td>
                 <td class="tabmante_body" data-cell="Observacion"> <?= $Informsecc_mantened['Titul_observ'] ?> </td>
                 <td class="tabmante_body" data-cell="Estado">
                   
-                  <div class="edit"> <?= $Informsecc_mantened['Estadomanten'] ?></div>
+                  <div class="edit form-control" onclick="push();"> <?= $Informsecc_mantened['Estadomanten'] ?></div>
 
                     <select class="form-select txt_edit" value="<?= $Informsecc_mantened['Estadomanten'] ?>"  aria-label="Default select example" id="Estadomanten_<?= $Informsecc_mantened['ID_infor_fallas'] ?>">
                 <?php
@@ -507,7 +517,8 @@ $(this).prev('.edit').text(value);
     data: {field:field_name, value:value, id:edit_id },
     succes:function(response){
       if(response == 1){
-        console.log('saved');
+        alertify.set('notifier','position', 'top-left');
+        alertify.success('Current position : ' + alertify.get('notifier','position'));
 
       }else{
         console.log("not saved");
