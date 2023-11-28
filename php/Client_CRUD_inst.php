@@ -543,6 +543,19 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
             $dvr = 'K';
         }
         if ($dvr == strtoupper($dv)) {
+
+        $valid_log = mysqli_query($conexion, "SELECT * FROM cliente_mantened
+                            WHERE Rut_empresa='$rut_empresa' AND Nombre_empresa='$nombrempr_Clien' AND Fecha_del_trabajo= '$dateempr_Clien'");
+
+    if(mysqli_num_rows($valid_log) > 0){
+
+        $res = 
+                ['status' => 422, 
+                'message' => 'Ya existe un Cliente con parametros Exigentes Similares'];
+                echo json_encode($res);
+                return false;
+
+    }else{
             
             if($hrsempr_Clien == NULL){
                 
@@ -875,7 +888,8 @@ if($rut_empresa == NULL || $nombrempr_Clien == NULL || $dateempr_Clien == NULL){
             }
 
 }
-    
+
+} 
         } else {
             $res = 
                 ['status' => 422, 
