@@ -1,4 +1,18 @@
 /* Log In */
+.titul_cabez{
+    text-align: center;
+
+    }
+
+.encabzado{
+
+color: white;
+text-transform: uppercase;
+font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
 .message_creamant{
     text-align: center;
     background: #fff;

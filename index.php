@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body class="backg_body">
-    <div class="container w-75 bg-primary mt-5 mb-5 rounded shadow">
+
+<header class="titul_cabez mt-4 "> 
+    <h1 class="encabzado ">Gestion de Maquinaria</h1>
+</header>
+
+    <div class="container w-75 bg-primary mt-4 mb-5 rounded shadow">
+
+    
         <div class="row align-items-stretch">
             <div class="col backg_image_select d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded"></div>
 
